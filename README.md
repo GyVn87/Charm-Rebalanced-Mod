@@ -1,5 +1,5 @@
-If you enjoy the mod, please consider giving the repository a star, this will help spread the mod to more people! \
-If you have any idea or encounter any issue, please let me know by opening an issue.
+- If you enjoy the mod, please consider giving the repository a star, this will help spread the mod to more people! 
+- If you have any idea or encounter any issue, please let me know by opening an issue.
 
 # How to install
 * Change the game version to `1.5.78.11833`
@@ -15,8 +15,9 @@ If you have any idea or encounter any issue, please let me know by opening an is
 ## Stalwart Shell
 - Notch cost: 2 => 1
 - Recoil Duration: 0.08s => 0s
-- Invicibility duration: 1.75s => 2s
-- During invicibility, decreases Knight's damage from all sources to 25%
+- Invincibility duration: 1.75s => 2s
+- During invincibility, decreases Knight's damage dealt from all sources to 25%
+- During invincibility, player can not focus.
 
 ***I rarely saw anyone using this charm, and neither did I. The concept is good, and I want to retain it. The main issue is that players can take advantage of this charm by facetanking bosses, so I have to add a damage penalty.***
 ## Soul Catcher
