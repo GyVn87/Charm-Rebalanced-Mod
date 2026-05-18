@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
-    internal static class Charm15__HeavyBlow {
+    internal static class Charm15_HeavyBlow {
         private static readonly float damageMultiplier = 1.2f;
         private static readonly int stunHit = 3;
 
         private static PlayerData PD => CharmRebalanced.LoadedInstance.PD;
-        private static float nextStunDamageTime = 0f;
+        private static float stunDamageTimer = 0f;
         private static readonly float eventDelay = 1f;
 
         internal static void Load() {
@@ -43,9 +43,9 @@ namespace TuyenTuyenTuyen.Charms {
                 return;
             if (self.Owner.name == "Dash Slash" || self.Owner.name == "Great Slash") {
                 if (self.Fsm.Name == "damages_enemy") {
-                    if (Time.time < nextStunDamageTime)
+                    if (Time.time < stunDamageTimer)
                         return;
-                    nextStunDamageTime = Time.time + eventDelay;
+                    stunDamageTimer = Time.time + eventDelay;
                     for (int i = 1; i <= (stunHit - 1); i++)
                         self.Fsm.BroadcastEventToGameObject(self.Target.Value, "STUN DAMAGE", false);
                 }

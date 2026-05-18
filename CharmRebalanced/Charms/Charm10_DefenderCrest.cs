@@ -1,10 +1,12 @@
 ﻿using GlobalEnums;
 using TuyenTuyenTuyen.Mechanics;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm10_DefenderCrest {
         private static readonly float weaknessDebuffMultiplier = 1.1f;
+        private static readonly float weaknessDebuffSpellMultiplier = 1.15f;
         internal static readonly float weaknessDuration = 2f;
 
         private static readonly int flukeDungLv1Damage = 50;
@@ -16,7 +18,7 @@ namespace TuyenTuyenTuyen.Charms {
         //private static readonly float flukeDungLV2Duration = 4f;
         private static readonly float flukeDungDuration = 2.2f; // don't change this
 
-        private static readonly Vector3 knightDungTrailScale = new(1.2f, 1.2f, 1.2f);
+        private static readonly Vector3 knightDungTrailScale = new(1f, 1f, 1f);
 
         internal static void Load() {
             On.DamageEffectTicker.OnTriggerEnter2D += OnDamageEffectTicker_OnTriggerEnter2D;
@@ -45,8 +47,12 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnHealthManager_TakeDamage(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
             WeaknessDebuff debuff = self.gameObject.GetComponent<WeaknessDebuff>();
-            if (debuff != null)
-                hitInstance.Multiplier *= weaknessDebuffMultiplier;
+            if (debuff != null) {
+                if (hitInstance.AttackType == AttackTypes.Spell)
+                    hitInstance.Multiplier *= weaknessDebuffSpellMultiplier;
+                else
+                    hitInstance.Multiplier *= weaknessDebuffMultiplier;
+            }
             orig(self, hitInstance);
         }
 
@@ -127,10 +133,16 @@ namespace TuyenTuyenTuyen.Charms {
                 particlePrefab = KnighTransform.Find("Charm Effects/Dung/Particle 1").gameObject;
             }
             debuffParticle = Object.Instantiate<GameObject>(particlePrefab, transform);
+            debuffParticle.SetActive(true);
             debuffParticle.name = "Weakness Debuff Particle";
             ParticleSystem ps = debuffParticle.GetComponent<ParticleSystem>();
+            var emission = ps.emission;
+            emission.enabled = true;
             var main = ps.main;
             main.startColor = new Color(0.08f, 0.02f, 0.1f, 0.8f);
+            debuffParticle.transform.localScale = new Vector3(2f, 2f, 2f);
+            ps.Clear();
+            ps.Play();
         }
 
         public void RefreshTimer() {

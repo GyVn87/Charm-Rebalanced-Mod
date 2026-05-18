@@ -1,4 +1,8 @@
 ﻿using GlobalEnums;
+using IL;
+using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using System;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -7,10 +11,12 @@ namespace TuyenTuyenTuyen.Charms {
 
         internal static void Load() {
             ModHooks.AfterAttackHook += OnAfterAttack;
+            IL.HealthManager.TakeDamage += RemoveBeamStagger;
         }
 
         internal static void Unload() {
             ModHooks.AfterAttackHook -= OnAfterAttack;
+            IL.HealthManager.TakeDamage -= RemoveBeamStagger;
         }
 
         private static void OnAfterAttack(AttackDirection attackDir) {
@@ -70,12 +76,62 @@ namespace TuyenTuyenTuyen.Charms {
             int nailDamge = PD.GetInt("nailDamage");
             int currentHP = PD.GetInt("health");
             int currentMaxHP = PD.CurrentMaxHealth;
+            if (currentHP >= currentMaxHP)
+                currentHP = currentMaxHP;
+
             int newBeamDamage = -1; 
-            if (BossSequenceController.BoundShell && currentHP > currentMaxHP)
-                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentMaxHP - 1) / (float)(currentMaxHP + 1), 2f) * nailDamge);
+            if (BossSequenceController.BoundShell)
+                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentHP - 1) / (float)(currentMaxHP + 1), 2f) * 1.5f * nailDamge);
             else
                 newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentHP - 1) / (float)(currentMaxHP + 1), 2f) * nailDamge);
             return newBeamDamage;
+        }
+
+        private static void RemoveBeamStagger(ILContext il) {
+            ILCursor cursor = new ILCursor(il).Goto(0);
+                /*
+                    // if (hp > 0)
+                    IL_0365: ldarg.0
+
+                    IL_0366: ldfld int32 HealthManager::hp
+                    IL_036b: ldc.i4.0
+
+                    IL_036c: ble.s IL_0398
+
+                    // NonFatalHit(hitInstance.IgnoreInvulnerable);
+                */
+            if (cursor.TryGotoNext(
+                MoveType.After,
+                i => i.MatchLdarg(0),
+                i => i.MatchLdfld(out var value1),
+                i => i.MatchLdcI4(0),
+                i => i.MatchBle(out ILLabel value2)
+            )) {
+                cursor.Emit(OpCodes.Ldarg, 1);
+                cursor.EmitDelegate<Func<HitInstance, bool>>(IsBeam);
+
+                /*
+                    // if ((bool)stunControlFSM)
+                    IL_037a: ldarg.0
+                    IL_037b: ldfld class [PlayMaker]PlayMakerFSM HealthManager::stunControlFSM
+                    IL_0380: call bool [UnityEngine.CoreModule]UnityEngine.Object::op_Implicit(class [UnityEngine.CoreModule]UnityEngine.Object)
+                    IL_0385: brfalse.s IL_03bc
+                */
+
+                ILLabel label = null;
+                ILCursor cursorClone = cursor.Clone();
+                if (cursorClone.TryGotoNext(
+                    i => i.MatchBrfalse(out label)
+                )) { 
+                    cursor.Emit(OpCodes.Brtrue, label);
+                }
+            }
+        }
+
+        private static bool IsBeam(HitInstance hitInstance) {
+            if (hitInstance.AttackType == AttackTypes.NailBeam)
+                return true;
+            return false;
         }
     }
 }

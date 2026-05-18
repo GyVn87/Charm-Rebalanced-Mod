@@ -3,6 +3,8 @@
 namespace TuyenTuyenTuyen.Charms {
     internal static class NewCharmCosts {
         private static readonly Dictionary<string, int> charmCosts = new Dictionary<string, int>() {
+            {"charmCost_4", 1},
+            {"charmCost_6", 3},
             {"charmCost_8", 1},
             {"charmCost_11", 2},
             {"charmCost_15", 3},
@@ -25,6 +27,8 @@ namespace TuyenTuyenTuyen.Charms {
         internal static int OnGetInt(string name, int orig) {
             if (NewCharmCosts.charmCosts.TryGetValue(name, out int newCost))
                 return newCost;
+            else if (name == "charmCost_36" && PlayerData.instance.royalCharmState == 3)
+                return 3;
             return orig;
         }
     }

@@ -89,13 +89,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CharmRebalanced.cs" />
+    <Compile Include="Charms\Charm04_StalwartShell.cs" />
     <Compile Include="Charms\Charm05_BaldurShell.cs" />
     <Compile Include="Charms\Charm06_FuryOfTheFallen.cs" />
     <Compile Include="Charms\Charm09_LifebloodCore.cs" />
     <Compile Include="Charms\Charm10_DefenderCrest.cs" />
     <Compile Include="Charms\Charm11_Flukenest.cs" />
     <Compile Include="Charms\Charm12_ThornsOfAgony.cs" />
-    <Compile Include="Charms\Charm15_ HeavyBlow.cs" />
+    <Compile Include="Charms\Charm15_HeavyBlow.cs" />
     <Compile Include="Charms\Charm16_SharpShadow.cs" />
     <Compile Include="Charms\Charm17_SporeShroom.cs" />
     <Compile Include="Charms\Charm19_ShamanStone.cs" />

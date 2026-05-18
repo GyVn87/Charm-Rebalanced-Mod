@@ -12,6 +12,7 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static readonly float trialRewardIncrease = 1.25f;
         private static readonly float geoGainIncrease = 1.5f;
+        private static readonly float vanillaGreedIncrease = 1.2f;
 
         private static readonly FieldInfo smallGeoField = typeof(HealthManager).GetField("smallGeoDrops", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo mediumGeoField = typeof(HealthManager).GetField("mediumGeoDrops", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -42,11 +43,11 @@ namespace TuyenTuyenTuyen.Charms {
             PlayerData PD = CharmRebalanced.LoadedInstance.PD;
             if (PD.GetBool("equippedCharm_24") && !PD.GetBool("brokenCharm_24")) {
                 int smallGeoDrops = (int)smallGeoField.GetValue(self);
-                smallGeoField.SetValue(self, Mathf.CeilToInt((float)smallGeoDrops * geoGainIncrease));
+                smallGeoField.SetValue(self, Mathf.CeilToInt((float)smallGeoDrops * geoGainIncrease / vanillaGreedIncrease));
                 int mediumGeoDrops = (int)mediumGeoField.GetValue(self);
-                mediumGeoField.SetValue(self, Mathf.CeilToInt((float)mediumGeoDrops * geoGainIncrease));
+                mediumGeoField.SetValue(self, Mathf.CeilToInt((float)mediumGeoDrops * geoGainIncrease / vanillaGreedIncrease));
                 int largeGeoDrops = (int)largeGeoField.GetValue(self);
-                largeGeoField.SetValue(self, Mathf.CeilToInt((float)largeGeoDrops * geoGainIncrease));
+                largeGeoField.SetValue(self, Mathf.CeilToInt((float)largeGeoDrops * geoGainIncrease / vanillaGreedIncrease));
             }
             orig(self, attackDirection, attackType, ignoreEvasion);
         }

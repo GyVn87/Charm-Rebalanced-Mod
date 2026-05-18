@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm12_ThornsOfAgony {
-        private static readonly float thornDamageMutiplier = 2.0f;
+        private static readonly float thornDamageMutiplier = 1f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += Charm12_ThornsOfAgony.OnSetFsmInt_OnEnter;

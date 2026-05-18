@@ -3,8 +3,8 @@
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm16_SharpShadow {
         private static readonly float shadowDashSpeedIncrease = 1.3f;
-        private static readonly float shadowDashDamageSharp = 1.5f;
-        private static readonly float shadowDashDamageMaster = 2.0f;
+        private static readonly float shadowDashDamageSharp = 1f;
+        private static readonly float shadowDashDamageMaster = 1.5f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.FloatMultiplyV2.OnEnter += Charm16_SharpShadow.OnFloatMultiplyV2_OnEnter;

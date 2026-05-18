@@ -21,12 +21,14 @@ namespace TuyenTuyenTuyen {
 
 			Charm31_Dashmaster.Load();  // has to be called before Sharp Shadow'
 			Charm03_GrubSong.Load();
+			Charm04_StalwartShell.Load();
 			Charm05_BaldurShell.Load();
+			Charm06_FuryOfTheFallen.Load();
 			Charm09_LifebloodCore.Load();
 			Charm10_DefenderCrest.Load();
 			Charm11_Flukenest.Load();
 			Charm12_ThornsOfAgony.Load();
-			Charm15__HeavyBlow.Load();
+			Charm15_HeavyBlow.Load();
 			Charm16_SharpShadow.Load();
 			Charm17_SporeShroom.Load();
 			Charm19_ShamanStone.Load();
@@ -58,12 +60,14 @@ namespace TuyenTuyenTuyen {
 
 			Charm31_Dashmaster.Unload();
 			Charm03_GrubSong.Unload();
+			Charm04_StalwartShell.Unload();
 			Charm05_BaldurShell.Unload();
+			Charm06_FuryOfTheFallen.Unload();
 			Charm09_LifebloodCore.Unload();
 			Charm10_DefenderCrest.Unload();
 			Charm11_Flukenest.Unload();
 			Charm12_ThornsOfAgony.Unload();
-			Charm15__HeavyBlow.Unload();
+			Charm15_HeavyBlow.Unload();
 			Charm16_SharpShadow.Unload();
 			Charm17_SporeShroom.Unload();
 			Charm19_ShamanStone.Unload();
@@ -102,6 +106,8 @@ namespace TuyenTuyenTuyen {
 			HC.ATTACK_COOLDOWN_TIME_CH = 0.25f;
 			HC.ATTACK_DURATION = 0.35f;
 			HC.ATTACK_DURATION_CH = 0.28f;
-		}
+			HC.INVUL_TIME_STAL = 1.75f;
+			HC.RECOIL_DURATION_STAL = 0.08f;
+        }
 	}
 }

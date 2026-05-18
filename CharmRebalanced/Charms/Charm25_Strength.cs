@@ -1,6 +1,6 @@
 ﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm25_Strength {
-        internal static readonly float strengthMutiplier = 1.35f;
+        internal static readonly float strengthMutiplier = 1.3f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.FloatMultiply.OnEnter += OnFloatMutiply_OnEnter;

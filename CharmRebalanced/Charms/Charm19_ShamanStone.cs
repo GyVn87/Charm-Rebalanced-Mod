@@ -1,18 +1,17 @@
 ﻿using HutongGames.PlayMaker;
-using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm19_ShamanStone {
-        private static readonly int vengefulSpiritDamage = 20;
-        private static readonly int shadeSoulDamage = 40;
+        private static readonly int vengefulSpiritDamage = 15;
+        private static readonly int shadeSoulDamage = 30;
         private static readonly int howlingWraithsDamage = 13;
         private static readonly int abyssShriekDamage = 20;
         private static readonly int diveDamage = 15;
         private static readonly int shockwaveDiveDamage = 20;
         private static readonly int shockwaveDarkDamage = 30;
 
-        internal static readonly float spellDamageIncrease = 1.35f;
+        internal static readonly float spellDamageIncrease = 1.4f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += Charm19_ShamanStone.OnSetFsmInt_OnEnter;
