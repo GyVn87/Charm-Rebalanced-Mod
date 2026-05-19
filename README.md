@@ -140,7 +140,6 @@
 ## Thorns Of Agony
 - Thorn damage: 1x Nail damage
 - No longer inhibits movement when taken hit.
-- I have noticed that in best cases, the total damage could be up to 4x Nail damage.
 
 ***Cool charm but needs a little buff***
 ## Baldur Shell
