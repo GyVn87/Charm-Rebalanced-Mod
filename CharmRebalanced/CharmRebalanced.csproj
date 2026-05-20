@@ -74,6 +74,10 @@
       <HintPath>$(ManagedFolder)\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>$(ManagedFolder)\UnityEngine.AudioModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(ManagedFolder)\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
@@ -120,6 +124,7 @@
     <Compile Include="Charms\Charm40_Grimmchild.cs" />
     <Compile Include="Charms\NewCharmCosts.cs" />
     <Compile Include="GlobalUsings.cs" />
+    <Compile Include="Mechanics\CustomEffect.cs" />
     <Compile Include="Mechanics\ExtraDamage.cs" />
     <Compile Include="Mechanics\Focus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -120,41 +120,10 @@ namespace TuyenTuyenTuyen.Charms {
         //}
     }
 
-    public class WeaknessDebuff : MonoBehaviour {
-        private float timer = 0f;
-        private readonly float duration = Charm10_DefenderCrest.weaknessDuration;
-        private GameObject debuffParticle = null;
-        private static GameObject particlePrefab = null;
-
-        public void Awake() {
-            timer = duration;
-            if (particlePrefab == null) {
-                Transform KnighTransform = HeroController.instance.transform;
-                particlePrefab = KnighTransform.Find("Charm Effects/Dung/Particle 1").gameObject;
-            }
-            debuffParticle = Object.Instantiate<GameObject>(particlePrefab, transform);
-            debuffParticle.SetActive(true);
-            debuffParticle.name = "Weakness Debuff Particle";
-            ParticleSystem ps = debuffParticle.GetComponent<ParticleSystem>();
-            var emission = ps.emission;
-            emission.enabled = true;
-            var main = ps.main;
-            main.startColor = new Color(0.08f, 0.02f, 0.1f, 0.8f);
-            debuffParticle.transform.localScale = new Vector3(2f, 2f, 2f);
-            ps.Clear();
-            ps.Play();
-        }
-
-        public void RefreshTimer() {
-            timer = duration;   
-        }
-
-        private void Update() {
-            timer -= Time.deltaTime;
-            if (timer < 0f) {
-                Object.Destroy(debuffParticle);
-                Object.Destroy(this);
-            }
-        }
+    public class WeaknessDebuff : TuyenTuyenTuyen.Mechanics.CustomEffect {
+        public override float Duration => Charm10_DefenderCrest.weaknessDuration;
+        public override Color StartColor => new(0.9f, 0.35f, 0.1f, 1f);
+        public override Vector3 LocalScale => new(2f, 2f, 2f);
+        public override string Name => "Weakness Debuff Particle";
     }
 }
