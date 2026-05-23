@@ -2,7 +2,7 @@
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm04_StalwartShell {
-        private static readonly float recoilStalDuration = 0f;
+        private static readonly float recoilStalDuration = 0.08f;
         private static readonly float invulStalTime = 2f;
         private static readonly float damagePenalty = 0.25f;
 
@@ -26,7 +26,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static void OnHealthManager_TakeDamage(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
             HeroController controller = HeroController.instance;
             PlayerData PD = PlayerData.instance;
-            if (controller.cState.invulnerable && PD.GetBool("equippedCharm_4"))
+            if (controller.cState.invulnerable && PD.GetBool("equippedCharm_4") && hitInstance.Source.transform?.parent?.name != "Thorn Hit")
                 hitInstance.Multiplier *= damagePenalty;
             orig(self, hitInstance);
         }

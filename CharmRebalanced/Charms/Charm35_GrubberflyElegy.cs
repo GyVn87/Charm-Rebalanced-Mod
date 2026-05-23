@@ -7,8 +7,6 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm35_GrubberflyElegy {
-        private static readonly float baseBeamDamageRatio = 0.64f;
-
         internal static void Load() {
             ModHooks.AfterAttackHook += OnAfterAttack;
             IL.HealthManager.TakeDamage += RemoveBeamStagger;
@@ -23,9 +21,10 @@ namespace TuyenTuyenTuyen.Charms {
             PlayerData PD = CharmRebalanced.LoadedInstance.PD;
             HeroController Controller = HeroController.instance;
             GameObject Knight = Controller.gameObject;
-            float strengthIncrease = (PD.GetBool("equippedCharm_25") ? Charm25_Strength.strengthMutiplier : 1f);
-            PD.SetInt("beamDamage", Mathf.CeilToInt((float)PD.GetInt("nailDamage") * baseBeamDamageRatio * strengthIncrease));
-            if (!PD.GetBool("equippedCharm_35") || Controller.cState.wallSliding || !CanCastBeam())
+
+            if (!PD.GetBool("equippedCharm_35") || Controller.cState.wallSliding)
+                return;
+            if (!CanCastBeam())
                 return;
 
             GameObject grubberFlyBeam;
@@ -58,32 +57,53 @@ namespace TuyenTuyenTuyen.Charms {
         private static bool CanCastBeam() {
             PlayerData PD = CharmRebalanced.LoadedInstance.PD;
             int currentHP = PD.GetInt("health");
-            if (PD.GetBool("equippedCharm_27"))
+
+            if (currentHP == 1) {
+                if (PD.GetBool("equippedCharm_6"))
+                    PD.SetInt("beamDamage", BaseBeamDamage());
                 return false;
-            if (currentHP == 1)
-                return false;
-            if (!BossSequenceController.BoundShell && currentHP == PD.CurrentMaxHealth)
-                return false;
+            }
+
             int beamDamage = NewBeamDamage();
+            PD.SetInt("beamDamage", beamDamage);
+
+            if (!BossSequenceController.BoundShell && currentHP >= PD.CurrentMaxHealth)
+                return false;
+            if (BossSequenceController.BoundShell && currentHP > PD.CurrentMaxHealth)
+                return false;
             if (beamDamage <= 1)
                 return false;
-            PD.SetInt("beamDamage", beamDamage);
             return true;
         }
 
         private static int NewBeamDamage() {
             PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+            float strengthIncrease = (PD.GetBool("equippedCharm_25") ? Charm25_Strength.strengthMutiplier : 1f);
             int nailDamge = PD.GetInt("nailDamage");
             int currentHP = PD.GetInt("health");
             int currentMaxHP = PD.CurrentMaxHealth;
-            if (currentHP >= currentMaxHP)
+            if (currentHP > currentMaxHP)
                 currentHP = currentMaxHP;
 
-            int newBeamDamage = -1; 
+            int newBeamDamage; 
             if (BossSequenceController.BoundShell)
-                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentHP - 1) / (float)(currentMaxHP + 1), 2f) * 1.5f * nailDamge);
+                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentHP - 1) / (float)(currentMaxHP + 1), 2f) * 1.5f * strengthIncrease * nailDamge);
             else
-                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentHP - 1) / (float)(currentMaxHP + 1), 2f) * nailDamge);
+                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentHP - 1) / (float)(currentMaxHP + 1), 2f) * strengthIncrease * nailDamge);
+            return newBeamDamage;
+        }
+
+        private static int BaseBeamDamage() {
+            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+            float strengthIncrease = (PD.GetBool("equippedCharm_25") ? Charm25_Strength.strengthMutiplier : 1f);
+            int nailDamge = PD.GetInt("nailDamage");
+            int currentMaxHP = PD.CurrentMaxHealth;
+
+            int newBeamDamage;
+            if (BossSequenceController.BoundShell)
+                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentMaxHP - 1) / (float)(currentMaxHP + 1), 2f) * 1.5f * strengthIncrease * nailDamge);
+            else
+                newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentMaxHP - 1) / (float)(currentMaxHP + 1), 2f) * strengthIncrease * nailDamge);
             return newBeamDamage;
         }
 

@@ -23,18 +23,22 @@
         private static void KnightSporeCloud(HutongGames.PlayMaker.Actions.GetOwner self) {
             DamageEffectTicker damageEffect = self.Owner.gameObject.GetComponent<DamageEffectTicker>();
             if (damageEffect == null) return;
-            int nailDamage = PlayerData.instance.GetInt("nailDamage");
+            PlayerData PD = PlayerData.instance;
+            int nailDamage = PD.GetInt("nailDamage");
+            float shamanStone = (PD.GetBool("equippedCharm_19") ? Charm19_ShamanStone.spellDamageIncrease : 1f);
             int extraDamage = ExtraDamageable.GetDamageOfType(damageEffect.extraDamageType);
-            float interval = 1f / (nailDamage * sporeDamageMultiplier / sporeDuration / (float)extraDamage);
+            float interval = 1f / (nailDamage * sporeDamageMultiplier * shamanStone / sporeDuration / (float)extraDamage);
             damageEffect.SetDamageInterval(interval);
         }
 
         private static void KnightSporeDungCloud(HutongGames.PlayMaker.Actions.GetOwner self) {
             DamageEffectTicker damageEffect = self.Owner.gameObject.GetComponent<DamageEffectTicker>();
             if (damageEffect == null) return;
-            int nailDamage = PlayerData.instance.GetInt("nailDamage");
+            PlayerData PD = PlayerData.instance;
+            int nailDamage = PD.GetInt("nailDamage");
+            float shamanStone = (PD.GetBool("equippedCharm_19") ? Charm19_ShamanStone.spellDamageIncrease : 1f);
             int extraDamage = ExtraDamageable.GetDamageOfType(damageEffect.extraDamageType);
-            float interval = 1f / (nailDamage * sporeDamageMultiplier / sporeDuration / (float)extraDamage);
+            float interval = 1f / (nailDamage * sporeDamageMultiplier * shamanStone / sporeDuration / (float)extraDamage);
             damageEffect.SetDamageInterval(interval);
         }
     }

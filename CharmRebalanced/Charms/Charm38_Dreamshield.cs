@@ -4,6 +4,8 @@ using static HutongGames.PlayMaker.FsmEventTarget;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm38_Dreamshield {
+        private static readonly float shieldDamageRatio = 0.5f; // to Nail damage
+
         private static GameObject newOrbitShield;
         private static GameObject newShield;
         private static PlayMakerFSM shieldHitFSM;
@@ -11,11 +13,13 @@ namespace TuyenTuyenTuyen.Charms {
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter += Charm38_Dreamshield.OnSpawnObjectFromGlobalPool_OnEnter;
             On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter += Charm38_Dreamshield.OnSendEventByName_OnEnter;
+            On.HutongGames.PlayMaker.Actions.GetPlayerDataInt.OnEnter += OnGetPlayerDataInt_OnEnter;
         }
 
         internal static void Unload() {
             On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter -= Charm38_Dreamshield.OnSpawnObjectFromGlobalPool_OnEnter;
             On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter -= Charm38_Dreamshield.OnSendEventByName_OnEnter;
+            On.HutongGames.PlayMaker.Actions.GetPlayerDataInt.OnEnter -= OnGetPlayerDataInt_OnEnter;
         }
 
         private static void OnSpawnObjectFromGlobalPool_OnEnter(On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool self) {
@@ -40,6 +44,12 @@ namespace TuyenTuyenTuyen.Charms {
                     shieldHitFSM = ActionHelpers.GetGameObjectFsm(newShield, "Shield Hit");
                 shieldHitFSM.SendEvent(self.sendEvent.Value);
             }
+        }
+
+        private static void OnGetPlayerDataInt_OnEnter(On.HutongGames.PlayMaker.Actions.GetPlayerDataInt.orig_OnEnter orig, HutongGames.PlayMaker.Actions.GetPlayerDataInt self) {
+            orig(self);
+            if (self.Fsm.Name == "Shield Hit" && self.State.Name == "Init")
+                self.storeValue.Value = Mathf.CeilToInt(self.storeValue.Value * shieldDamageRatio);
         }
     }
 

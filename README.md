@@ -12,9 +12,17 @@
 * Next times, you only need to launch the game as usual.
 
 # Changes
+## Voidheart/Upgraded Focus
+- After obtaining Voidheart, Focus will be upgraded
+- After completing Focus, Knight now gain "Dark Overflow" effect
+- Successful normal Focus grants Knight 80% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash for 4 seconds
+- Successful Focus at full masks increases this number to 120%
+- With Deep Focus equipped, damage dealth increase is multiplied by 1.25
+- Taking hit clears the effect
+
+***This somehow compensates for the Soul and time spending in Focus. I hope this change will encourage players to focus more in late-game stages.***
 ## Stalwart Shell
 - Notch cost: 2 => 1
-- Recoil Duration: 0.08s => 0s
 - Invincibility duration: 1.75s => 2s
 - During invincibility, decreases Knight's damage dealt from all sources to 25%
 - During invincibility, player can not focus.
@@ -26,24 +34,25 @@
 
 ***This makes Soul Catcher more viable in late game with the help of Soul Vessels without making it too strong in early game. The buff also helps it compete with Spell Twister, Grubsong***
 ## Shaman Stone
-- **ALL SPELL DAMAGE** increase: 40%
+- Vengeful Sprit and Shade Soul damage increase: 33% => 30% 
+- **OTHER SPELL DAMAGE** increase: 40%
 
 ***Don't worry. This charm is still extremely powerful. I might even want to nerf it to 1% increase.***
 ## Soul Eater
 - Notch cost: 4 => 3.
-- Soul gain for Main Vessel: 8 => 6
+- Soul gain for Main Vessel: 8 => 3
 - Soul gain for reserve Soul Vessels: 6 => 3
 - Spells now infect enemies with "Eater Curse" debuff. Striking affected enemies will double the soul gain.
 - The debuff lasts 3 seconds, and striking enemies also clears the effect. 
 
 ***The 4-notch cost is extremely high and I don't find the benefits really worth it. And the added debuff will make the charm unique to Soul Catcher, rather than a simply upgrade.***
 ## Dashmaster
-- Increases Mothwing Cloak dash speed by 10% (note that this also applies on Shadow Dash, this is how the original logic works)
-- Reduces Shadow Dash cooldown by 10%.
+- Mothwing Cloak dash cooldown: 0.4s => 0.35s
+- Each Mothwing Cloak dash now decreases Shadow Dash cooldown by 0.15s
 
-***Mothwing Cloak is overshadowed too much by Shade Cloak, I think this will make them get used more. Oh wait, this also buffs Shadow Dash. Is this too overpowered??? I don't know  ._.***
+***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
 ## Sprintmaster
-- Run speed increase: 20%
+- Run speed increase: 25%
 - Speed increase also APPLIES WHEN ON AIR.
 - Synergies:
   - Dashmaster:
@@ -110,7 +119,14 @@
 ## Quickslash
 - Attack speed increase: 46% => 33%
 
-***This charm is really flexible when it can be use to both increase damage output and soul gain. It certainly needs a little nerf!***
+***This charm is really flexible when it can be used to both increase damage output and soul gain. It certainly needs a little nerf!***
+## Long nail
+- Nail range increase: 15% => 12%
+
+## Mark Of Pride
+- Nail range increase: 25% => 20%
+
+***This might be controversial when I nerfed these 2 charms. But I have to say that these two are really powerful. I would say that they also overshadow mobility charms since you no longer need to approach enemies that close.***
 ## Fury Of The Fallen
 - Notch cost: 2 => 3
 - No longer can only be activated at single mask.
@@ -162,7 +178,7 @@
 
 ***I love how this charm make spell so much stronger and fun to use since it basically makes Vengeful Spirit and Shade Soul a shotgun. I think it deserves more!***
 ## Defender's Crest
-- Enemies in cloud suffer 10% more damage from all sources (except cloud, spore damage) and 15% more damage from spells.
+- Enemies in cloud suffer 10% more damage from all sources (except cloud, spore damage).
 - Debuff lasts: 2 seconds
 - Enemies with debuff will have dark purple particles around them
 
@@ -203,6 +219,7 @@
 ***I always hear everyone complains that this charm is not worth using it. Buffing it may be a good idea, but I feel like it is too overpowered?***
 ## Spore Shroom
 - Spore damage: 3x Nail Damage
+- Its damage can now be boosted by Shaman Stone
 - Synergies:
   - Defender's Crest:
     - Cloud still deals the same damage as that of spore, but inflicts weakness debuff
@@ -210,17 +227,13 @@
 ***This changes makes Spore Shroom literally a spell now***
 ## Sharp Shadow
 - Shadow Dash speed increase: 40% => 30%
-- Shadow Dash damage: 1x Nail damage
+- Shadow Dash damage: 2x Nail damage
 - Note that the increase on Mothwing Cloak dash also applies on Shadow Dash
 - Synergies:
   - Dashmaster:
-    - Shadow Dash damage: 1.5x Nail damage
+    - Shadow Dash damage: 2.5x Nail damage
 
 ***I do believe this charm is a little too overpowered. But I can't help but buffing it, everyone loves dashing, right...?***
-## Shade Of Unn
-- Notch cost: 2 => 1
-
-***A simple yet profound charm, it has so much potential. But I belive it should only cost 1 notch slot.***
 ## Weaversong
 - Each weaversling now deals: 1/3 Nail damage.
 - Each successful hit gain player 3 soul by default.
@@ -232,6 +245,7 @@
 ## Dreamshield
 - Notch cost: 3 => 2
 - Now summons 2 shields at a time.
+- Shield damage: 1x => 0.5x Nail damage
 
 ***I like this change, but wonder if it makes this charm too powerful.***
 ## Grimmchild

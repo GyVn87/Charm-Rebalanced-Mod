@@ -11,6 +11,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int shockwaveDiveDamage = 20;
         private static readonly int shockwaveDarkDamage = 30;
 
+        internal static readonly float fireballDamageIncrease = 1.3f;
         internal static readonly float spellDamageIncrease = 1.4f;
 
         internal static void Load() {
@@ -61,13 +62,13 @@ namespace TuyenTuyenTuyen.Charms {
                     newDamage = vengefulSpiritDamage;
                     break;
                 case 20:  // Vengeful Spirit + Shaman Stone
-                    newDamage = Mathf.CeilToInt((float)vengefulSpiritDamage * spellDamageIncrease);
+                    newDamage = Mathf.CeilToInt((float)vengefulSpiritDamage * fireballDamageIncrease);
                     break;
                 case 30:  // Shade Soul
                     newDamage = shadeSoulDamage;
                     break;
                 case 40:  // Shade Soul + Shaman Stone
-                    newDamage = Mathf.CeilToInt((float)shadeSoulDamage * spellDamageIncrease);
+                    newDamage = Mathf.CeilToInt((float)shadeSoulDamage * fireballDamageIncrease);
                     break;
                 default:
                     break;

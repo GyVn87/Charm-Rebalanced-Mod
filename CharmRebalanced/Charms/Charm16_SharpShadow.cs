@@ -1,21 +1,25 @@
-﻿using UnityEngine;
+﻿using TuyenTuyenTuyen.Mechanics;
+using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm16_SharpShadow {
         private static readonly float shadowDashSpeedIncrease = 1.3f;
-        private static readonly float shadowDashDamageSharp = 1f;
-        private static readonly float shadowDashDamageMaster = 1.5f;
+        private static readonly float shadowDashDamageSharp = 2f;
+        private static readonly float shadowDashDamageMaster = 2.5f;
+        private static readonly float nailBindingPenalty = 0.75f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.FloatMultiplyV2.OnEnter += Charm16_SharpShadow.OnFloatMultiplyV2_OnEnter;
             On.HutongGames.PlayMaker.Actions.ConvertFloatToInt.OnEnter += Charm16_SharpShadow.OnConvertFloatToInt_OnEnter;
             ModHooks.CharmUpdateHook += Charm16_SharpShadow.OnCharmUpdate;
+            On.HealthManager.TakeDamage += OnHealthManager_TakeDamage;
         }
 
         internal static void Unload() {
             On.HutongGames.PlayMaker.Actions.FloatMultiplyV2.OnEnter -= Charm16_SharpShadow.OnFloatMultiplyV2_OnEnter;
             On.HutongGames.PlayMaker.Actions.ConvertFloatToInt.OnEnter -= Charm16_SharpShadow.OnConvertFloatToInt_OnEnter;
             ModHooks.CharmUpdateHook -= Charm16_SharpShadow.OnCharmUpdate;
+            On.HealthManager.TakeDamage -= OnHealthManager_TakeDamage;
         }
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {
@@ -37,6 +41,12 @@ namespace TuyenTuyenTuyen.Charms {
                     self.floatVariable.Value *= shadowDashDamageSharp;
             }
             orig(self);
+        }
+
+        private static void OnHealthManager_TakeDamage(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
+            if (BossSequenceController.BoundNail && hitInstance.AttackType == AttackTypes.SharpShadow)
+                hitInstance.Multiplier *= nailBindingPenalty;
+            orig(self, hitInstance);
         }
     }
 }

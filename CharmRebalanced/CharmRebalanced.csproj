@@ -96,6 +96,7 @@
     <Compile Include="Charms\Charm10_DefenderCrest.cs" />
     <Compile Include="Charms\Charm11_Flukenest.cs" />
     <Compile Include="Charms\Charm12_ThornsOfAgony.cs" />
+    <Compile Include="Charms\Charm13_18_MarkOfPride_Longnail.cs" />
     <Compile Include="Charms\Charm15_HeavyBlow.cs" />
     <Compile Include="Charms\Charm16_SharpShadow.cs" />
     <Compile Include="Charms\Charm17_SporeShroom.cs" />
@@ -122,6 +123,7 @@
     <Compile Include="GlobalUsings.cs" />
     <Compile Include="Mechanics\ExtraDamage.cs" />
     <Compile Include="Mechanics\Focus.cs" />
+    <Compile Include="Mechanics\CustomEffect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -29,10 +29,10 @@ namespace TuyenTuyenTuyen.Charms {
                 furyMultiplier = Mathf.Pow((float)(currentHealth - maxHealth) / (float)(maxHealth + 1), 2f) * 1.5f;
             else 
                 furyMultiplier = Mathf.Pow((float)(currentHealth - maxHealth) / (float)(maxHealth + 1), 2f);
-            if (furyMultiplier > 0.05f) {
+            if (furyMultiplier > 0.05f)
                 hitInstance.Multiplier *= (1f + furyMultiplier);
-                orig(self, hitInstance);
-            }
+
+            orig(self, hitInstance);
         }
 
         private static void OnBoolTest_OnEnter(On.HutongGames.PlayMaker.Actions.BoolTest.orig_OnEnter orig, HutongGames.PlayMaker.Actions.BoolTest self) {

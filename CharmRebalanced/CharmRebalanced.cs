@@ -28,6 +28,7 @@ namespace TuyenTuyenTuyen {
 			Charm10_DefenderCrest.Load();
 			Charm11_Flukenest.Load();
 			Charm12_ThornsOfAgony.Load();
+			Charm13_18_MarkOfPride_Longnail.Load();
 			Charm15_HeavyBlow.Load();
 			Charm16_SharpShadow.Load();
 			Charm17_SporeShroom.Load();
@@ -67,6 +68,7 @@ namespace TuyenTuyenTuyen {
 			Charm10_DefenderCrest.Unload();
 			Charm11_Flukenest.Unload();
 			Charm12_ThornsOfAgony.Unload();
+			Charm13_18_MarkOfPride_Longnail.Unload();
 			Charm15_HeavyBlow.Unload();
 			Charm16_SharpShadow.Unload();
 			Charm17_SporeShroom.Unload();
@@ -100,6 +102,7 @@ namespace TuyenTuyenTuyen {
 			HC.RUN_SPEED_CH = 10.0f;
 			HC.RUN_SPEED_CH_COMBO = 11.5f;
 			HC.DASH_SPEED = 20.0f;
+			HC.DASH_COOLDOWN_CH = 0.35f;
 			HC.DASH_SPEED_SHARP = 28.0f;
 			HC.SHADOW_DASH_COOLDOWN = 1.5f;
 			HC.ATTACK_COOLDOWN_TIME = 0.41f;
