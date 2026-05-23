@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm40_CarefreeMelody {
-        private static readonly float hitBlockCooldown = 30f;
+        private static readonly float hitBlockCooldown = 20f;
 
         private static float timer = 0f;
 
@@ -69,7 +69,9 @@ namespace TuyenTuyenTuyen.Charms {
                     MoveType.After,
                     i => i.MatchBrfalse(out label)
                 )) {
-                    cursor.Emit(OpCodes.Ldc_I4, 9999);
+                    cursor.Emit(OpCodes.Ldarg_S, (byte)3);
+                    cursor.Emit(OpCodes.Ldc_I4, 2);
+                    cursor.Emit(OpCodes.Mul);
                     cursor.Emit(OpCodes.Starg_S, (byte)3);
                     cursor.Emit(OpCodes.Br, label);
                 }
@@ -79,9 +81,6 @@ namespace TuyenTuyenTuyen.Charms {
         private static bool NewCarefreeMelodyMechanic() {
             HeroController controller = HeroController.instance;
             if (controller.carefreeShieldEquipped && Time.time > timer) {
-                PlayerData playerData = PlayerData.instance;
-                playerData.SetInt("health", 1);
-                playerData.SetInt("healthBlue", 0);
                 timer = Time.time + hitBlockCooldown;
                 return true;
             }

@@ -15,8 +15,8 @@
 ## Voidheart/Upgraded Focus
 - After obtaining Voidheart, Focus will be upgraded
 - After completing Focus, Knight now gain "Dark Overflow" effect
-- Successful normal Focus grants Knight 80% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash for 4 seconds
-- Successful Focus at full masks increases this number to 120%
+- Successful normal Focus grants Knight 80% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash for 3 seconds
+- Successful Focus at full masks increases this number to 100%
 - With Deep Focus equipped, damage dealth increase is multiplied by 1.25
 - Taking hit clears the effect
 
@@ -47,7 +47,6 @@
 
 ***The 4-notch cost is extremely high and I don't find the benefits really worth it. And the added debuff will make the charm unique to Soul Catcher, rather than a simply upgrade.***
 ## Dashmaster
-- Mothwing Cloak dash cooldown: 0.4s => 0.35s
 - Each Mothwing Cloak dash now decreases Shadow Dash cooldown by 0.15s
 
 ***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
@@ -110,7 +109,6 @@
 
 ***This charm certainly needs a nerf, 50% increases in damage is purely evil. Moreover, is it weird when the charm only applies on Nail, don't you think?***
 ## Heavy Blow
-- Notch cost: 2 => 3
 - Increases Nail Art damage by: 20%
 - Remove increased knockback
 - Hits from Great Slash and Dash Slash now count as 3 hits to stagger a boss
@@ -213,7 +211,7 @@
 ## Hiveblood
 - Notch cost: 4 => 3.
 - Always regenerates masks for player.
-- Regeneration rate: 10s => 20s
+- Regeneration rate: 10s => 15s
 - Its behavior with Joni's Blessing is not changed.
 
 ***I always hear everyone complains that this charm is not worth using it. Buffing it may be a good idea, but I feel like it is too overpowered?***
@@ -228,7 +226,6 @@
 ## Sharp Shadow
 - Shadow Dash speed increase: 40% => 30%
 - Shadow Dash damage: 2x Nail damage
-- Note that the increase on Mothwing Cloak dash also applies on Shadow Dash
 - Synergies:
   - Dashmaster:
     - Shadow Dash damage: 2.5x Nail damage
@@ -258,9 +255,8 @@
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
 ## Carefree Melody
 - No longer relies on luck to block attacks.
-- Cooldown: 30 seconds
-- Upon activated, decreases player's health to a single mask.
-- Taking damage while the charm is on cooldown results in an instant death.
+- Cooldown: 20 seconds
+- While on cooldown, Knight takes double of the damage
 
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:

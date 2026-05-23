@@ -87,9 +87,9 @@ namespace TuyenTuyenTuyen.Mechanics {
     }
 
     public class DarkOverflow : MonoBehaviour {
-        private static readonly float duration = 4f;
+        private static readonly float duration = 3f;
         private static readonly float normalIncrease = 0.8f;
-        private static readonly float fullHealthIncrease = 1.2f;
+        private static readonly float fullHealthIncrease = 1f;
         private static readonly float deepFocusMultiplier = 1.25f;
         private static readonly float nailArtPenalty = 1f;
 

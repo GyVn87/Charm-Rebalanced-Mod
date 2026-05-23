@@ -11,6 +11,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float shadowDashCooldownDecrease = 1f;
         private static readonly float shadowDashCooldownMaster = shadowDashCooldown * shadowDashCooldownDecrease;
 
+        private static readonly float dashCooldown = 0.4f;
         private static readonly float cooldownDecreaseOnDash = 0.15f;
 
         private static readonly FieldInfo shadowDashTimer = typeof(HeroController).GetField("shadowDashTimer", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -26,7 +27,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {
-            controller.DASH_COOLDOWN_CH = 0.35f;
+            controller.DASH_COOLDOWN_CH = dashCooldown;
             if (data.GetBool("equippedCharm_31")) {
                 controller.DASH_SPEED = dashSpeedMaster;
                 controller.SHADOW_DASH_COOLDOWN = shadowDashCooldownMaster;
