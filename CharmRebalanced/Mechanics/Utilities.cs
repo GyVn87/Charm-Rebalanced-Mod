@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Mechanics {
@@ -21,6 +23,21 @@ namespace TuyenTuyenTuyen.Mechanics {
             newVelocity.x = x;
             newVelocity.y = y;
             rb2d.velocity = newVelocity;
+        }
+
+        internal static Sprite LoadSprite(string spriteName) {
+            Assembly asm = Assembly.GetExecutingAssembly();
+            Sprite charmSprite;
+            using (Stream stream = asm.GetManifestResourceStream($"TuyenTuyenTuyen.Assets.Charms.{spriteName}.png")) {
+                if (stream == null) return null;
+                byte[] buffer = new byte[stream.Length];
+                stream.Read(buffer, 0, buffer.Length);
+
+                Texture2D texture = new Texture2D(1, 1);
+                ImageConversion.LoadImage(texture, buffer);
+                charmSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
+            }
+            return charmSprite;
         }
     }
 }

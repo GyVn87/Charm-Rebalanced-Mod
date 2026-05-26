@@ -11,7 +11,7 @@
     <AssemblyName>CharmRebalanced</AssemblyName>
     <!--Replace this with your Managed folder path in Game Files folder-->
     <ManagedFolder>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</ManagedFolder>
-    <LangVersion>10.0</LangVersion>
+    <LangVersion>11.0</LangVersion>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -62,6 +62,10 @@
       <HintPath>$(ManagedFolder)\PlayMaker.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="SFCore">
+      <HintPath>$(ManagedFolder)\Mods\SFCore\SFCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -76,6 +80,10 @@
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(ManagedFolder)\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>$(ManagedFolder)\UnityEngine.ImageConversionModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="UnityEngine.ParticleSystemModule">
@@ -114,19 +122,24 @@
     <Compile Include="Charms\Charm32_QuickSlash.cs" />
     <Compile Include="Charms\Charm34_DeepFocus.cs" />
     <Compile Include="Charms\Charm35_GrubberflyElegy.cs" />
-    <Compile Include="Charms\Charm36_KingSoul.cs" />
+    <Compile Include="Charms\Charm36_Kingsoul.cs" />
     <Compile Include="Charms\Charm37_Sprintmaster.cs" />
     <Compile Include="Charms\Charm38_Dreamshield.cs" />
     <Compile Include="Charms\Charm39_Weaversong.cs" />
     <Compile Include="Charms\Charm40_CarefreeMelody.cs" />
     <Compile Include="Charms\Charm40_Grimmchild.cs" />
     <Compile Include="Charms\NewCharmCosts.cs" />
+    <Compile Include="CustomCharms\KingsoulClone.cs" />
     <Compile Include="GlobalUsings.cs" />
     <Compile Include="Mechanics\ExtraDamage.cs" />
     <Compile Include="Mechanics\Focus.cs" />
     <Compile Include="Mechanics\CustomEffect.cs" />
     <Compile Include="Mechanics\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Assets\Charms\Kingsoul.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

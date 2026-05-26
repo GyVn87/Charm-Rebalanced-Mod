@@ -1,5 +1,5 @@
 ﻿namespace TuyenTuyenTuyen.Charms {
-    internal static class Charm36_KingSoul {
+    internal static class Charm36_Kingsoul {
         private static readonly float soulGainRate = 1.5f;
 
         internal static void Load() {
@@ -12,7 +12,7 @@
 
         private static void OnWait_OnEnter(On.HutongGames.PlayMaker.Actions.Wait.orig_OnEnter orig, HutongGames.PlayMaker.Actions.Wait self) {
             if (self.Fsm.Name == "White Charm" && self.State.Name == "Wait")
-                self.time = soulGainRate;
+                self.time.Value = soulGainRate;
             orig(self);
         }
     }

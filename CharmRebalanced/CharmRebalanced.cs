@@ -1,10 +1,17 @@
-﻿using System.Reflection;
+﻿using SFCore;
+using System.Collections.Generic;
+using System.Reflection;
 using TuyenTuyenTuyen.Charms;
+using TuyenTuyenTuyen.CustomCharms;
 using TuyenTuyenTuyen.Mechanics;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen {
-	public class CharmRebalanced : Mod, ITogglableMod {
+	public class CharmSettings {
+		public Dictionary<string, EasyCharmState> Settings;
+	}
+
+	public class CharmRebalanced : Mod, ITogglableMod, ILocalSettings<CharmSettings> {
 		public static CharmRebalanced LoadedInstance { get; set; }
 		/// <summary>
 		/// Using expression bodied property ensures that everytime we use pd,
@@ -12,12 +19,34 @@ namespace TuyenTuyenTuyen {
 		/// </summary>
 		public PlayerData PD => PlayerData.instance;
         public GameObject Knight => HeroController.instance.gameObject;
-
 		public override string GetVersion() => Assembly.GetExecutingAssembly().GetName().Version.ToString();
+		public CharmSettings LocalCharmSettings = new CharmSettings();
+		public Dictionary<string, EasyCharm> CustomCharms = new Dictionary<string, EasyCharm> {
+			{"Kingsoul", new KingsoulClone()}
+		};
+
+        public void OnLoadLocal(CharmSettings s) {
+			LocalCharmSettings = s;
+			if (LocalCharmSettings.Settings != null) {
+				foreach (var kvp in LocalCharmSettings.Settings) {
+					if (CustomCharms.TryGetValue(kvp.Key, out EasyCharm m))
+						m.RestoreCharmState(kvp.Value);
+				}
+			}
+        }
+
+        public CharmSettings OnSaveLocal() {
+			LocalCharmSettings.Settings = new Dictionary<string, EasyCharmState>();
+			foreach (var kvp in CustomCharms) 
+				LocalCharmSettings.Settings[kvp.Key] = kvp.Value.GetCharmState();
+			return LocalCharmSettings;
+        }
 
         public override void Initialize() {
 			if (CharmRebalanced.LoadedInstance != null) return;
 			CharmRebalanced.LoadedInstance = this;
+
+			KingsoulClone.Load();
 
 			Charm31_Dashmaster.Load();  // has to be called before Sharp Shadow'
 			Charm03_GrubSong.Load();
@@ -44,6 +73,7 @@ namespace TuyenTuyenTuyen {
 			Charm32_QuickSlash.Load();
 			Charm34_DeepFocus.Load();
 			Charm35_GrubberflyElegy.Load();
+			Charm36_Kingsoul.Load();
 			Charm37_Sprintmaster.Load();
 			Charm38_Dreamshield.Load();
 			Charm39_Weaversong.Load(); 
@@ -59,7 +89,9 @@ namespace TuyenTuyenTuyen {
 			if (HeroController.instance != null)
 				RevertChanges();
 
-			Charm31_Dashmaster.Unload();
+            KingsoulClone.Unload();
+
+            Charm31_Dashmaster.Unload();
 			Charm03_GrubSong.Unload();
 			Charm04_StalwartShell.Unload();
 			Charm05_BaldurShell.Unload();
@@ -84,6 +116,7 @@ namespace TuyenTuyenTuyen {
 			Charm32_QuickSlash.Unload();
 			Charm34_DeepFocus.Unload();
 			Charm35_GrubberflyElegy.Unload();
+			Charm36_Kingsoul.Unload();
 			Charm37_Sprintmaster.Unload();
 			Charm38_Dreamshield.Unload();
 			Charm39_Weaversong.Unload();
@@ -112,5 +145,5 @@ namespace TuyenTuyenTuyen {
 			HC.INVUL_TIME_STAL = 1.75f;
 			HC.RECOIL_DURATION_STAL = 0.08f;
         }
-	}
+    }
 }

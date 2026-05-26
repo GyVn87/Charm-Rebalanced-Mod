@@ -271,5 +271,6 @@
 ## Kingsoul:
 - Notch cost: 5 => 3
 - Soul gain rate: 2 => 1.5s
+- Can now be equipped even after player obtains Voidheart
 
 ***5 notch slots is crazy, not gonna lie***
