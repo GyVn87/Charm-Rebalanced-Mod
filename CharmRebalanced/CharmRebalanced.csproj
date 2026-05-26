@@ -114,6 +114,7 @@
     <Compile Include="Charms\Charm32_QuickSlash.cs" />
     <Compile Include="Charms\Charm34_DeepFocus.cs" />
     <Compile Include="Charms\Charm35_GrubberflyElegy.cs" />
+    <Compile Include="Charms\Charm36_KingSoul.cs" />
     <Compile Include="Charms\Charm37_Sprintmaster.cs" />
     <Compile Include="Charms\Charm38_Dreamshield.cs" />
     <Compile Include="Charms\Charm39_Weaversong.cs" />

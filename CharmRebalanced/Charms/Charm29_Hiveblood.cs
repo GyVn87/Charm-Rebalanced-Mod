@@ -1,6 +1,6 @@
 ﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm29_Hiveblood {
-        private static readonly float newRecoverTime = 7.5f;
+        private static readonly float newRecoverTime = 5f;
         private static PlayMakerFSM FSM;
 
         internal static void Load() {

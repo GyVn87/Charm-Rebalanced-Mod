@@ -120,9 +120,11 @@
 ***This charm is really flexible when it can be used to both increase damage output and soul gain. It certainly needs a little nerf!***
 ## Long nail
 - Nail range increase: 15% => 12%
+- Now applies to Nail Art
 
 ## Mark Of Pride
 - Nail range increase: 25% => 20%
+- Now applies to Nail Art
 
 ***This might be controversial when I nerfed these 2 charms. But I have to say that these two are really powerful. I would say that they also overshadow mobility charms since you no longer need to approach enemies that close.***
 ## Fury Of The Fallen
@@ -183,8 +185,8 @@
 ***This charm is far weaker than other 1-notch charms like Grubsong, Nailmaster's Glory, and its synergies are terrible as well.***
 ## Glowing Womb
 - Damage (both normal and Dung version): 1x Nail damage.
-- Only summons 2 Hatchlings after a successul focus.
-- Maximum Hatchlings: 6
+- Only summons 3 Hatchlings after a successul focus.
+- Maximum Hatchlings: 8
 - Synergies:
   - Deep Focus:
     - Summons 4 Hatchlings after a successful focus.
@@ -211,7 +213,7 @@
 ## Hiveblood
 - Notch cost: 4 => 3.
 - Always regenerates masks for player.
-- Regeneration rate: 10s => 15s
+- Regeneration rate: 10s
 - Its behavior with Joni's Blessing is not changed.
 
 ***I always hear everyone complains that this charm is not worth using it. Buffing it may be a good idea, but I feel like it is too overpowered?***
@@ -233,10 +235,11 @@
 ***I do believe this charm is a little too overpowered. But I can't help but buffing it, everyone loves dashing, right...?***
 ## Weaversong
 - Each weaversling now deals: 1/3 Nail damage.
-- Each successful hit gain player 3 soul by default.
+- Base speed: 25% faster
+- Each successful hit gain player 2 soul by default.
 - Synergies:
   - Grubsong:
-    - Soul gain: 5
+    - Soul gain: 3
 
 ***I love summoner playstyle, but this charm is really ineffective. I believe the effect that gain player soul on hit would make this charm unique to other summon charms.***
 ## Dreamshield
@@ -261,5 +264,6 @@
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:
 - Notch cost: 5 => 3
+- Soul gain rate: 2 => 1.5s
 
 ***5 notch slots is crazy, not gonna lie***

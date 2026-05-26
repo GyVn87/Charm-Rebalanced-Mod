@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm22_GlowingWomb {
-        private static readonly int maximumHatchlings = 6;
-        private static readonly int hatchlingSpawnNormal = 2;
+        private static readonly int maximumHatchlings = 8;
+        private static readonly int hatchlingSpawnNormal = 3;
         private static readonly int hatchlingSpawnDeep = 4;
 
         private static GameObject knightHatchlingPrefab = null;

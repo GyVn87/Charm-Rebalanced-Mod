@@ -12,9 +12,6 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int flukeDungLv2Damage = 100;
         private static readonly float shamanIncrease = Charm19_ShamanStone.spellDamageIncrease;
 
-        //private static readonly float knightDungTrailDuration = 2f;
-        //private static readonly float flukeDungLV1Duration = 3f;
-        //private static readonly float flukeDungLV2Duration = 4f;
         private static readonly float flukeDungDuration = 2.2f; // don't change this
 
         private static readonly Vector3 knightDungTrailScale = new(1f, 1f, 1f);
@@ -23,7 +20,6 @@ namespace TuyenTuyenTuyen.Charms {
             On.DamageEffectTicker.OnTriggerEnter2D += OnDamageEffectTicker_OnTriggerEnter2D;
             On.HealthManager.TakeDamage += OnHealthManager_TakeDamage;
             On.HutongGames.PlayMaker.Actions.GetOwner.OnEnter += OnGetOwner_OnEnter;
-            //On.HutongGames.PlayMaker.Actions.Wait.OnEnter += OnWait_OnEnter;
             On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter += OnCallMethodProper;
         }
 
@@ -31,7 +27,6 @@ namespace TuyenTuyenTuyen.Charms {
             On.DamageEffectTicker.OnTriggerEnter2D -= OnDamageEffectTicker_OnTriggerEnter2D;
             On.HealthManager.TakeDamage -= OnHealthManager_TakeDamage;
             On.HutongGames.PlayMaker.Actions.GetOwner.OnEnter -= OnGetOwner_OnEnter;
-            //On.HutongGames.PlayMaker.Actions.Wait.OnEnter -= OnWait_OnEnter;
             On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter -= OnCallMethodProper;
         }
 
@@ -46,7 +41,7 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnHealthManager_TakeDamage(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
             WeaknessDebuff debuff = self.gameObject.GetComponent<WeaknessDebuff>();
-            if (debuff != null)
+            if (debuff)
                 hitInstance.Multiplier *= weaknessDebuffMultiplier;
             orig(self, hitInstance);
         }
@@ -56,16 +51,6 @@ namespace TuyenTuyenTuyen.Charms {
             if (self.Owner.name.StartsWith("Knight Dung Trail") && self.Fsm.Name == "Control" && self.State.Name == "Init") 
                 self.Owner.gameObject.transform.localScale = knightDungTrailScale;
         }
-
-        //private static void OnWait_OnEnter(On.HutongGames.PlayMaker.Actions.Wait.orig_OnEnter orig, HutongGames.PlayMaker.Actions.Wait self) {
-        //    if (self.Owner.name.StartsWith("Knight Dung Trail") && self.Fsm.Name == "Control" && self.State.Name == "Wait")
-        //        self.time.Value = knightDungTrailDuration;
-        //    else if (self.Owner.name == "Knight Dung Cloud" && self.Fsm.Name == "Control" && self.State.Name == "Collider On")
-        //        SpellFlukeCloudDuration(self);
-        //    else if (self.Owner.name.StartsWith("Spell Fluke Dung Lv") && self.Fsm.Name == "Control" && self.State.Name == "Blow")
-        //        GiantFlukeDuration(self);
-        //    orig(self);
-        //}
 
         private static void OnCallMethodProper(On.HutongGames.PlayMaker.Actions.CallMethodProper.orig_OnEnter orig, HutongGames.PlayMaker.Actions.CallMethodProper self) {
             orig(self);
@@ -97,28 +82,17 @@ namespace TuyenTuyenTuyen.Charms {
             else if (self.State.Name == "Spell Up")
                 damageEffect.SetDamageInterval(1f / ((float)flukeDungLv2Damage * shamanIncrease / flukeDungDuration / (float)extraDamage));
         }
-
-        //private static void SpellFlukeCloudDuration(HutongGames.PlayMaker.Actions.Wait self) {
-        //    string parentName = self.Owner.transform?.parent?.name;
-        //    if (parentName.StartsWith("Spell Fluke Dung Lv1"))
-        //        self.time.Value = flukeDungLV1Duration;
-        //    else if (parentName.StartsWith("Spell Fluke Dung Lv2"))
-        //        self.time.Value = flukeDungLV2Duration;
-        //}
-
-        //private static void GiantFlukeDuration(HutongGames.PlayMaker.Actions.Wait self) {
-        //    string ownerName = self.Owner.name;
-        //    if (ownerName.StartsWith("Spell Fluke Dung Lv1"))
-        //        self.time.Value = flukeDungLV1Duration;
-        //    else if (ownerName.StartsWith("Spell Fluke Dung Lv2"))
-        //        self.time.Value = flukeDungLV2Duration;
-        //}
     }
 
     public class WeaknessDebuff : TuyenTuyenTuyen.Mechanics.CustomEffect {
         public override float Duration => Charm10_DefenderCrest.weaknessDuration;
-        public override Color StartColor => new(0.9f, 0.35f, 0.1f, 1f);
-        public override Vector3 LocalScale => new(2f, 2f, 2f);
+        public override Color StartColor => new(0.54f, 0.17f, 0.89f, 0.8f);
+        public override Vector3 LocalScale => new(1.5f, 1.5f, 1.5f);
         public override string Name => "Weakness Debuff Particle";
+
+        WeaknessDebuff() {
+            StartSize = 0.75f;
+            EmissionRate = 60f;
+        }
     }
 }
