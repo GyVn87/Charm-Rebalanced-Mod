@@ -125,6 +125,7 @@
     <Compile Include="Mechanics\ExtraDamage.cs" />
     <Compile Include="Mechanics\Focus.cs" />
     <Compile Include="Mechanics\CustomEffect.cs" />
+    <Compile Include="Mechanics\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

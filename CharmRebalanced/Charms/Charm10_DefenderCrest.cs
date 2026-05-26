@@ -86,7 +86,7 @@ namespace TuyenTuyenTuyen.Charms {
 
     public class WeaknessDebuff : TuyenTuyenTuyen.Mechanics.CustomEffect {
         public override float Duration => Charm10_DefenderCrest.weaknessDuration;
-        public override Color StartColor => new(0.54f, 0.17f, 0.89f, 0.8f);
+        public override Color StartColor => new(0.08f, 0.02f, 0.1f, 0.8f);
         public override Vector3 LocalScale => new(1.5f, 1.5f, 1.5f);
         public override string Name => "Weakness Debuff Particle";
 

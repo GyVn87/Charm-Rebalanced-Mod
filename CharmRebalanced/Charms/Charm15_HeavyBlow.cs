@@ -2,7 +2,6 @@
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm15_HeavyBlow {
-        private static readonly float damageMultiplier = 1.2f;
         private static readonly int stunHit = 3;
 
         private static PlayerData PD => CharmRebalanced.LoadedInstance.PD;
@@ -10,23 +9,13 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float eventDelay = 1f;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.FloatMultiply.OnEnter += OnFloatMutiply_OnEnter;
             On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.OnEnter += OnPlayerDataBoolTest_OnEnter;
             On.HutongGames.PlayMaker.Actions.TakeDamage.OnEnter += OnTakeDamage_OnEnter;
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.FloatMultiply.OnEnter -= OnFloatMutiply_OnEnter;
             On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.OnEnter -= OnPlayerDataBoolTest_OnEnter;
             On.HutongGames.PlayMaker.Actions.TakeDamage.OnEnter -= OnTakeDamage_OnEnter;
-        }
-
-        private static void OnFloatMutiply_OnEnter(On.HutongGames.PlayMaker.Actions.FloatMultiply.orig_OnEnter orig, HutongGames.PlayMaker.Actions.FloatMultiply self) {
-            orig(self);
-            if (self.Fsm.Name == "nailart_damage" && self.State.Name == "Init") {
-                if (PD.GetBool("equippedCharm_15"))
-                    self.floatVariable.Value *= damageMultiplier;
-            }
         }
 
         private static void OnPlayerDataBoolTest_OnEnter(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.orig_OnEnter orig, HutongGames.PlayMaker.Actions.PlayerDataBoolTest self) {

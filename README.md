@@ -51,11 +51,12 @@
 
 ***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
 ## Sprintmaster
-- Run speed increase: 25%
+- Run speed increase: 20% => 25%
 - Speed increase also APPLIES WHEN ON AIR.
+- Increases swim speed by 60%
 - Synergies:
   - Dashmaster:
-    - Run speed increase: 30%.
+    - Run speed increase: 40% => 30%.
 
 ***I always feel so slow when jumping when using this charm. Now it's not anymore. This charm is already good so I have to remove the synergy with Dashmaster, otherwise it will be too overpowered.***
 ## Grubsong
@@ -106,10 +107,11 @@
 ***The original increase is almost insignificant which many players didn't bother using it. The use in Colosseum Of Fools is really interesting to me. It encourages high risk, high return playstyle when you have to sacrifice 2 notch slots.***
 ## Strength
 - Damage increase: 50% => 30%.
+- Now applies to Nail Art
 
-***This charm certainly needs a nerf, 50% increases in damage is purely evil. Moreover, is it weird when the charm only applies on Nail, don't you think?***
+***This charm certainly needs a nerf, 50% increases in damage is purely evil. Moreover, is it weird when the charm only applies to Nail, don't you think?***
 ## Heavy Blow
-- Increases Nail Art damage by: 20%
+- Notch cost: 2 => 1
 - Remove increased knockback
 - Hits from Great Slash and Dash Slash now count as 3 hits to stagger a boss
 
@@ -184,12 +186,14 @@
 
 ***This charm is far weaker than other 1-notch charms like Grubsong, Nailmaster's Glory, and its synergies are terrible as well.***
 ## Glowing Womb
-- Damage (both normal and Dung version): 1x Nail damage.
-- Only summons 3 Hatchlings after a successul focus.
-- Maximum Hatchlings: 8
+- Damage (both normal and Dung version): 75% of Nail damage.
+- Maximum Hatchlings: 4 => 6
+- Summons 2 Hatchlings after a successful Focus
+- Summons 1 Hatchling after using a Spell
+
 - Synergies:
   - Deep Focus:
-    - Summons 4 Hatchlings after a successful focus.
+    - Summons 3 Hatchlings after a successful Focus.
 
 ***This change makes the charm more interactive and fun to use now, while still retaining its original concept of using Soul to summon minions***
 ## Deep Focus
@@ -234,12 +238,13 @@
 
 ***I do believe this charm is a little too overpowered. But I can't help but buffing it, everyone loves dashing, right...?***
 ## Weaversong
-- Each weaversling now deals: 1/3 Nail damage.
-- Base speed: 25% faster
+- Each weaversling now deals: 33% of Nail damage.
 - Each successful hit gain player 2 soul by default.
 - Synergies:
   - Grubsong:
     - Soul gain: 3
+  - Sprintmaster:
+    - Speed increase: 50% => 25%
 
 ***I love summoner playstyle, but this charm is really ineffective. I believe the effect that gain player soul on hit would make this charm unique to other summon charms.***
 ## Dreamshield
@@ -249,10 +254,11 @@
 
 ***I like this change, but wonder if it makes this charm too powerful.***
 ## Grimmchild
+- Now fires 3 fireballs at once
 - Damage per shot:
-  - Level 2: 5 => 11
-  - Level 3: 8 => 16
-  - Level 4: 11 => 21
+  - Level 2: 5
+  - Level 3: 8 
+  - Level 4: 11
 - Grimmchild can now shoots more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***

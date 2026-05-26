@@ -14,6 +14,10 @@
             orig(self);
             if (self.Fsm.Name == "Set Slash Damage" && self.State.Name == "Glass Attack Modifier")
                 self.floatVariable.Value = self.floatVariable.Value / self.multiplyBy.Value * strengthMutiplier;
+            else if (self.Fsm.Name == "nailart_damage" && self.State.Name == "Init") {
+                if (PlayerData.instance.GetBool("equippedCharm_25"))
+                    self.floatVariable.Value *= strengthMutiplier;
+            }
         }
     }
 }
