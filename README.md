@@ -168,10 +168,10 @@
 ## Flukenest
 - Notch cost: 3 => 2
 - Multihits bug has been fixed in the lasted version of the game, but the current Modding API-supportable version haven't yet. However, I fixed it somehow. 
-- Vengeful Spirit + Flukenest: 8 flukes x 5 damage (36 => 40)
-- Vengeful Spirit + Flukenest + Shaman Stone: 9 flukes x 6 damage (45 => 54)
-- Shade Soul + Flukenest: 16 flukes x 5 damage (64 => 80)
-- Shade Soul + Flukenest + Shaman Stone: 16 flukes x 7 damage (80 => 112)
+- Vengeful Spirit + Flukenest: 8 flukes x 5 damage (36)
+- Vengeful Spirit + Flukenest + Shaman Stone: 10 flukes x 5 damage (45 => 50)
+- Shade Soul + Flukenest: 16 flukes x 4 damage (64)
+- Shade Soul + Flukenest + Shaman Stone: 15 flukes x 6 damage (80 => 90)
 - Synergies:
   - Defender's Crest:
     - Vengeful Spirit: 50 (2.2 seconds)
@@ -217,7 +217,7 @@
 ## Hiveblood
 - Notch cost: 4 => 3.
 - Always regenerates masks for player.
-- Regeneration rate: 10s
+- Regeneration rate: 12s
 - Its behavior with Joni's Blessing is not changed.
 
 ***I always hear everyone complains that this charm is not worth using it. Buffing it may be a good idea, but I feel like it is too overpowered?***
@@ -256,9 +256,9 @@
 ## Grimmchild
 - Now fires 3 fireballs at once
 - Damage per shot:
-  - Level 2: 5
-  - Level 3: 8 
-  - Level 4: 11
+  - Level 2: 5 => 3
+  - Level 3: 8 => 6
+  - Level 4: 11 => 9
 - Grimmchild can now shoots more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
@@ -270,7 +270,7 @@
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:
 - Notch cost: 5 => 3
-- Soul gain rate: 2 => 1.5s
+- Soul gain: 4 => 5
 - Can now be equipped even after player obtains Voidheart
 
 ***5 notch slots is crazy, not gonna lie***
