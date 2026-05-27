@@ -89,10 +89,5 @@ namespace TuyenTuyenTuyen.Charms {
         public override Color StartColor => new(0.08f, 0.02f, 0.1f, 0.8f);
         public override Vector3 LocalScale => new(1.5f, 1.5f, 1.5f);
         public override string Name => "Weakness Debuff Particle";
-
-        WeaknessDebuff() {
-            StartSize = 0.75f;
-            EmissionRate = 60f;
-        }
     }
 }

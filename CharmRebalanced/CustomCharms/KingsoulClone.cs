@@ -37,10 +37,12 @@ namespace TuyenTuyenTuyen.CustomCharms {
         }
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {
-            if (data.GetBool("gotCharm_36") && data.GetInt("royalCharmState") == 4) {
-                if (Instance != null)
-                    Instance.GotCharm = true;
-            }
+            if (Instance == null)
+                return;
+            if (data.GetBool("gotCharm_36") && data.GetInt("royalCharmState") == 4)
+                Instance.GotCharm = true;
+            else
+                Instance.GotCharm = false;
         }
 
         private static void OnHCAwake(On.HeroController.orig_Awake orig, HeroController self) {
