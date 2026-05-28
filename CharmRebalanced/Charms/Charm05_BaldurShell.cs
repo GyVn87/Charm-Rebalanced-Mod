@@ -5,7 +5,7 @@ using UnityEngine;
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm05_BaldurShell {
         private static readonly int maximumBlockerHits = 4;
-        private static readonly int focusTimesNeededToRestore = 2;
+        private static readonly int focusTimesNeededToRestore = 1;
         private static readonly int brokenStage1 = 3; // Equal to when vanilla Baldur Shell takes 1 hit
         private static readonly int brokenStage2 = 2; // Equal to when vanilla Baldur Shell takes 2 hits
 
@@ -41,8 +41,9 @@ namespace TuyenTuyenTuyen.Charms {
             focusCounter += (playerData.GetBool("equippedCharm_34") ? 2 : 1);
             if (focusCounter < focusTimesNeededToRestore)
                 return;
+            int restoredBlockerHits = (focusCounter > focusTimesNeededToRestore ? 2 : 1);
             focusCounter = 0;
-            playerData.SetInt("blockerHits", Math.Min(maximumBlockerHits, playerData.blockerHits + 1));
+            playerData.SetInt("blockerHits", Math.Min(maximumBlockerHits, playerData.blockerHits + restoredBlockerHits));
 
             if (playerData.blockerHits >= maximumBlockerHits) {
                 blockerShieldFSM.Fsm.SetState("HUD Icon Up");

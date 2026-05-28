@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MonoMod.Cil;
+using System.Collections.Generic;
 using System.Reflection;
 using UnityEngine;
 
@@ -11,21 +12,16 @@ namespace TuyenTuyenTuyen.Charms {
         };
 
         private static readonly float trialRewardIncrease = 1.25f;
-        private static readonly float geoGainIncrease = 1.5f;
-        private static readonly float vanillaGreedIncrease = 1.2f;
-
-        private static readonly FieldInfo smallGeoField = typeof(HealthManager).GetField("smallGeoDrops", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly FieldInfo mediumGeoField = typeof(HealthManager).GetField("mediumGeoDrops", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly FieldInfo largeGeoField = typeof(HealthManager).GetField("largeGeoDrops", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly float geoGainIncrease = 0.4f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Fsm.DoTransition += Charm24_Greed.OnFsmDoTransition;
-            On.HealthManager.Die += Charm24_Greed.OnHMDie;
+            IL.HealthManager.Die += ChangeGreedGeoDropIncrease;
         }
 
         internal static void Unload() {
             On.HutongGames.PlayMaker.Fsm.DoTransition -= Charm24_Greed.OnFsmDoTransition;
-            On.HealthManager.Die -= Charm24_Greed.OnHMDie;
+            IL.HealthManager.Die -= ChangeGreedGeoDropIncrease;
         }
 
         private static bool OnFsmDoTransition(On.HutongGames.PlayMaker.Fsm.orig_DoTransition orig, HutongGames.PlayMaker.Fsm self, HutongGames.PlayMaker.FsmTransition transition, bool isGlobal) {
@@ -39,17 +35,35 @@ namespace TuyenTuyenTuyen.Charms {
             return orig(self, transition, isGlobal);
         }
 
-        private static void OnHMDie(On.HealthManager.orig_Die orig, HealthManager self, float? attackDirection, AttackTypes attackType, bool ignoreEvasion) {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
-            if (PD.GetBool("equippedCharm_24") && !PD.GetBool("brokenCharm_24")) {
-                int smallGeoDrops = (int)smallGeoField.GetValue(self);
-                smallGeoField.SetValue(self, Mathf.CeilToInt((float)smallGeoDrops * geoGainIncrease / vanillaGreedIncrease));
-                int mediumGeoDrops = (int)mediumGeoField.GetValue(self);
-                mediumGeoField.SetValue(self, Mathf.CeilToInt((float)mediumGeoDrops * geoGainIncrease / vanillaGreedIncrease));
-                int largeGeoDrops = (int)largeGeoField.GetValue(self);
-                largeGeoField.SetValue(self, Mathf.CeilToInt((float)largeGeoDrops * geoGainIncrease / vanillaGreedIncrease));
+        private static void ChangeGreedGeoDropIncrease(ILContext il) {
+            ILCursor cursor = new ILCursor(il).Goto(0);
+
+            /*
+                IL_025b: call class GameManager GameManager::get_instance()
+	            IL_0260: ldfld class PlayerData GameManager::playerData
+	            IL_0265: ldstr "brokenCharm_24"
+	            IL_026a: callvirt instance bool PlayerData::GetBool(string)
+	            IL_026f: brtrue.s IL_02ad
+            */
+
+            if (cursor.TryGotoNext(
+                MoveType.After,
+                i => i.MatchCall(out _),
+                i => i.MatchLdfld(out _),
+                i => i.MatchLdstr("brokenCharm_24"),
+                i => i.MatchCallvirt(out _),
+                i => i.MatchBrtrue(out _)
+            )) {
+                for (int counter = 1; counter <= 3; counter++) {
+                    if (cursor.TryGotoNext(
+                        MoveType.Before,
+                        i => i.MatchLdcR4(0.2f)
+                    )) {
+                        cursor.Next.Operand = geoGainIncrease;
+                        cursor.Index++;
+                    }
+                }
             }
-            orig(self, attackDirection, attackType, ignoreEvasion);
         }
     }
 }

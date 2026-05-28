@@ -100,7 +100,7 @@
 
 ***I do think this charm need a buff to keep up with other charms in the late game.***
 ## Greed
-- Geo drops increase: 20% => 50%
+- Geo drops increase: 20% => 40%
 - When being used in Colosseum Of Fools, Greed increases Trials' Geo reward by 25%
 
 ***The original increase is almost insignificant which many players didn't bother using it. The use in Colosseum Of Fools is really interesting to me. It encourages high risk, high return playstyle when you have to sacrifice 2 notch slots.***
@@ -160,9 +160,9 @@
 
 ***Cool charm but needs a little buff***
 ## Baldur Shell
-- Restores 1 blocker hit after every 2 successful Focus
+- Restores 1 blocker hit after every 1 successful Focus
 - Synergy with Deep Focus:
-    - Restores 1 blocker hit after every 1 successful Focus
+    - Restores 2 blocker hits after every 1 successful Focus
 
 
 ***I feel like this change would encourage a new playstyle without making it overpowered. With this, focusing in Radiant boss fights is no longer entirely useless.***
@@ -258,11 +258,10 @@
 ***I like this change, but wonder if it makes this charm too powerful.***
 ## Grimmchild
 - Now fires 3 fireballs at once
-- Grimmchild now drains 3 Soul to shoot
 - Damage per shot:
-  - Level 2: 5
-  - Level 3: 8
-  - Level 4: 11
+  - Level 2: 3
+  - Level 3: 6
+  - Level 4: 9
 - Grimmchild can now shoot more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
