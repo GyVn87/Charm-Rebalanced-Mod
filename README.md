@@ -200,7 +200,7 @@
 - Notch cost: 4 => 3.
 - Focus time increase: 65% => 50%.
 
-***It's a cool charm, but I don't see why it costs 4 notches. I have also lowered its focus time increases a little, and now when combining this charm with Quick Focus, the result is the same as normal.***
+***It's a cool charm, but I don't see why it costs 4 notches. I have also lowered its focus time increases a little, and now when combining this charm with Quick Focus, the result is the normal Focus time***
 ## Liveblood Heart
 - Notch cost: 2 => 1.
 
@@ -259,13 +259,13 @@
   - Level 2: 5 => 3
   - Level 3: 8 => 6
   - Level 4: 11 => 9
-- Grimmchild can now shoos more ***ACCURATELY***.
+- Grimmchild can now shoot more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
 ## Carefree Melody
 - No longer relies on luck to block attacks.
 - Cooldown: 20 seconds
-- While on cooldown, Knight takes double of the damage
+- While on cooldown, Knight takes double of the damage from all sources
 
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:
