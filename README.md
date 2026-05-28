@@ -167,7 +167,7 @@
 ***I feel like this change would encourage a new playstyle without making it overpowered. With this, focusing in Radiant boss fights is no longer entirely useless.***
 ## Flukenest
 - Notch cost: 3 => 2
-- Multihits bug has been fixed in the lasted version of the game, but the current Modding API-supportable version haven't yet. However, I fixed it somehow. 
+- Multihits bug has been fixed in the latest version of the game, but the current Modding API-supportable version haven't yet. However, I fixed it somehow. 
 - Vengeful Spirit + Flukenest: 8 flukes x 5 damage (36)
 - Vengeful Spirit + Flukenest + Shaman Stone: 10 flukes x 5 damage (45 => 50)
 - Shade Soul + Flukenest: 16 flukes x 4 damage (64)
@@ -208,7 +208,7 @@
 ## Lifeblood Core
 - Liveblood Masks: 4 => 6
 
-***This exorbitant charm should have added MORE THAN FOUR LIVEBLOOD MASKS.***
+***The high cost really makes it not fit well in various builds***
 ## Joni's Blessing
 - Notch cost: 4 => 2
 - Max health increase: 40% => 50%
@@ -259,7 +259,7 @@
   - Level 2: 5 => 3
   - Level 3: 8 => 6
   - Level 4: 11 => 9
-- Grimmchild can now shoots more ***ACCURATELY***.
+- Grimmchild can now shoos more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
 ## Carefree Melody
