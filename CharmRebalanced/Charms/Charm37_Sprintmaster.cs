@@ -8,7 +8,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float speedIncrease = 1.25f;
         private static readonly float runSpeedMaster = runSpeed * speedIncrease;
 
-        private static readonly float speedComboIncrease = 1.3f;
+        private static readonly float speedComboIncrease = 1.35f;
         private static readonly float runSpeedCombo = runSpeed * speedComboIncrease;
 
         private static readonly float swimSpeedBase = 5f;

@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using Mono.Cecil.Cil;
+using MonoMod.Cil;
+using System.Reflection;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -15,17 +17,51 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static readonly FieldInfo hasBursted = typeof(SpellFluke).GetField("hasBursted", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo flukeDamage = typeof(SpellFluke).GetField("damage", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly MethodInfo burstMethod = typeof(SpellFluke).GetMethod("Burst", BindingFlags.Instance | BindingFlags.NonPublic);
 
         internal static void Load() {
             On.SpellFluke.DoDamage += Charm11_Flukenest.ONSFDoDamage;
             On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter += Charm11_Flukenest.OnFlingObjectsFromGlobalPool_OnEnter;
             On.SpellFluke.OnEnable += Charm11_Flukenest.ONSFOnEnable;
+            IL.SpellFluke.DoDamage += ForceBurstIfImmune;
         }
 
         internal static void Unload() {
             On.SpellFluke.DoDamage -= Charm11_Flukenest.ONSFDoDamage;
             On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter -= Charm11_Flukenest.OnFlingObjectsFromGlobalPool_OnEnter;
             On.SpellFluke.OnEnable -= Charm11_Flukenest.ONSFOnEnable;
+            IL.SpellFluke.DoDamage -= ForceBurstIfImmune;
+        }
+
+        private static void ForceBurstIfImmune(ILContext il) {
+            ILCursor cursor = new ILCursor(il).Goto(0);
+
+            /*
+                // if (component.IsInvincible && obj.tag != "Spell Vulnerable")
+	            IL_000f: ldloc.0
+	            IL_0010: callvirt instance bool HealthManager::get_IsInvincible()
+	            IL_0015: brfalse.s IL_002a
+
+	            IL_0017: ldarg.1
+	            IL_0018: callvirt instance string [UnityEngine.CoreModule]UnityEngine.GameObject::get_tag()
+	            IL_001d: ldstr "Spell Vulnerable"
+	            IL_0022: call bool [netstandard]System.String::op_Inequality(string, string)
+	            IL_0027: brfalse.s IL_002a
+
+	            // return;
+	            IL_0029: ret
+             */
+
+            if (cursor.TryGotoNext(
+                MoveType.After,
+                i => i.MatchCall(out _),
+                i => i.MatchBrfalse(out _),
+                i => i.MatchRet()
+            )) {
+                cursor.Index--;
+                cursor.Emit(OpCodes.Ldarg_0);
+                cursor.Emit(OpCodes.Call, burstMethod);
+            }
         }
 
         // Somehow this solves the "Flukenest multihits" bug

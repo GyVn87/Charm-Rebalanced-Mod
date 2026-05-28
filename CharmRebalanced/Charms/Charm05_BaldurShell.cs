@@ -1,45 +1,57 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm05_BaldurShell {
-        private static readonly int newBlockerHits = 6;
-        private static readonly int brokenStage1 = 4; // Equal to when vanilla Baldur Shell takes 1 hit
+        private static readonly int maximumBlockerHits = 4;
+        private static readonly int focusTimesNeededToRestore = 2;
+        private static readonly int brokenStage1 = 3; // Equal to when vanilla Baldur Shell takes 1 hit
         private static readonly int brokenStage2 = 2; // Equal to when vanilla Baldur Shell takes 2 hits
+
+        private static PlayMakerFSM blockerShieldFSM = null;
+        private static int focusCounter = 0;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.IntSwitch.OnEnter += Charm05_BaldurShell.OnIntSwitch_OnEnter;
             On.PlayerData.MaxHealth += Charm05_BaldurShell.OnPDMaxHealth;
-            ModHooks.BeforeAddHealthHook += Charm05_BaldurShell.OnBeforeAddHealth;
+            On.HutongGames.PlayMaker.Fsm.ProcessEvent += OnFsmProcessEvent;
         }
 
         internal static void Unload() {
             On.HutongGames.PlayMaker.Actions.IntSwitch.OnEnter -= Charm05_BaldurShell.OnIntSwitch_OnEnter;
             On.PlayerData.MaxHealth -= Charm05_BaldurShell.OnPDMaxHealth;
-            ModHooks.BeforeAddHealthHook -= Charm05_BaldurShell.OnBeforeAddHealth;
+            On.HutongGames.PlayMaker.Fsm.ProcessEvent -= OnFsmProcessEvent;
         }
 
-        private static int OnBeforeAddHealth(int amount) {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
-            if (!PD.GetBool("equippedCharm_5"))
-                return amount;
-            if (PD.blockerHits == newBlockerHits)
-                return amount;
-            if (PD.GetInt("health") >= PD.CurrentMaxHealth) {
+        private static void OnFsmProcessEvent(On.HutongGames.PlayMaker.Fsm.orig_ProcessEvent orig, HutongGames.PlayMaker.Fsm self, HutongGames.PlayMaker.FsmEvent fsmEvent, HutongGames.PlayMaker.FsmEventData eventData) {
+            orig(self, fsmEvent, eventData);
+            if (self.Name != "Spell Control" || fsmEvent.Name != "FOCUS COMPLETED")
+                return;
+
+            PlayerData playerData = CharmRebalanced.LoadedInstance.PD;
+            if (!playerData.GetBool("equippedCharm_5") || playerData.blockerHits >= maximumBlockerHits)
+                return;
+
+            if (blockerShieldFSM == null) {
                 GameObject Knight = CharmRebalanced.LoadedInstance.Knight;
-                PlayMakerFSM FSM = Knight.transform.Find("Charm Effects").Find("Blocker Shield").GetComponent<PlayMakerFSM>();
-                if (PD.blockerHits + amount >= newBlockerHits) {
-                    FSM.Fsm.SetState("HUD Icon Up");
-                    FSM.Fsm.SetState("Focus End");
-                    CharmRebalanced.LoadedInstance.PD.SetInt("blockerHits", Math.Min(newBlockerHits, PD.blockerHits + amount));
-                }
-                else {
-                    CharmRebalanced.LoadedInstance.PD.SetInt("blockerHits", Math.Min(newBlockerHits, PD.blockerHits + amount));
-                    PD.blockerHits++; // Since blockerHits will be decremented by 1 in "Blocker Hit" state, so this line will be netraulized
-                    FSM.Fsm.SetState("Blocker Hit");
-                }
+                blockerShieldFSM = Knight.transform.Find("Charm Effects").Find("Blocker Shield").GetComponent<PlayMakerFSM>();
             }
-            return amount;
+
+            focusCounter += (playerData.GetBool("equippedCharm_34") ? 2 : 1);
+            if (focusCounter < focusTimesNeededToRestore)
+                return;
+            focusCounter = 0;
+            playerData.SetInt("blockerHits", Math.Min(maximumBlockerHits, playerData.blockerHits + 1));
+
+            if (playerData.blockerHits >= maximumBlockerHits) {
+                blockerShieldFSM.Fsm.SetState("HUD Icon Up");
+                blockerShieldFSM.Fsm.SetState("Focus End");
+            }
+            else {
+                playerData.blockerHits++; // Since blockerHits will be decremented by 1 in "Blocker Hit" state, so this line will be netraulized
+                blockerShieldFSM.Fsm.SetState("Blocker Hit");
+            }
         }
 
         /// <summary>
@@ -62,7 +74,7 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnPDMaxHealth(On.PlayerData.orig_MaxHealth orig, PlayerData self) {
             orig(self);
-            self.SetInt("blockerHits", newBlockerHits);
+            self.SetInt("blockerHits", maximumBlockerHits);
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using GlobalEnums;
-using TuyenTuyenTuyen.Mechanics;
-using UnityEngine;
-using static UnityEngine.ParticleSystem;
+﻿using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm10_DefenderCrest {
@@ -32,6 +29,8 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnDamageEffectTicker_OnTriggerEnter2D(On.DamageEffectTicker.orig_OnTriggerEnter2D orig, DamageEffectTicker self, Collider2D otherCollider) {
             orig(self, otherCollider);
+            if (self.extraDamageType == ExtraDamageTypes.Spore)
+                return;
             WeaknessDebuff weaknessDebuff = otherCollider.gameObject.GetComponent<WeaknessDebuff>();
             if (weaknessDebuff == null)
                 otherCollider.gameObject.AddComponent<WeaknessDebuff>();

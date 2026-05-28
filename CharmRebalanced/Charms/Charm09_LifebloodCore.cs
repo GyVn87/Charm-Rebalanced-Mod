@@ -1,6 +1,6 @@
 ﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm09_LifebloodCore {
-        private static readonly int blueHealthIncreases = 6;
+        private static readonly int blueHealthIncreases = 4;
 
         internal static void Load() {
             On.PlayerData.UpdateBlueHealth += Charm09_LifebloodCore.OnUpdateBlueHealth;

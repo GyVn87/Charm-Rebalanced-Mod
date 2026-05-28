@@ -15,9 +15,9 @@
 ## Voidheart/Upgraded Focus
 - After obtaining Voidheart, Focus will be upgraded
 - After completing Focus, Knight now gain "Dark Overflow" effect
-- Successful normal Focus grants Knight 80% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash for 3 seconds
-- Successful Focus at full masks increases this number to 100%
-- With Deep Focus equipped, damage dealth increase is multiplied by 1.25
+- For 3 seconds, successful normal Focus grants Knight 50% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash 
+- Successful Focus at full masks increases this number to 70%%
+- With Deep Focus equipped, extra damage dealt is multiplied by 1.25
 - Taking hit clears the effect
 
 ***This somehow compensates for the Soul and time spending in Focus. I hope this change will encourage players to focus more in late-game stages.***
@@ -48,23 +48,22 @@
 ***The 4-notch cost is extremely high and I don't find the benefits really worth it. And the added debuff will make the charm unique to Soul Catcher, rather than a simply upgrade.***
 ## Dashmaster
 - Each Mothwing Cloak dash now decreases Shadow Dash cooldown by 0.15s
+- Which means 2 Mothwing Cloak dash wil fully recharge Shadow Dash.
 
 ***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
 ## Sprintmaster
 - Run speed increase: 20% => 25%
 - Speed increase also APPLIES WHEN ON AIR.
 - Increases swim speed by 60%
-- Synergies:
-  - Dashmaster:
-    - Run speed increase: 40% => 30%.
+- Synergy with Dashmaster:
+    - Run speed increase: 40% => 35%.
 
 ***I always feel so slow when jumping when using this charm. Now it's not anymore. This charm is already good so I have to remove the synergy with Dashmaster, otherwise it will be too overpowered.***
 ## Grubsong
 - Soul gain now SCALES with the amount of damage taken.
 - Soul gain when taking damage: 15 => 12.
-- Syneries:
-  - Grubberfly's Elegy:
-    - Soul gain: 25 => 18.
+- Synergy with Grubberfly's Elegy:
+  - Soul gain: 25 => 18.
 
 ***Grubsong is a little too good for early game. So I think it is fine to nerf it a little bit. However, by scaling soul gain with damage, it remains viable in later stages, especially againsts bosses that deal more than 1 damage. I do think removing synergy is too harsh, but the charm is already too good. I also believe that a charm should only synergy with others if it does not work well with them.***
 ## Grubberfly's Elegy
@@ -161,8 +160,10 @@
 
 ***Cool charm but needs a little buff***
 ## Baldur Shell
-- Can now be restored by the amount of healed masks when player heals at full masks.
-- Now caps at 6 blocker hits.
+- Restores 1 blocker hit after every 2 successful Focus
+- Synergy with Deep Focus:
+    - Restores 1 blocker hit after every 1 successful Focus
+
 
 ***I feel like this change would encourage a new playstyle without making it overpowered. With this, focusing in Radiant boss fights is no longer entirely useless.***
 ## Flukenest
@@ -206,7 +207,8 @@
 
 ***Because... why not? I have never thought that 2 Liveblood Masks is worth 2 Notches***
 ## Lifeblood Core
-- Liveblood Masks: 4 => 6
+- Notch cost: 3 => 2
+
 
 ***The high cost really makes it not fit well in various builds***
 ## Joni's Blessing
@@ -217,7 +219,8 @@
 ## Hiveblood
 - Notch cost: 4 => 3.
 - Always regenerates masks for player.
-- Regeneration rate: 12s
+- Regeneration rate: 15s
+- Focus no longer cancels regeneration
 - Its behavior with Joni's Blessing is not changed.
 
 ***I always hear everyone complains that this charm is not worth using it. Buffing it may be a good idea, but I feel like it is too overpowered?***
@@ -255,10 +258,11 @@
 ***I like this change, but wonder if it makes this charm too powerful.***
 ## Grimmchild
 - Now fires 3 fireballs at once
+- Grimmchild now drains 3 Soul to shoot
 - Damage per shot:
-  - Level 2: 5 => 3
-  - Level 3: 8 => 6
-  - Level 4: 11 => 9
+  - Level 2: 5
+  - Level 3: 8
+  - Level 4: 11
 - Grimmchild can now shoot more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***

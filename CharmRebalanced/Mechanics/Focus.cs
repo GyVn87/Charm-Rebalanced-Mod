@@ -88,15 +88,15 @@ namespace TuyenTuyenTuyen.Mechanics {
 
     public class DarkOverflow : MonoBehaviour {
         private static readonly float duration = 3f;
-        private static readonly float normalIncrease = 0.8f;
-        private static readonly float fullHealthIncrease = 1f;
+        private static readonly float normalIncrease = 0.5f;
+        private static readonly float fullHealthIncrease = 0.7f;
         private static readonly float deepFocusMultiplier = 1.25f;
         private static readonly float nailArtPenalty = 1f;
 
         private float damageMultiplier = 1f;
 
         private float mTimer = 0f;
-        private static readonly float mFadeOutDuration = 1f;
+        private static readonly float mFadeOutDuration = 0.5f;
         private float mFadeOutTimer = 0f;
         private static GameObject mPrefab = null;
         private GameObject mEffect = null;
