@@ -70,6 +70,7 @@ namespace TuyenTuyenTuyen {
 			Charm25_Strength.Load();
 			Charm27_JoniBlessing.Load();
 			Charm29_Hiveblood.Load();  
+			Charm30_DreamWielder.Load();
 			Charm32_QuickSlash.Load();
 			Charm34_DeepFocus.Load();
 			Charm35_GrubberflyElegy.Load();
@@ -113,6 +114,7 @@ namespace TuyenTuyenTuyen {
 			Charm25_Strength.Unload();
 			Charm27_JoniBlessing.Unload();
 			Charm29_Hiveblood.Unload();
+			Charm30_DreamWielder.Unload();
 			Charm32_QuickSlash.Unload();
 			Charm34_DeepFocus.Unload();
 			Charm35_GrubberflyElegy.Unload();

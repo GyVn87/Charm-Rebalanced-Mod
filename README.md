@@ -29,10 +29,9 @@
 
 ***I rarely saw anyone using this charm, and neither did I. The concept is good, and I want to retain it. The main issue is that players can take advantage of this charm by facetanking bosses, so I have to add a damage penalty.***
 ## Soul Catcher
-- Soul gain for Main Vessel: 3 => 4
-- Soul gain for reserve Soul Vessels: 2 => 4
+- Notch cost: 2 => 1
 
-***This makes Soul Catcher more viable in late game with the help of Soul Vessels without making it too strong in early game. The buff also helps it compete with Spell Twister, Grubsong***
+***This charm certainly needs a buff to help it compete with other Soul charms such as Spell Twister, Grubsong***
 ## Shaman Stone
 - Vengeful Sprit and Shade Soul damage increase: 33% => 30% 
 - **OTHER SPELL DAMAGE** increase: 40%
@@ -40,7 +39,7 @@
 ***Don't worry. This charm is still extremely powerful. I might even want to nerf it to 1% increase.***
 ## Soul Eater
 - Notch cost: 4 => 3.
-- Soul gain for Main Vessel: 8 => 3
+- Soul gain for Main Vessel: 8 => 4
 - Soul gain for reserve Soul Vessels: 6 => 3
 - Spells now infect enemies with "Eater Curse" debuff. Striking affected enemies will double the soul gain.
 - The debuff lasts 3 seconds, and striking enemies also clears the effect. 
@@ -247,6 +246,10 @@
   - Speed increase: 50% => 25%
 
 ***I love summoner playstyle, but this charm is really ineffective. I believe the effect that gain player soul on hit would make this charm unique to other summon charms.***
+## Dream Wielder
+- Soul gain on Dream Nail hit: 66 => 33
+
+***I would say 66 Soul is too much, plus you can use 2-3 Dream Nail in some cutscenes which is crazily overpowered to me***
 ## Dreamshield
 - Notch cost: 3 => 2
 - Now summons 2 shields at a time.

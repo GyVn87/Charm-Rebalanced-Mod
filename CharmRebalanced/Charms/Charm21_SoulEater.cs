@@ -2,7 +2,7 @@
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm21_SoulEater {
-        private static readonly int soulCharge = 3;
+        private static readonly int soulCharge = 4;
         private static readonly int soulReserve = 3;
         internal static readonly float eaterEffectDuration = 3f;
 

@@ -1,7 +1,7 @@
 ﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm20_SoulCatcher {
-        private static readonly int soulCharge = 4;
-        private static readonly int soulReserve = 4;
+        private static readonly int soulCharge = 3;
+        private static readonly int soulReserve = 2;
 
         internal static void Load() {
             ModHooks.SoulGainHook += Charm20_SoulCatcher.OnSoulGain;

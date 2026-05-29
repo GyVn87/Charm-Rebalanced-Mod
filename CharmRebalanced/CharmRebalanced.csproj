@@ -118,6 +118,7 @@
     <Compile Include="Charms\Charm25_Strength.cs" />
     <Compile Include="Charms\Charm27_JoniBlessing.cs" />
     <Compile Include="Charms\Charm29_Hiveblood.cs" />
+    <Compile Include="Charms\Charm30_DreamWielder.cs" />
     <Compile Include="Charms\Charm31_Dashmaster.cs" />
     <Compile Include="Charms\Charm32_QuickSlash.cs" />
     <Compile Include="Charms\Charm34_DeepFocus.cs" />
