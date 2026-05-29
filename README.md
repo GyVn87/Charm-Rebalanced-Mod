@@ -15,7 +15,7 @@
 ## Voidheart/Upgraded Focus
 - After obtaining Voidheart, Focus will be upgraded
 - After completing Focus, Knight now gain "Dark Overflow" effect
-- For 3 seconds, successful normal Focus grants Knight 50% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash 
+- For 4 seconds, successful normal Focus grants Knight 50% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash 
 - Successful Focus at full masks increases this number to 70%%
 - With Deep Focus equipped, extra damage dealt is multiplied by 1.25
 - Taking hit clears the effect
@@ -52,18 +52,18 @@
 
 ***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
 ## Sprintmaster
-- Run speed increase: 20% => 25%
+- Run speed increase: 20% => 30%
 - Speed increase also APPLIES WHEN ON AIR.
-- Increases swim speed by 60%
+- Increases swim speed by 100%
 - Synergy with Dashmaster:
-    - Run speed increase: 40% => 35%.
+    - Run speed increase: 40%
 
 ***I always feel so slow when jumping when using this charm. Now it's not anymore. This charm is already good so I have to remove the synergy with Dashmaster, otherwise it will be too overpowered.***
 ## Grubsong
 - Soul gain now SCALES with the amount of damage taken.
 - Soul gain when taking damage: 15 => 12.
 - Synergy with Grubberfly's Elegy:
-  - Soul gain: 25 => 18.
+  - Soul gain: 25 => 20.
 
 ***Grubsong is a little too good for early game. So I think it is fine to nerf it a little bit. However, by scaling soul gain with damage, it remains viable in later stages, especially againsts bosses that deal more than 1 damage. I do think removing synergy is too harsh, but the charm is already too good. I also believe that a charm should only synergy with others if it does not work well with them.***
 ## Grubberfly's Elegy
@@ -191,17 +191,15 @@
 - Maximum Hatchlings: 4 => 6
 - Summons 2 Hatchlings after a successful Focus
 - Summons 1 Hatchling after using a Spell
-
-- Synergies:
-  - Deep Focus:
+- Synergy with Deep Focus:
     - Summons 3 Hatchlings after a successful Focus.
 
 ***This change makes the charm more interactive and fun to use now, while still retaining its original concept of using Soul to summon minions***
 ## Deep Focus
 - Notch cost: 4 => 3.
-- Focus time increase: 65% => 50%.
+- Focus time increase drawback has been removed
 
-***It's a cool charm, but I don't see why it costs 4 notches. I have also lowered its focus time increases a little, and now when combining this charm with Quick Focus, the result is the normal Focus time***
+***It's a cool charm, but why on earth this charm costs 4 notch slots while having a drawback, unlike other healing charms***
 ## Liveblood Heart
 - Notch cost: 2 => 1.
 
@@ -219,7 +217,7 @@
 ## Hiveblood
 - Notch cost: 4 => 3.
 - Always regenerates masks for player.
-- Regeneration rate: 15s
+- Regeneration rate: 12s
 - Focus no longer cancels regeneration
 - Its behavior with Joni's Blessing is not changed.
 
@@ -233,21 +231,19 @@
 
 ***This changes makes Spore Shroom literally a spell now***
 ## Sharp Shadow
-- Shadow Dash speed increase: 40% => 30%
+- Shadow Dash speed increase: 40%
 - Shadow Dash damage: 2x Nail damage
-- Synergies:
-  - Dashmaster:
+- Synergy with Dashmaster:
     - Shadow Dash damage: 2.5x Nail damage
 
 ***I do believe this charm is a little too overpowered. But I can't help but buffing it, everyone loves dashing, right...?***
 ## Weaversong
 - Each weaversling now deals: 33% of Nail damage.
 - Each successful hit gain player 2 soul by default.
-- Synergies:
-  - Grubsong:
-    - Soul gain: 3
-  - Sprintmaster:
-    - Speed increase: 50% => 25%
+- Synergy with Grubsong:
+  - Soul gain: 3
+- Synergy with Sprintmaster:
+  - Speed increase: 50% => 25%
 
 ***I love summoner playstyle, but this charm is really ineffective. I believe the effect that gain player soul on hit would make this charm unique to other summon charms.***
 ## Dreamshield
@@ -259,9 +255,9 @@
 ## Grimmchild
 - Now fires 3 fireballs at once
 - Damage per shot:
-  - Level 2: 3
-  - Level 3: 6
-  - Level 4: 9
+  - Level 2: 5  => 3
+  - Level 3: 8  => 6
+  - Level 4: 11 => 9
 - Grimmchild can now shoot more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***

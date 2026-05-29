@@ -5,14 +5,14 @@ using UnityEngine;
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm37_Sprintmaster {
         private static readonly float runSpeed = 8.3f;
-        private static readonly float speedIncrease = 1.25f;
+        private static readonly float speedIncrease = 1.3f;
         private static readonly float runSpeedMaster = runSpeed * speedIncrease;
 
-        private static readonly float speedComboIncrease = 1.35f;
+        private static readonly float speedComboIncrease = 1.4f;
         private static readonly float runSpeedCombo = runSpeed * speedComboIncrease;
 
         private static readonly float swimSpeedBase = 5f;
-        private static readonly float swimSpeedMaster = 8f;
+        private static readonly float swimSpeedMaster = 10f;
 
         internal static void Load() {
             ModHooks.CharmUpdateHook += Charm37_Sprintmaster.OnCharmUpdate;

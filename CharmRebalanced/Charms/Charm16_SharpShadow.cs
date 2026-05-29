@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm16_SharpShadow {
-        private static readonly float shadowDashSpeedIncrease = 1.3f;
+        private static readonly float shadowDashSpeedIncrease = 1.4f;
         private static readonly float shadowDashDamageSharp = 2f;
         private static readonly float shadowDashDamageMaster = 2.5f;
         private static readonly float nailBindingPenalty = 0.75f;

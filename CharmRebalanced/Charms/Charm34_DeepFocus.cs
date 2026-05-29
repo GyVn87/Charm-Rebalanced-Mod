@@ -2,7 +2,7 @@
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm34_DeepFocus {
-        private static readonly float deepFocusSpeedIncreases = 1.5f;
+        private static readonly float deepFocusSpeedIncreases = 1f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.FloatMultiply.OnEnter += Charm34_DeepFocus.OnFloatMutiply_OnEnter;
