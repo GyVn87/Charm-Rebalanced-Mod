@@ -100,7 +100,8 @@
 
 ***I do think this charm need a buff to keep up with other charms in the late game.***
 ## Greed
-- Geo drops increase: 20% => 40%
+- Geo drop increase: (20% - 100%) => (40% => 100%)
+- Because Geo drop calculation is a little weird, on average, the increase is around 50%
 - When being used in Colosseum Of Fools, Greed increases Trials' Geo reward by 25%
 
 ***The original increase is almost insignificant which many players didn't bother using it. The use in Colosseum Of Fools is really interesting to me. It encourages high risk, high return playstyle when you have to sacrifice 2 notch slots.***
