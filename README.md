@@ -16,7 +16,7 @@
 - After obtaining Voidheart, Focus will be upgraded
 - After completing Focus, Knight now gain "Dark Overflow" effect
 - For 4 seconds, successful normal Focus grants Knight 50% extra damage dealt from Nail, Nail Art, Spell, Shadow Dash 
-- Successful Focus at full masks increases this number to 70%%
+- Successful Focus at full masks increases this number to 70%
 - With Deep Focus equipped, extra damage dealt is multiplied by 1.25
 - Taking hit clears the effect
 
@@ -48,8 +48,8 @@
 
 ***The 4-notch cost is extremely high and I don't find the benefits really worth it. And the added debuff will make the charm unique to Soul Catcher, rather than a simply upgrade.***
 ## Dashmaster
-- Each Mothwing Cloak dash now decreases Shadow Dash cooldown by 0.15s
-- Which means 2 Mothwing Cloak dash wil fully recharge Shadow Dash.
+- Shadow Dash cooldown reduce: 20%
+- Down Dash now fully recharges Dash cooldown, even in mid-air
 
 ***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
 ## Sprintmaster
@@ -217,13 +217,12 @@
 
 ***At this point, I really wonder why all Liveblood-related charms are so weird. This charm is not a exception. I do think that these changes would make the charm more fun to use.***
 ## Hiveblood
-- Notch cost: 4 => 3.
-- Always regenerates masks for player.
+- Notch cost: 4 => 2.
 - Regeneration rate: 12s
 - Focus no longer cancels regeneration
 - Its behavior with Joni's Blessing is not changed.
 
-***I always hear everyone complains that this charm is not worth using it. Buffing it may be a good idea, but I feel like it is too overpowered?***
+***I just hate when Focus interrupt the regeneration, which is pretty annoying***
 ## Spore Shroom
 - Spore damage: 3x Nail Damage
 - Its damage can now be boosted by Shaman Stone
@@ -253,7 +252,7 @@
 
 ***I love summoner playstyle, but this charm is really ineffective. I believe the effect that gain player soul on hit would make this charm unique to other summon charms.***
 ## Dream Wielder
-- Soul gain on Dream Nail hit: 66 => 33
+- Soul gain on Dream Nail hit: 66 => 50
 
 ***I would say 66 Soul is too much, plus you can use 2-3 Dream Nail in some cutscenes which is crazily overpowered to me***
 ## Dreamshield
@@ -265,9 +264,9 @@
 ## Grimmchild
 - Now fires 3 fireballs at once
 - Damage per shot:
-  - Level 2: 5  => 3
-  - Level 3: 8  => 6
-  - Level 4: 11 => 9
+  - Level 2: 5
+  - Level 3: 8 
+  - Level 4: 11
 - Grimmchild can now shoot more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
@@ -275,6 +274,7 @@
 - No longer relies on luck to block attacks.
 - Cooldown: 20 seconds
 - While on cooldown, Knight takes double of the damage from all sources
+-***Doesn't work in Radiant fight***
 
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:
