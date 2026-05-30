@@ -10,16 +10,19 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int diveDamage = 15;
         private static readonly int shockwaveDiveDamage = 20;
         private static readonly int shockwaveDarkDamage = 30;
+        private static readonly int megaDarkDamage = 15;
 
         internal static readonly float fireballDamageIncrease = 1.3f;
         internal static readonly float spellDamageIncrease = 1.4f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += Charm19_ShamanStone.OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.IntCompare.OnEnter += OnIntCompare_OnEnter;
         }
 
         internal static void Unload() {
             On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter -= Charm19_ShamanStone.OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.IntCompare.OnEnter -= OnIntCompare_OnEnter;
         }
 
         private static void OnSetFsmInt_OnEnter(On.HutongGames.PlayMaker.Actions.SetFsmInt.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SetFsmInt self) {
@@ -154,6 +157,17 @@ namespace TuyenTuyenTuyen.Charms {
                     break;
             }
             return newDamage;
+        }
+
+        private static void OnIntCompare_OnEnter(On.HutongGames.PlayMaker.Actions.IntCompare.orig_OnEnter orig, HutongGames.PlayMaker.Actions.IntCompare self) {
+            orig(self);
+            string parentName = self.Owner?.transform?.parent?.name;
+            if (parentName == "Q Mega" && self.State.Name == "Send Event") {
+                if (PlayerData.instance.GetBool("equippedCharm_19"))
+                    self.integer1.Value = Mathf.CeilToInt((float)megaDarkDamage * spellDamageIncrease);
+                else
+                    self.integer1.Value = megaDarkDamage;
+            }
         }
     }
 }

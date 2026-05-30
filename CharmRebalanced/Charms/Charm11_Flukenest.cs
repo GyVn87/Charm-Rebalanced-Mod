@@ -64,7 +64,6 @@ namespace TuyenTuyenTuyen.Charms {
             }
         }
 
-        // Somehow this solves the "Flukenest multihits" bug
         private static void ONSFDoDamage(On.SpellFluke.orig_DoDamage orig, SpellFluke self, GameObject obj, int upwardRecursionAmount, bool burst) {
             bool alreadyBursted = (bool)hasBursted.GetValue(self);
             if (alreadyBursted)

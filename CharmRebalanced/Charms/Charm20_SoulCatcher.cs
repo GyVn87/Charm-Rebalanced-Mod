@@ -1,6 +1,6 @@
 ﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm20_SoulCatcher {
-        private static readonly int soulCharge = 3;
+        private static readonly int soulCharge = 2;
         private static readonly int soulReserve = 2;
 
         internal static void Load() {

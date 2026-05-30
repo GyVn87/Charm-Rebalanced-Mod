@@ -116,6 +116,7 @@
     <Compile Include="Charms\Charm23_Heart.cs" />
     <Compile Include="Charms\Charm24_Greed.cs" />
     <Compile Include="Charms\Charm25_Strength.cs" />
+    <Compile Include="Charms\Charm26_NailmasterGlory.cs" />
     <Compile Include="Charms\Charm27_JoniBlessing.cs" />
     <Compile Include="Charms\Charm29_Hiveblood.cs" />
     <Compile Include="Charms\Charm30_DreamWielder.cs" />

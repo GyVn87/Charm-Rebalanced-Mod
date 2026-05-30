@@ -68,6 +68,7 @@ namespace TuyenTuyenTuyen {
 			Charm23_Heart.Load();  // has to be called before Joni's Blessing
 			Charm24_Greed.Load();
 			Charm25_Strength.Load();
+			Charm26_NailmasterGlory.Load();
 			Charm27_JoniBlessing.Load();
 			Charm29_Hiveblood.Load();  
 			Charm30_DreamWielder.Load();
@@ -112,6 +113,7 @@ namespace TuyenTuyenTuyen {
 			Charm23_Heart.Unload();
 			Charm24_Greed.Unload();
 			Charm25_Strength.Unload();
+			Charm26_NailmasterGlory.Unload();
 			Charm27_JoniBlessing.Unload();
 			Charm29_Hiveblood.Unload();
 			Charm30_DreamWielder.Unload();
@@ -146,6 +148,7 @@ namespace TuyenTuyenTuyen {
 			HC.ATTACK_DURATION_CH = 0.28f;
 			HC.INVUL_TIME_STAL = 1.75f;
 			HC.RECOIL_DURATION_STAL = 0.08f;
+			HC.NAIL_CHARGE_TIME_CHARM = 0.75f;
         }
     }
 }
