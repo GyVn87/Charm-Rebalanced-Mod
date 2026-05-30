@@ -30,6 +30,8 @@
 ***I rarely saw anyone using this charm, and neither did I. The concept is good, and I want to retain it. The main issue is that players can take advantage of this charm by facetanking bosses, so I have to add a damage penalty.***
 ## Soul Catcher
 - Notch cost: 2 => 1
+- Soul gain for Main Vessel: 3 => 2
+- Soul gain for reserve Soul Vessels: 2
 
 ***This charm certainly needs a buff to help it compete with other Soul charms such as Spell Twister, Grubsong***
 ## Shaman Stone
@@ -237,6 +239,10 @@
     - Shadow Dash damage: 2.5x Nail damage
 
 ***I do believe this charm is a little too overpowered. But I can't help but buffing it, everyone loves dashing, right...?***
+## Nailmaster's Glory
+- Nail Arts'charge time: 0.75s => 0.9s
+
+***It is just a little too good for an 1-notch slot charm***
 ## Weaversong
 - Each weaversling now deals: 33% of Nail damage.
 - Each successful hit gain player 2 soul by default.
