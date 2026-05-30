@@ -199,9 +199,9 @@
 ***This change makes the charm more interactive and fun to use now, while still retaining its original concept of using Soul to summon minions***
 ## Deep Focus
 - Notch cost: 4 => 3.
-- Focus time increase drawback has been removed
+- Focus time increase: 65% => 50%.
 
-***It's a cool charm, but why on earth this charm costs 4 notch slots while having a drawback, unlike other healing charms***
+***It's a cool charm, but I don't see why it costs 4 notches. I have also lowered its focus time increases a little, and now when combining this charm with Quick Focus, the result is the normal Focus time***
 ## Liveblood Heart
 - Notch cost: 2 => 1.
 
