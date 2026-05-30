@@ -7,9 +7,9 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float multipleShotsSpread = 30f;
 
         private static readonly float newSpread = 0f; // the lower, the more accurate Grimmchild's shot is
-        private static readonly int lv2Damage = 3;
-        private static readonly int lv3Damage = 6;
-        private static readonly int lv4Damage = 9;
+        private static readonly int lv2Damage = 5;
+        private static readonly int lv3Damage = 8;
+        private static readonly int lv4Damage = 11;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.FireAtTarget.OnEnter += Charm40_Grimmchild.OnFireAtTarget_OnEnter;

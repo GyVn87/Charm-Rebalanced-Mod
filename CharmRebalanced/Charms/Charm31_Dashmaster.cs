@@ -8,12 +8,14 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float dashSpeedMaster = dashSpeed * dashSpeedIncrease;
 
         private static readonly float shadowDashCooldown = 1.5f;
-        private static readonly float shadowDashCooldownDecrease = 1f;
+        private static readonly float shadowDashCooldownDecrease = 0.8f;
         private static readonly float shadowDashCooldownMaster = shadowDashCooldown * shadowDashCooldownDecrease;
 
         private static readonly float dashCooldown = 0.4f;
-        private static readonly float cooldownDecreaseOnDash = 0.15f;
+        private static readonly float cooldownDecreaseOnDash = 0f;
 
+        private static readonly FieldInfo airDashed = typeof(HeroController).GetField("airDashed", BindingFlags.Instance | BindingFlags.NonPublic);
+        private static readonly FieldInfo dashCooldownTimer = typeof(HeroController).GetField("dashCooldownTimer", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo shadowDashTimer = typeof(HeroController).GetField("shadowDashTimer", BindingFlags.Instance | BindingFlags.NonPublic);
 
         internal static void Load() {
@@ -40,8 +42,13 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnHeroController_HeroDash(On.HeroController.orig_HeroDash orig, HeroController self) {
             orig(self);
-            if (PlayerData.instance.GetBool("equippedCharm_31") && PlayerData.instance.hasShadowDash && !self.cState.shadowDashing)
+            PlayerData playerData = PlayerData.instance;
+            if (playerData.GetBool("equippedCharm_31") && playerData.hasShadowDash && !self.cState.shadowDashing)
                 shadowDashTimer.SetValue(HeroController.instance, (float)shadowDashTimer.GetValue(HeroController.instance) - cooldownDecreaseOnDash);
+            if (self.dashingDown) {
+                dashCooldownTimer.SetValue(self, 0);
+                airDashed.SetValue(self, false);
+            }
         }
     }
 }

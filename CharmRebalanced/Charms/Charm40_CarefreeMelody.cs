@@ -61,7 +61,8 @@ namespace TuyenTuyenTuyen.Charms {
                 i => i.MatchLdcI4(0),
                 i => i.MatchStloc(3)
             )) {
-                cursor.EmitDelegate<Func<bool>>(NewCarefreeMelodyMechanic);
+                cursor.Emit(OpCodes.Ldarg_S, (byte)3);
+                cursor.EmitDelegate<Func<int, bool>>(NewCarefreeMelodyMechanic);
                 cursor.Emit(OpCodes.Brtrue, blockEffectLabel);
 
                 ILLabel label = null;
@@ -78,9 +79,9 @@ namespace TuyenTuyenTuyen.Charms {
             }
         }
 
-        private static bool NewCarefreeMelodyMechanic() {
+        private static bool NewCarefreeMelodyMechanic(int damageAmount) {
             HeroController controller = HeroController.instance;
-            if (controller.carefreeShieldEquipped && Time.time > timer) {
+            if (damageAmount < 100 && controller.carefreeShieldEquipped && Time.time > timer) {
                 timer = Time.time + hitBlockCooldown;
                 return true;
             }

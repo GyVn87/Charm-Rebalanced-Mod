@@ -3,7 +3,7 @@
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm30_DreamWielder {
         private static readonly int soulGainNormal = 33;
-        private static readonly int soulGainWielder = 33;
+        private static readonly int soulGainWielder = 50;
 
         internal static void Load() {
             IL.EnemyDreamnailReaction.RecieveDreamImpact += ChangeDreamNailSoulGain;
