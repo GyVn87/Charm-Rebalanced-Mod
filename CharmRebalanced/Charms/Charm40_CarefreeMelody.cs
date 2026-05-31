@@ -1,6 +1,7 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -11,12 +12,14 @@ namespace TuyenTuyenTuyen.Charms {
 
         internal static void Load() {
             IL.HeroController.TakeDamage += BeforeCarefreeShieldCheck;
+            On.PlayerData.MaxHealth += OnPDMaxHealth;
         }
 
         internal static void Unload() {
             IL.HeroController.TakeDamage -= BeforeCarefreeShieldCheck;
+            On.PlayerData.MaxHealth -= OnPDMaxHealth;
         }
-        
+
         private static void BeforeCarefreeShieldCheck(ILContext il) {
             ILCursor cursor = new ILCursor(il).Goto(0);
 
@@ -86,6 +89,11 @@ namespace TuyenTuyenTuyen.Charms {
                 return true;
             }
             return false;
+        }
+
+        private static void OnPDMaxHealth(On.PlayerData.orig_MaxHealth orig, PlayerData self) {
+            orig(self);
+            timer = 0f;
         }
     }
 }

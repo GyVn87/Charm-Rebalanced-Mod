@@ -18,6 +18,7 @@ namespace TuyenTuyenTuyen.Charms {
             On.HealthManager.TakeDamage += OnHealthManager_TakeDamage;
             On.HutongGames.PlayMaker.Actions.GetOwner.OnEnter += OnGetOwner_OnEnter;
             On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter += OnCallMethodProper;
+            On.GetHP.OnEnter += OnGetHP_OnEnter;
         }
 
         internal static void Unload() {
@@ -25,6 +26,7 @@ namespace TuyenTuyenTuyen.Charms {
             On.HealthManager.TakeDamage -= OnHealthManager_TakeDamage;
             On.HutongGames.PlayMaker.Actions.GetOwner.OnEnter -= OnGetOwner_OnEnter;
             On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter -= OnCallMethodProper;
+            On.GetHP.OnEnter -= OnGetHP_OnEnter;
         }
 
         private static void OnDamageEffectTicker_OnTriggerEnter2D(On.DamageEffectTicker.orig_OnTriggerEnter2D orig, DamageEffectTicker self, Collider2D otherCollider) {
@@ -43,6 +45,16 @@ namespace TuyenTuyenTuyen.Charms {
             if (debuff)
                 hitInstance.Multiplier *= weaknessDebuffMultiplier;
             orig(self, hitInstance);
+        }
+
+        // Minions' damage: Weaverling, Grimmchild
+        private static void OnGetHP_OnEnter(On.GetHP.orig_OnEnter orig, GetHP self) {
+            orig(self);
+            if (self.Owner.name == "Enemy Damager") {
+                WeaknessDebuff debuff = self.target?.GameObject?.Value?.GetComponent<WeaknessDebuff>();
+                if (debuff)
+                    self.storeValue.Value -= 1;
+            }
         }
 
         private static void OnGetOwner_OnEnter(On.HutongGames.PlayMaker.Actions.GetOwner.orig_OnEnter orig, HutongGames.PlayMaker.Actions.GetOwner self) {

@@ -121,15 +121,13 @@
 - Attack speed increase: 46% => 33%
 
 ***This charm is really flexible when it can be used to both increase damage output and soul gain. It certainly needs a little nerf!***
-## Long nail
-- Nail range increase: 15% => 12%
+## Longnail
 - Now applies to Nail Art
 
 ## Mark Of Pride
-- Nail range increase: 25% => 20%
 - Now applies to Nail Art
 
-***This might be controversial when I nerfed these 2 charms. But I have to say that these two are really powerful. I would say that they also overshadow mobility charms since you no longer need to approach enemies that close.***
+***Because... why not?***
 ## Fury Of The Fallen
 - Notch cost: 2 => 3
 - No longer can only be activated at single mask.
@@ -162,9 +160,9 @@
 
 ***Cool charm but needs a little buff***
 ## Baldur Shell
-- Restores 1 blocker hit after every 1 successful Focus
+- Restores 1 blocker hit after every 2 successful Focus
 - Synergy with Deep Focus:
-    - Restores 2 blocker hits after every 1 successful Focus
+    - Restores 1 blocker hit after every 1 successful Focus
 
 
 ***I feel like this change would encourage a new playstyle without making it overpowered. With this, focusing in Radiant boss fights is no longer entirely useless.***
@@ -218,7 +216,7 @@
 ***At this point, I really wonder why all Liveblood-related charms are so weird. This charm is not a exception. I do think that these changes would make the charm more fun to use.***
 ## Hiveblood
 - Notch cost: 4 => 2.
-- Regeneration rate: 12s
+- Regeneration rate: 10s
 - Focus no longer cancels regeneration
 - Its behavior with Joni's Blessing is not changed.
 
@@ -243,7 +241,7 @@
 
 ***It is just a little too good for an 1-notch slot charm***
 ## Weaversong
-- Each weaversling now deals: 33% of Nail damage.
+- Each weaversling now deals: 25% of Nail damage (round down).
 - Each successful hit gain player 2 soul by default.
 - Synergy with Grubsong:
   - Soul gain: 3
@@ -274,7 +272,7 @@
 - No longer relies on luck to block attacks.
 - Cooldown: 20 seconds
 - While on cooldown, Knight takes double of the damage from all sources
--***Doesn't work in Radiant fight***
+- ***Doesn't work in Radiant fight***
 
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:

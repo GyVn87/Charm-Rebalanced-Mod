@@ -7,7 +7,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float baseSpeedMultiplier = 1f;
         private static readonly float masterSpeedMultiplier = 1.25f;
 
-        private static readonly float weaverlingDamageRatio = 0.33f; // to nail damage
+        private static readonly float weaverlingDamageRatio = 0.25f; // to nail damage
 
         private static readonly int soulGainOnHit = 2;
         private static readonly int soulGainGrubsong = 3;
