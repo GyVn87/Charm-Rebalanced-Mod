@@ -2,7 +2,7 @@
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm26_NailmasterGlory {
-        private static readonly float nailArtChargeTimeMaster = 0.9f;
+        private static readonly float nailArtChargeTimeMaster = 0.75f;
 
         internal static void Load() {
             On.HeroController.Awake += OnHCAwake;

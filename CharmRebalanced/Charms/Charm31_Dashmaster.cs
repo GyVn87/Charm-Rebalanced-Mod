@@ -14,6 +14,9 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float dashCooldown = 0.4f;
         private static readonly float cooldownDecreaseOnDash = 0f;
 
+        private static InputHandler inputHandler = null;
+
+        private static readonly FieldInfo inputHandlerField = typeof(HeroController).GetField("inputHandler", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo airDashed = typeof(HeroController).GetField("airDashed", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo dashCooldownTimer = typeof(HeroController).GetField("dashCooldownTimer", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo shadowDashTimer = typeof(HeroController).GetField("shadowDashTimer", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -21,11 +24,13 @@ namespace TuyenTuyenTuyen.Charms {
         internal static void Load() {
             ModHooks.CharmUpdateHook += Charm31_Dashmaster.OnCharmUpdate;
             On.HeroController.HeroDash += OnHeroController_HeroDash;
+            On.HeroController.CanDash += OnHeroController_CanDash;
         }
 
         internal static void Unload() {
             ModHooks.CharmUpdateHook -= Charm31_Dashmaster.OnCharmUpdate;
             On.HeroController.HeroDash -= OnHeroController_HeroDash;
+            On.HeroController.CanDash -= OnHeroController_CanDash;
         }
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {
@@ -49,6 +54,15 @@ namespace TuyenTuyenTuyen.Charms {
                 dashCooldownTimer.SetValue(self, 0);
                 airDashed.SetValue(self, false);
             }
+        }
+
+        private static bool OnHeroController_CanDash(On.HeroController.orig_CanDash orig, HeroController self) {
+            if (inputHandler == null)
+                inputHandler = (InputHandler)inputHandlerField.GetValue(self);
+            HeroActions inputActions = inputHandler.inputActions;
+            if (inputActions.down.IsPressed && !self.cState.onGround && PlayerData.instance.GetBool("equippedCharm_31") && !inputActions.left.IsPressed && !inputActions.right.IsPressed)
+                return true;
+            return orig(self);
         }
     }
 }
