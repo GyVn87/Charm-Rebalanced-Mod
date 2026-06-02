@@ -31,7 +31,6 @@
 ## Soul Catcher
 - Notch cost: 2 => 1
 - Soul gain for Main Vessel: 3 => 2
-- Soul gain for reserve Soul Vessels: 2
 
 ***This charm certainly needs a buff to help it compete with other Soul charms such as Spell Twister, Grubsong***
 ## Shaman Stone
@@ -49,6 +48,7 @@
 ***The 4-notch cost is extremely high and I don't find the benefits really worth it. And the added debuff will make the charm unique to Soul Catcher, rather than a simply upgrade.***
 ## Dashmaster
 - Shadow Dash cooldown reduce: 20%
+- Players can Dash Downward at any time
 - Down Dash now fully recharges Dash cooldown, even in mid-air
 
 ***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
@@ -56,8 +56,6 @@
 - Run speed increase: 20% => 30%
 - Speed increase also APPLIES WHEN ON AIR.
 - Increases swim speed by 100%
-- Synergy with Dashmaster:
-    - Run speed increase: 40%
 
 ***I always feel so slow when jumping when using this charm. Now it's not anymore. This charm is already good so I have to remove the synergy with Dashmaster, otherwise it will be too overpowered.***
 ## Grubsong
@@ -66,7 +64,7 @@
 - Synergy with Grubberfly's Elegy:
   - Soul gain: 25 => 20.
 
-***Grubsong is a little too good for early game. So I think it is fine to nerf it a little bit. However, by scaling soul gain with damage, it remains viable in later stages, especially againsts bosses that deal more than 1 damage. I do think removing synergy is too harsh, but the charm is already too good. I also believe that a charm should only synergy with others if it does not work well with them.***
+***Grubsong is a little too good for early game. So I think it is fine to nerf it a little bit. However, by scaling soul gain with damage, it remains viable in later stages, especially againsts bosses that deal more than 1 damage.***
 ## Grubberfly's Elegy
 - Grubberfly's Elegy now works properly in Patheons with Shell Binding
 - Grubberfly's Elegy no longer loses its effect when not at full masks.
@@ -108,12 +106,11 @@
 ***The original increase is almost insignificant which many players didn't bother using it. The use in Colosseum Of Fools is really interesting to me. It encourages high risk, high return playstyle when you have to sacrifice 2 notch slots.***
 ## Strength
 - Damage increase: 50% => 30%.
-- Now applies to Nail Art
 
-***This charm certainly needs a nerf, 50% increases in damage is purely evil. Moreover, is it weird when the charm only applies to Nail, don't you think?***
+***This charm certainly needs a nerf, 50% increases in damage is purely evil.***
 ## Heavy Blow
-- Notch cost: 2 => 1
 - Remove increased knockback
+- Increases Nail Art damage by 20%
 - Hits from Great Slash and Dash Slash now count as 3 hits to stagger a boss
 
 ***Why increase the knockback when you need to hit the enemies as many as possible. I believe this charm needs some reworks.***
@@ -155,7 +152,6 @@
 
 ***This charm has the same issue with Grubberfly's Elegy, when it is only activated in such an extreme condition. There are very few people really use this charm, and it punishes casual players too much. Because of that, I want to still retain its original concept while making it more accessible to more people.***
 ## Thorns Of Agony
-- Thorn damage: 1x Nail damage
 - No longer inhibits movement when taken hit.
 
 ***Cool charm but needs a little buff***
@@ -207,7 +203,6 @@
 ## Lifeblood Core
 - Notch cost: 3 => 2
 
-
 ***The high cost really makes it not fit well in various builds***
 ## Joni's Blessing
 - Notch cost: 4 => 2
@@ -216,11 +211,9 @@
 ***At this point, I really wonder why all Liveblood-related charms are so weird. This charm is not a exception. I do think that these changes would make the charm more fun to use.***
 ## Hiveblood
 - Notch cost: 4 => 2.
-- Regeneration rate: 10s
-- Focus no longer cancels regeneration
-- Its behavior with Joni's Blessing is not changed.
+- Focus no longer interrupts regeneration
 
-***I just hate when Focus interrupt the regeneration, which is pretty annoying***
+***I just hate when Focus interrupts regeneration, which is pretty annoying***
 ## Spore Shroom
 - Spore damage: 3x Nail Damage
 - Its damage can now be boosted by Shaman Stone
@@ -230,16 +223,11 @@
 
 ***This changes makes Spore Shroom literally a spell now***
 ## Sharp Shadow
-- Shadow Dash speed increase: 40%
 - Shadow Dash damage: 2x Nail damage
 - Synergy with Dashmaster:
     - Shadow Dash damage: 2.5x Nail damage
 
 ***I do believe this charm is a little too overpowered. But I can't help but buffing it, everyone loves dashing, right...?***
-## Nailmaster's Glory
-- Nail Arts'charge time: 0.75s => 0.9s
-
-***It is just a little too good for an 1-notch slot charm***
 ## Weaversong
 - Each weaversling now deals: 25% of Nail damage (round down).
 - Each successful hit gain player 2 soul by default.
@@ -249,10 +237,6 @@
   - Speed increase: 50% => 25%
 
 ***I love summoner playstyle, but this charm is really ineffective. I believe the effect that gain player soul on hit would make this charm unique to other summon charms.***
-## Dream Wielder
-- Soul gain on Dream Nail hit: 66 => 50
-
-***I would say 66 Soul is too much, plus you can use 2-3 Dream Nail in some cutscenes which is crazily overpowered to me***
 ## Dreamshield
 - Notch cost: 3 => 2
 - Now summons 2 shields at a time.
@@ -261,10 +245,6 @@
 ***I like this change, but wonder if it makes this charm too powerful.***
 ## Grimmchild
 - Now fires 3 fireballs at once
-- Damage per shot:
-  - Level 2: 5
-  - Level 3: 8 
-  - Level 4: 11
 - Grimmchild can now shoot more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
