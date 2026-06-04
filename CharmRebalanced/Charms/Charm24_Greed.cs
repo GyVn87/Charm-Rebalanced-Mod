@@ -11,7 +11,7 @@ namespace TuyenTuyenTuyen.Charms {
             {"colosseumGoldCompleted",   3000},
         };
 
-        private static readonly float trialRewardIncrease = 1.25f;
+        private static readonly float trialRewardIncrease = 4f / 3f;
         private static readonly float geoGainIncrease = 0.4f;
 
         internal static void Load() {

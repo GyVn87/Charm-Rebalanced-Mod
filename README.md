@@ -53,9 +53,11 @@
 
 ***This charm has been overshadowed too much by Sharp Shadow, it certainly need a buff to be relevant in the late game and compete with other 2-notch slots charms.***
 ## Sprintmaster
-- Run speed increase: 20% => 30%
+- Run speed increase: 20% => 25%
 - Speed increase also APPLIES WHEN ON AIR.
 - Increases swim speed by 100%
+- Synergy with Dashmaster:
+  - Run speed increase: 39% => 35%
 
 ***I always feel so slow when jumping when using this charm. Now it's not anymore. This charm is already good so I have to remove the synergy with Dashmaster, otherwise it will be too overpowered.***
 ## Grubsong
@@ -101,7 +103,7 @@
 ## Greed
 - Geo drop increase: (20% - 100%) => (40% => 100%)
 - Because Geo drop calculation is a little weird, on average, the increase is around 50%
-- When being used in Colosseum Of Fools, Greed increases Trials' Geo reward by 25%
+- When being used in Colosseum Of Fools, Greed increases Trials' Geo reward by 33%
 
 ***The original increase is almost insignificant which many players didn't bother using it. The use in Colosseum Of Fools is really interesting to me. It encourages high risk, high return playstyle when you have to sacrifice 2 notch slots.***
 ## Strength
@@ -129,7 +131,7 @@
 - Notch cost: 2 => 3
 - No longer can only be activated at single mask.
 - The less health you have, the higher the damage is.
-- The damage increase formula: $Damage increase = (\frac{currentMasks - maximumMasks}{maximumMasks + 1})^2$
+- The damage increase formula: $Damage Increase = (\frac{currentMasks - maximumMasks}{maximumMasks + 1})^2$
 - In Patheon with Shell Binding, the increase is multiplied by 1.5.
 
 - 4 maximum masks (with Shell Binding)
@@ -154,12 +156,11 @@
 ## Thorns Of Agony
 - No longer inhibits movement when taken hit.
 
-***Cool charm but needs a little buff***
+***I think we both agree that the freeze is that bad***
 ## Baldur Shell
 - Restores 1 blocker hit after every 2 successful Focus
 - Synergy with Deep Focus:
     - Restores 1 blocker hit after every 1 successful Focus
-
 
 ***I feel like this change would encourage a new playstyle without making it overpowered. With this, focusing in Radiant boss fights is no longer entirely useless.***
 ## Flukenest
@@ -202,8 +203,10 @@
 ***Because... why not? I have never thought that 2 Liveblood Masks is worth 2 Notches***
 ## Lifeblood Core
 - Notch cost: 3 => 2
+- No longer grants players additional Lifeblood Masks after resting at the bench
+- Instead, player gains 1 Lifeblood Mask after taking 4 damage
 
-***The high cost really makes it not fit well in various builds***
+***The high cost really makes it not fit well in various builds. And hopefully, with the new mechanic, it can fairly compete with other healing charms like Heart, Joni's Blessin, rather than a simple upgrade to Lifeblood Heart.***
 ## Joni's Blessing
 - Notch cost: 4 => 2
 - Max health increase: 40% => 50%
@@ -211,6 +214,7 @@
 ***At this point, I really wonder why all Liveblood-related charms are so weird. This charm is not a exception. I do think that these changes would make the charm more fun to use.***
 ## Hiveblood
 - Notch cost: 4 => 2.
+- Regeneration duration: 10 seconds => 12 seconds
 - Focus no longer interrupts regeneration
 
 ***I just hate when Focus interrupts regeneration, which is pretty annoying***
@@ -245,6 +249,10 @@
 ***I like this change, but wonder if it makes this charm too powerful.***
 ## Grimmchild
 - Now fires 3 fireballs at once
+- Damage per ball:
+  - Level 2: 5  => 3
+  - Level 3: 8  => 6
+  - Level 4: 11 => 9
 - Grimmchild can now shoot more ***ACCURATELY***.
 
 ***As I said before, I love summoner playstyle. Despite this charm's unlimited power, I still buffed it to make it even stronger.***
@@ -252,7 +260,7 @@
 - No longer relies on luck to block attacks.
 - Cooldown: 20 seconds
 - While on cooldown, Knight takes double of the damage from all sources
-- ***Doesn't work in Radiant fight***
+- ***Doesn't work in Radiant fights***
 
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:
