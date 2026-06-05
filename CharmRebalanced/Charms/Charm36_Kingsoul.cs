@@ -1,7 +1,7 @@
 ﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm36_Kingsoul {
         private static readonly float soulGainRate = 2f;
-        private static readonly int soulGain = 5;
+        private static readonly int soulGain = 4;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.Wait.OnEnter += OnWait_OnEnter;

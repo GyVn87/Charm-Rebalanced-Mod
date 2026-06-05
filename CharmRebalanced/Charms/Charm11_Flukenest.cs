@@ -6,14 +6,14 @@ using UnityEngine;
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm11_Flukenest {
         private static readonly int flukeSpawnLevel1 = 9;
-        private static readonly int flukeSpawnLevel1Shaman = 10;
+        private static readonly int flukeSpawnLevel1Shaman = 9;
         private static readonly int flukeSpawnLevel2 = 16;
-        private static readonly int flukeSpawnLevel2Shaman = 15;
+        private static readonly int flukeSpawnLevel2Shaman = 16;
 
         private static readonly int flukeDamageLevel1 = 4;
         private static readonly int flukeDamageLevel1Shaman = 5;
         private static readonly int flukeDamageLevel2 = 4;
-        private static readonly int flukeDamageLevel2Shaman = 6;
+        private static readonly int flukeDamageLevel2Shaman = 5;
 
         private static readonly FieldInfo hasBursted = typeof(SpellFluke).GetField("hasBursted", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo flukeDamage = typeof(SpellFluke).GetField("damage", BindingFlags.Instance | BindingFlags.NonPublic);

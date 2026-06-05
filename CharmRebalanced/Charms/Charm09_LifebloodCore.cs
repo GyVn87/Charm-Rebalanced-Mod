@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm09_LifebloodCore {
-        private static readonly int blueHealthIncreases = 0;
-        private static readonly int totalDamageTakenToGainLifeblood = 4;
+        private static readonly int blueHealthIncreases = 1;
+        private static readonly int totalDamageTakenToGainLifeblood = 5;
 
         private static int damageTakenCounter = 0;
         private static PlayMakerFSM blueHealthControlFSM = null;

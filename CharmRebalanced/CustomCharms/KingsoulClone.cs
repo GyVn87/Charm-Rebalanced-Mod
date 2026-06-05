@@ -14,7 +14,7 @@ namespace TuyenTuyenTuyen.CustomCharms {
             Instance = this;
         }
 
-        protected override int GetCharmCost() => 3;
+        protected override int GetCharmCost() => 2;
 
         protected override string GetDescription() => """
             Holy charm symbolising a union between higher beings. The bearer will slowly absorb the limitless Soul contained within.

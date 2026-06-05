@@ -12,8 +12,8 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int shockwaveDarkDamage = 30;
         private static readonly int megaDarkDamage = 15;
 
-        internal static readonly float fireballDamageIncrease = 1.3f;
-        internal static readonly float spellDamageIncrease = 1.4f;
+        internal static readonly float fireballDamageIncrease = 1.25f;
+        internal static readonly float spellDamageIncrease = 1.3f;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += Charm19_ShamanStone.OnSetFsmInt_OnEnter;

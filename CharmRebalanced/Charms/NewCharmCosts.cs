@@ -27,7 +27,7 @@ namespace TuyenTuyenTuyen.Charms {
         internal static int OnGetInt(string name, int orig) {
             if (NewCharmCosts.charmCosts.TryGetValue(name, out int newCost))
                 return newCost;
-            else if (name == "charmCost_36" && PlayerData.instance.royalCharmState == 3)
+            else if (name == "charmCost_36" && PlayerData.instance.royalCharmState == 2)
                 return 3;
             return orig;
         }
