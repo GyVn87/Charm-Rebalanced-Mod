@@ -25,8 +25,8 @@
 
 ***This charm certainly needs a buff to help it compete with other top-tier Soul charms like Spell Twister and Grubsong***
 ## Shaman Stone
-- Vengeful Sprit and Shade Soul damage increase: 33% => 30% 
-- **OTHER SPELL DAMAGE** increase: 40%
+- Vengeful Sprit and Shade Soul damage increase: 33% => 25% 
+- **OTHER SPELL DAMAGE** increase: 30%
   
 ***Don't worry. This charm is still extremely powerful.***
 ## Soul Eater
@@ -153,10 +153,6 @@
 ## Flukenest
 - Notch cost: 3 => 2
 - Multihits bug has been fixed in the latest version of the game, but the current Modding API-supportable version hasn't yet. However, I somehow successfully fixed it. 
-- Vengeful Spirit + Flukenest: 8 flukes x 5 damage (36)
-- Vengeful Spirit + Flukenest + Shaman Stone: 10 flukes x 5 damage (45 => 50)
-- Shade Soul + Flukenest: 16 flukes x 4 damage (64)
-- Shade Soul + Flukenest + Shaman Stone: 15 flukes x 6 damage (80 => 90)
 - Synergy with Defender's Crest:
   - Vengeful Spirit: 50 (2.2 seconds)
   - Shade Soul: 100 (2.2 seconds)
@@ -189,8 +185,8 @@
 ***Why not? I have never thought that 2 Lifeblood Masks is worth 2 notch slots***
 ## Lifeblood Core
 - Notch cost: 3 => 2
-- No longer grants players additional Lifeblood Masks after resting at the bench
-- Instead, Knight gains 1 Lifeblood Mask for every 4 damage taken
+- After player rest at the bench, grants him 4 => 1 additional Lifeblood Mask
+- In addition, Knight gains 1 Lifeblood Mask for every 5 damage taken
 
 ***The high cost makes it hard to fit well into various builds. With the new mechanic, it can fairly compete with other healing charms like Heart, Joni's Blessing, rather than a simple upgrade to Lifeblood Heart.***
 ## Joni's Blessing
@@ -246,8 +242,7 @@
 
 ***To put it simple, I hate RNG-based mechanics***
 ## Kingsoul:
-- Notch cost: 5 => 3
-- Soul gain: 4 => 5
+- Notch cost: 5 => 2
 - Can now be equipped even after player obtains Voidheart
 
 ***5 notch slots is crazy, not gonna lie***
