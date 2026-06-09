@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm40_CarefreeMelody {
-        private static readonly float hitBlockCooldown = 20f;
+        private static readonly float hitBlockCooldown = 15f;
 
         private static float timer = 0f;
 

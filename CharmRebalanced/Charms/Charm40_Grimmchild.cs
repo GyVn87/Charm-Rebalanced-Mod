@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm40_Grimmchild {
-        private static readonly float multipleShotsSpread = 30f;
+        private static readonly float multipleShotsSpread = 25f;
 
         private static readonly float newSpread = 0f; // the lower, the more accurate Grimmchild's shot is
         private static readonly int lv2Damage = 3;
@@ -14,7 +14,7 @@ namespace TuyenTuyenTuyen.Charms {
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.FireAtTarget.OnEnter += Charm40_Grimmchild.OnFireAtTarget_OnEnter;
             On.HutongGames.PlayMaker.Actions.SetIntValue.OnEnter += Charm40_Grimmchild.OnSetIntValue_OnEnter;
-            
+
         }
 
         internal static void Unload() {

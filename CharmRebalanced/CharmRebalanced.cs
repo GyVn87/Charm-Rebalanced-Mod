@@ -84,6 +84,7 @@ namespace TuyenTuyenTuyen {
 			NewCharmCosts.Load();
 			Focus.Load();
 			ExtraDamage.Load();
+			MinionsNotInterruptStagger.Load();
 		}
 
 		public void Unload() {
@@ -129,6 +130,7 @@ namespace TuyenTuyenTuyen {
 			NewCharmCosts.Unload();
 			Focus.Unload();
 			ExtraDamage.Unload();
+			MinionsNotInterruptStagger.Unload();
 		}
 
 		private void RevertChanges() {

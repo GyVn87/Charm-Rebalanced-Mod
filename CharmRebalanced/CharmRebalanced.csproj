@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <Target Name="Copy DLLs" AfterTargets="Build">
-    <Copy SourceFiles="$(TargetDir)\$(TargetName).dll;$(TargetDir)\$(TargetName).pdb" DestinationFolder="$(ManagedFolder)\Mods\$(ProjectName)" />
+    <Copy SourceFiles="$(TargetDir)\$(TargetName).dll;$(TargetDir)\$(TargetName).pdb" DestinationFolder="$(ManagedFolder)\Mods\Charm Rebalanced" />
     <Message Text="Successfully copied build files" Importance="High" />
   </Target>
   <ItemGroup>
@@ -136,6 +136,7 @@
     <Compile Include="Mechanics\ExtraDamage.cs" />
     <Compile Include="Mechanics\Focus.cs" />
     <Compile Include="Mechanics\CustomEffect.cs" />
+    <Compile Include="Mechanics\MinionsNotInterruptStagger.cs" />
     <Compile Include="Mechanics\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

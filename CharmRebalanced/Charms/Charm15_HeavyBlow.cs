@@ -1,11 +1,10 @@
 ﻿using System.Reflection;
+using TuyenTuyenTuyen.Mechanics;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm15_HeavyBlow {
         private static readonly int stunHit = 3;
         private static readonly float nailArtDamageIncrease = 1.2f;
-
-        private static readonly FieldInfo stunControlFSM = typeof(HealthManager).GetField("stunControlFSM", BindingFlags.Instance | BindingFlags.NonPublic);
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.OnEnter += OnPlayerDataBoolTest_OnEnter;
@@ -34,7 +33,7 @@ namespace TuyenTuyenTuyen.Charms {
             string ownerName = hitInstance.Source.name;
             if (ownerName != "Dash Slash" && ownerName != "Great Slash") return;
 
-            PlayMakerFSM stunControl = (PlayMakerFSM)stunControlFSM.GetValue(self);
+            PlayMakerFSM stunControl = (PlayMakerFSM)Utilities.stunControlFSM.GetValue(self);
             if (stunControl) {
                 for (int i = 1; i <= stunHit - 1; i++)
                     stunControl.Fsm.Event("STUN DAMAGE");

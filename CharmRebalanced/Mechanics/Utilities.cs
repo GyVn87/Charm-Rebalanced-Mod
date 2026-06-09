@@ -5,6 +5,8 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Mechanics {
     internal static class Utilities {
+        internal static readonly FieldInfo stunControlFSM = typeof(HealthManager).GetField("stunControlFSM", BindingFlags.Instance | BindingFlags.NonPublic);
+
         internal static float GetAngleBetween2Object(GameObject GO1, GameObject GO2) {
             float num = GO2.transform.position.y - GO1.transform.position.y;
             float num2 = GO2.transform.position.x - GO1.transform.position.x;

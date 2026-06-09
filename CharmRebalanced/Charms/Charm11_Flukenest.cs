@@ -1,6 +1,9 @@
-﻿using Mono.Cecil.Cil;
+﻿using Mono.Cecil;
+using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using System;
 using System.Reflection;
+using TuyenTuyenTuyen.Mechanics;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -24,6 +27,7 @@ namespace TuyenTuyenTuyen.Charms {
             On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter += Charm11_Flukenest.OnFlingObjectsFromGlobalPool_OnEnter;
             On.SpellFluke.OnEnable += Charm11_Flukenest.ONSFOnEnable;
             IL.SpellFluke.DoDamage += ForceBurstIfImmune;
+            IL.SpellFluke.DoDamage += HookAfterApplyingDamage;
         }
 
         internal static void Unload() {
@@ -31,6 +35,7 @@ namespace TuyenTuyenTuyen.Charms {
             On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter -= Charm11_Flukenest.OnFlingObjectsFromGlobalPool_OnEnter;
             On.SpellFluke.OnEnable -= Charm11_Flukenest.ONSFOnEnable;
             IL.SpellFluke.DoDamage -= ForceBurstIfImmune;
+            IL.SpellFluke.DoDamage -= HookAfterApplyingDamage;
         }
 
         private static void ForceBurstIfImmune(ILContext il) {
@@ -127,6 +132,60 @@ namespace TuyenTuyenTuyen.Charms {
                     break;
             }
             flukeDamage.SetValue(self, newDamage);
+        }
+
+        private static void HookAfterApplyingDamage(ILContext il) {
+            ILCursor cursor = new ILCursor(il).Goto(0);
+
+            /*
+                // component.hp -= damage;
+	            IL_0032: ldloc.0
+	            IL_0033: dup
+	            IL_0034: ldfld int32 HealthManager::hp
+	            IL_0039: ldarg.0
+	            IL_003a: ldfld int32 SpellFluke::damage
+	            IL_003f: sub
+	            IL_0040: stfld int32 HealthManager::hp
+	            // if (component.hp <= 0)
+	            IL_0045: ldloc.0
+	            IL_0046: ldfld int32 HealthManager::hp
+	            IL_004b: ldc.i4.0
+	            IL_004c: bgt.s IL_0060
+            */
+
+            if (cursor.TryGotoNext(
+                MoveType.Before,
+                i => i.MatchLdloc(0),
+                i => i.MatchLdfld(out _),
+                i => i.MatchLdcI4(0),
+                i => i.MatchBgt(out _)  
+            )) {
+                cursor.Emit(OpCodes.Ldarg_1);
+                cursor.EmitDelegate<Action<GameObject>>(AddEaterCurse);
+            }
+        }
+
+        private static void AddEaterCurse(GameObject gameObject) {
+            PlayerData playerData = PlayerData.instance;
+            if (!playerData.GetBool("equippedCharm_21"))
+                return;
+
+            FlukenestEaterCurseCooldown cooldown = gameObject.GetComponent<FlukenestEaterCurseCooldown>();
+            if (cooldown == null) {
+                gameObject.AddComponent<FlukenestEaterCurseCooldown>();
+                gameObject.AddComponent<EaterCurse>();
+            }
+        }
+    }
+
+    internal class FlukenestEaterCurseCooldown : CustomEffect {
+        public override float Duration => 3f;
+        public override Color StartColor => new(1f, 1f, 1f, 0f);
+        public override Vector3 LocalScale => new(1f, 1f, 1f);
+        public override string Name => "Flukenest Eater Curse Cooldown";
+
+        FlukenestEaterCurseCooldown() {
+            base.SetEmissionRate(0f);
         }
     }
 }

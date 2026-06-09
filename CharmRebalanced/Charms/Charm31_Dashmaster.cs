@@ -11,7 +11,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float shadowDashCooldownDecrease = 0.8f;
         private static readonly float shadowDashCooldownMaster = shadowDashCooldown * shadowDashCooldownDecrease;
 
-        private static readonly float dashCooldown = 0.4f;
+        private static readonly float dashCooldown = 0.3f;
         private static readonly float cooldownDecreaseOnDash = 0f;
 
         private static InputHandler inputHandler = null;
