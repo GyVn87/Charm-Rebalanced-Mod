@@ -170,23 +170,12 @@ namespace TuyenTuyenTuyen.Charms {
             if (!playerData.GetBool("equippedCharm_21"))
                 return;
 
-            FlukenestEaterCurseCooldown cooldown = gameObject.GetComponent<FlukenestEaterCurseCooldown>();
+            EaterCurseCooldown cooldown = gameObject.GetComponent<EaterCurseCooldown>();
             if (cooldown == null) {
-                gameObject.AddComponent<FlukenestEaterCurseCooldown>();
+                gameObject.AddComponent<EaterCurseCooldown>();
                 gameObject.AddComponent<EaterCurse>();
             }
         }
-    }
-
-    internal class FlukenestEaterCurseCooldown : CustomEffect {
-        public override float Duration => 3f;
-        public override Color StartColor => new(1f, 1f, 1f, 0f);
-        public override Vector3 LocalScale => new(1f, 1f, 1f);
-        public override string Name => "Flukenest Eater Curse Cooldown";
-
-        FlukenestEaterCurseCooldown() {
-            base.SetEmissionRate(0f);
-        }
-    }
+    } 
 }
 

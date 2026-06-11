@@ -2,7 +2,9 @@
 using IL;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
+using On;
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -10,11 +12,17 @@ namespace TuyenTuyenTuyen.Charms {
         internal static void Load() {
             ModHooks.AfterAttackHook += OnAfterAttack;
             IL.HealthManager.TakeDamage += RemoveBeamStagger;
+            On.PlayerData.MaxHealth += OnPDMaxHealth;
+            On.HeroController.TakeDamage += OnHeroController_TakeDamage;
+            On.HeroController.AddHealth += OnHeroController_AddHealth;
         }
 
         internal static void Unload() {
             ModHooks.AfterAttackHook -= OnAfterAttack;
             IL.HealthManager.TakeDamage -= RemoveBeamStagger;
+            On.PlayerData.MaxHealth -= OnPDMaxHealth;
+            On.HeroController.TakeDamage -= OnHeroController_TakeDamage;
+            On.HeroController.AddHealth -= OnHeroController_AddHealth;
         }
 
         private static void OnAfterAttack(AttackDirection attackDir) {
@@ -48,30 +56,23 @@ namespace TuyenTuyenTuyen.Charms {
                     grubberFlyBeam = Controller.grubberFlyBeamPrefabD.Spawn(Knight.transform.position);
                     grubberFlyBeam.transform.SetScaleY(Knight.transform.localScale.x);
                     grubberFlyBeam.transform.localEulerAngles = new Vector3(0f, 0f, 90f);
-                    if (PD.GetBool("equippedCharm_13")) 
+                    if (PD.GetBool("equippedCharm_13"))
                         grubberFlyBeam.transform.SetScaleY(grubberFlyBeam.transform.localScale.y * MANTIS_CHARM_SCALE);
                     break;
             }
         }
 
         private static bool CanCastBeam() {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
-            int currentHP = PD.GetInt("health");
+            PlayerData playerData = PlayerData.instance;
+            int currentHP = playerData.GetInt("health");
 
-            if (currentHP == 1) {
-                if (PD.GetBool("equippedCharm_6"))
-                    PD.SetInt("beamDamage", BaseBeamDamage());
+            if (currentHP == 1) 
                 return false;
-            }
-
-            int beamDamage = NewBeamDamage();
-            PD.SetInt("beamDamage", beamDamage);
-
-            if (!BossSequenceController.BoundShell && currentHP >= PD.CurrentMaxHealth)
+            if (!BossSequenceController.BoundShell && currentHP >= playerData.CurrentMaxHealth)
                 return false;
-            if (BossSequenceController.BoundShell && currentHP > PD.CurrentMaxHealth)
+            if (BossSequenceController.BoundShell && currentHP > playerData.CurrentMaxHealth)
                 return false;
-            if (beamDamage <= 1)
+            if (playerData.GetInt("beamDamage") <= 1)
                 return false;
             return true;
         }
@@ -85,7 +86,7 @@ namespace TuyenTuyenTuyen.Charms {
             if (currentHP > currentMaxHP)
                 currentHP = currentMaxHP;
 
-            int newBeamDamage; 
+            int newBeamDamage;
             if (BossSequenceController.BoundShell)
                 newBeamDamage = Mathf.CeilToInt(Mathf.Pow((float)(currentHP - 1) / (float)(currentMaxHP + 1), 2f) * 1.5f * strengthIncrease * nailDamge);
             else
@@ -109,17 +110,17 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void RemoveBeamStagger(ILContext il) {
             ILCursor cursor = new ILCursor(il).Goto(0);
-                /*
-                    // if (hp > 0)
-                    IL_0365: ldarg.0
+            /*
+                // if (hp > 0)
+                IL_0365: ldarg.0
 
-                    IL_0366: ldfld int32 HealthManager::hp
-                    IL_036b: ldc.i4.0
+                IL_0366: ldfld int32 HealthManager::hp
+                IL_036b: ldc.i4.0
 
-                    IL_036c: ble.s IL_0398
+                IL_036c: ble.s IL_0398
 
-                    // NonFatalHit(hitInstance.IgnoreInvulnerable);
-                */
+                // NonFatalHit(hitInstance.IgnoreInvulnerable);
+            */
             if (cursor.TryGotoNext(
                 MoveType.After,
                 i => i.MatchLdarg(0),
@@ -142,7 +143,7 @@ namespace TuyenTuyenTuyen.Charms {
                 ILCursor cursorClone = cursor.Clone();
                 if (cursorClone.TryGotoNext(
                     i => i.MatchBrfalse(out label)
-                )) { 
+                )) {
                     cursor.Emit(OpCodes.Brtrue, label);
                 }
             }
@@ -152,6 +153,31 @@ namespace TuyenTuyenTuyen.Charms {
             if (hitInstance.AttackType == AttackTypes.NailBeam)
                 return true;
             return false;
+        }
+
+        private static void OnPDMaxHealth(On.PlayerData.orig_MaxHealth orig, PlayerData self) {
+            orig(self);
+            GameManager.instance.StartCoroutine(SetBaseBeamDamageDelayed());
+        }
+
+        private static void OnHeroController_TakeDamage(On.HeroController.orig_TakeDamage orig, HeroController self, GameObject go, CollisionSide damageSide, int damageAmount, int hazardType) { 
+            orig(self, go, damageSide, damageAmount, hazardType);
+            PlayerData playerData = PlayerData.instance;
+            int currentHP = playerData.GetInt("health");
+            if (currentHP == 1 && playerData.GetBool("equippedCharm_6"))
+                playerData.SetInt("beamDamage", BaseBeamDamage());
+            else
+                playerData.SetInt("beamDamage", NewBeamDamage());
+        }
+
+        private static void OnHeroController_AddHealth(On.HeroController.orig_AddHealth orig, HeroController self, int amount) {
+            orig(self, amount);
+            PlayerData.instance.SetInt("beamDamage", NewBeamDamage());
+        }
+
+        private static IEnumerator SetBaseBeamDamageDelayed() {
+            yield return null;
+            PlayerData.instance.SetInt("beamDamage", BaseBeamDamage());
         }
     }
 }

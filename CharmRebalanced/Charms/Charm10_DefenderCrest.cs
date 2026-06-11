@@ -33,6 +33,7 @@ namespace TuyenTuyenTuyen.Charms {
             orig(self, otherCollider);
             if (self.extraDamageType == ExtraDamageTypes.Spore)
                 return;
+
             WeaknessDebuff weaknessDebuff = otherCollider.gameObject.GetComponent<WeaknessDebuff>();
             if (weaknessDebuff == null)
                 otherCollider.gameObject.AddComponent<WeaknessDebuff>();

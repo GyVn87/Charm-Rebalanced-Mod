@@ -1,14 +1,19 @@
-﻿namespace TuyenTuyenTuyen.Charms {
+﻿using UnityEngine;
+
+namespace TuyenTuyenTuyen.Charms {
     internal static class Charm17_SporeShroom {
         private static readonly float sporeDamageMultiplier = 3f; // to Nail damage
 
         private static readonly float sporeDuration = 4.1f; // don't change this
 
         internal static void Load() {
+            On.DamageEffectTicker.OnTriggerEnter2D += OnDamageEffectTicker_OnTriggerEnter2D;
             On.HutongGames.PlayMaker.Actions.GetOwner.OnEnter += OnGetOwner_OnEnter;
+
         }
 
         internal static void Unload() {
+            On.DamageEffectTicker.OnTriggerEnter2D -= OnDamageEffectTicker_OnTriggerEnter2D;
             On.HutongGames.PlayMaker.Actions.GetOwner.OnEnter -= OnGetOwner_OnEnter;
         }
 
@@ -40,6 +45,18 @@
             int extraDamage = ExtraDamageable.GetDamageOfType(damageEffect.extraDamageType);
             float interval = 1f / (nailDamage * sporeDamageMultiplier * shamanStone / sporeDuration / (float)extraDamage);
             damageEffect.SetDamageInterval(interval);
+        }
+
+        private static void OnDamageEffectTicker_OnTriggerEnter2D(On.DamageEffectTicker.orig_OnTriggerEnter2D orig, DamageEffectTicker self, Collider2D otherCollider) {
+            orig(self, otherCollider);
+            if (self.extraDamageType != ExtraDamageTypes.Spore && self.extraDamageType != ExtraDamageTypes.Dung2)
+                return;
+
+            EaterCurseCooldown cooldown = otherCollider.gameObject.GetComponent<EaterCurseCooldown>();
+            if (cooldown == null) {
+                otherCollider.gameObject.AddComponent<EaterCurseCooldown>();
+                otherCollider.gameObject.AddComponent<EaterCurse>();
+            }
         }
     }
 }

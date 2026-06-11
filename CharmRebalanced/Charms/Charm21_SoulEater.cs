@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TuyenTuyenTuyen.Mechanics;
+using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm21_SoulEater {
@@ -52,5 +53,16 @@ namespace TuyenTuyenTuyen.Charms {
         public override Color StartColor => new(0.85f, 0.90f, 0.92f, 0.65f);
         public override Vector3 LocalScale => new(2f, 2f, 2f);
         public override string Name => "Eater Effect Particle";
+    }
+
+    public class EaterCurseCooldown : CustomEffect {
+        public override float Duration => 3f;
+        public override Color StartColor => new(1f, 1f, 1f, 0f);
+        public override Vector3 LocalScale => new(1f, 1f, 1f);
+        public override string Name => "Flukenest Eater Curse Cooldown";
+
+        EaterCurseCooldown() {
+            base.SetEmissionRate(0f);
+        }
     }
 }

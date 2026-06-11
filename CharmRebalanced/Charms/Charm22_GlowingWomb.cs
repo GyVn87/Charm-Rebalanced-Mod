@@ -3,12 +3,13 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm22_GlowingWomb {
-        private static readonly int maximumHatchlings = 6;
-        private static readonly int hatchlingSpawnFocus = 2;
-        private static readonly int hatchlingSpawnFocusDeep = 3;
+        private static readonly int normalMaximumHatchlings = 6;
+        private static readonly int deepMaximumHatchling = 8;
+        private static readonly int hatchlingSpawnFocus = 3;
+        private static readonly int hatchlingSpawnFocusDeep = 4;
+        private static readonly float hatchlingDamageRatio = 2f / 3f; // to Nail damage
 
-        private static readonly float hatchlingDamageRatio = 0.75f; // to Nail damage
-
+        private static int MaximumHatchlings => (PlayerData.instance.GetBool("equippedCharm_34") ? deepMaximumHatchling : normalMaximumHatchlings);
         private static GameObject knightHatchlingPrefab = null;
 
         internal static void Load() {
@@ -16,7 +17,6 @@ namespace TuyenTuyenTuyen.Charms {
             On.HutongGames.PlayMaker.Fsm.ProcessEvent += OnFsmProcessEvent;
             On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter += OnSendMessage_OnEnter;
             On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter += OnSpawnObjectFromGlobalPool_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SetVelocity2d.OnEnter += OnSetVelocity2d_OnEnter;
         }
 
         internal static void Unload() {
@@ -24,7 +24,6 @@ namespace TuyenTuyenTuyen.Charms {
             On.HutongGames.PlayMaker.Fsm.ProcessEvent -= OnFsmProcessEvent;
             On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter -= OnSendMessage_OnEnter;
             On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter -= OnSpawnObjectFromGlobalPool_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SetVelocity2d.OnEnter -= OnSetVelocity2d_OnEnter;
         }
 
         private static void OnKnightHatchling_OnAwake(On.KnightHatchling.orig_Awake orig, KnightHatchling self) {
@@ -41,13 +40,13 @@ namespace TuyenTuyenTuyen.Charms {
             if (PlayerData.instance.GetBool("equippedCharm_22")) {
                 GameObject[] hatchlingSpawn = GameObject.FindGameObjectsWithTag("Knight Hatchling");
                 int hatchlingNum = ((hatchlingSpawn != null) ? hatchlingSpawn.Length : 0);
-                if (hatchlingNum < maximumHatchlings) {
+                if (hatchlingNum < MaximumHatchlings) {
                     PlayerData PD = CharmRebalanced.LoadedInstance.PD;
                     GameObject Knight = CharmRebalanced.LoadedInstance.Knight;
                     if (PD.GetBool("equippedCharm_34")) // Deep Focus
-                        SpawnHatchling(Knight, Math.Min(maximumHatchlings - hatchlingNum, hatchlingSpawnFocusDeep));
+                        SpawnHatchling(Knight, Math.Min(MaximumHatchlings - hatchlingNum, hatchlingSpawnFocusDeep));
                     else
-                        SpawnHatchling(Knight, Math.Min(maximumHatchlings - hatchlingNum, hatchlingSpawnFocus));
+                        SpawnHatchling(Knight, Math.Min(MaximumHatchlings - hatchlingNum, hatchlingSpawnFocus));
                 }
             }
         }
@@ -76,13 +75,14 @@ namespace TuyenTuyenTuyen.Charms {
                 knightHatchlingPrefab.Spawn(spawnPoint.transform.position, spawnPoint.transform.rotation);
         }
 
+        // no longer be used
         private static void OnSetVelocity2d_OnEnter(On.HutongGames.PlayMaker.Actions.SetVelocity2d.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SetVelocity2d self) {
             orig(self);
             if (self.Fsm.Name == "Spell Control" && self.State.Name == "Spell End") {
                 if (PlayerData.instance.GetBool("equippedCharm_22")) {
                     GameObject[] hatchlingSpawn = GameObject.FindGameObjectsWithTag("Knight Hatchling");
                     int hatchlingNum = ((hatchlingSpawn != null) ? hatchlingSpawn.Length : 0);
-                    if (hatchlingNum < maximumHatchlings) {
+                    if (hatchlingNum < MaximumHatchlings) {
                         GameObject Knight = CharmRebalanced.LoadedInstance.Knight;
                         SpawnHatchling(Knight, 1);
                     }
