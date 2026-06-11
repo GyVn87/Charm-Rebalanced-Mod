@@ -38,6 +38,7 @@
 
 ***The original 4-notch cost is extremely high and I don't really find the benefits worth it. This rework also makes the charm unique, rather than a more expensive version of Soul Catcher***
 ## Dashmaster
+- Dash cooldown: 0.4s => 0.3s
 - Shadow Dash cooldown: reduced by 20%
 - Players can now Down Dash at any time
 - Executing a Down Dash now fully recharges Dash cooldown immediately, even in mid-air
@@ -47,8 +48,6 @@
 - Run speed increase: 20% => 25%
 - Speed increase also APPLIES WHILE IN MID-AIR.
 - Increases swim speed by 100%
-- Synergy with Dashmaster:
-  - Run speed increase: 39% => 35%
 
 ***I have always felt so slow when jumping with this charm equipped. The aerial speed buff will completely fix that issue.***
 ## Grubsong
@@ -166,12 +165,12 @@
 
 ***This charm is far weaker than other 1-notch charms like Grubsong, Nailmaster's Glory, and its synergies are terrible as well.***
 ## Glowing Womb
-- Damage (both normal and Dung version): 75% of Nail damage.
+- Damage (both normal and Dung version): 66% of Nail damage.
 - Maximum Hatchlings: 4 => 6
-- Summons 2 Hatchlings after a successful Focus
-- Summons 1 Hatchling after casting a Spell
+- Summons 3 Hatchlings after a successful Focus
 - Synergy with Deep Focus:
-  - Summons 3 Hatchlings after a successful Focus.
+  - Maximum hatchlings: 8
+  - Summons 4 Hatchlings after a successful Focus.
 
 ***This change makes the charm more interactive and fun to use now, while still retaining its original concept of using Soul to summon minions***
 ## Deep Focus
@@ -215,6 +214,7 @@
 ***Many people only equipped this charm due to its Shadow Dash speed increase, instead of the dash's damage. And I think this is such a shame because it is a really cool effect.***
 ## Weaversong
 - Each Weaverling now deals: 25% of Nail damage (rounded down).
+- No longer wake up staggered bosses
 - Each successful hit generates 2 Soul by default.
 - Synergy with Sprintmaster:
   - Weaverling's speed increase: 50% => 25%
@@ -228,6 +228,7 @@
 ***I have to lower the shield's damage, otherwise it would be extremely overpowered!***
 ## Grimmchild
 - Now fires 3 fireballs simultaneously like Primal Aspid's pattern.
+- Its projectiles no longer wake up staggered bosses
 - Damage per ball:
   - Level 2: 5  => 3
   - Level 3: 8  => 6
@@ -236,7 +237,7 @@
 ***Despite this charm's unlimited power, I still buffed it to make it even more powerful.***
 ## Carefree Melody
 - No longer relies on RNG-mechanic to block hits.
-- Cooldown: 20 seconds
+- Cooldown: 15 seconds
 - While the charm is on cooldown, Knight takes double damage from all sources
 - ***Doesn't work in Radiant fights***
 
