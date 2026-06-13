@@ -214,6 +214,7 @@
 ***Many people only equipped this charm due to its Shadow Dash speed increase, instead of the dash's damage. And I think this is such a shame because it is a really cool effect.***
 ## Weaversong
 - Each Weaverling now deals: 25% of Nail damage (rounded down).
+- Unable to deal damage to staggered bosses
 - No longer wake up staggered bosses
 - Each successful hit generates 2 Soul by default.
 - Synergy with Sprintmaster:
@@ -228,6 +229,7 @@
 ***I have to lower the shield's damage, otherwise it would be extremely overpowered!***
 ## Grimmchild
 - Now fires 3 fireballs simultaneously like Primal Aspid's pattern.
+- Unable to deal damage to staggered bosses
 - Its projectiles no longer wake up staggered bosses
 - Damage per ball:
   - Level 2: 5  => 3
