@@ -15,6 +15,7 @@ namespace TuyenTuyenTuyen.Charms {
             On.PlayerData.MaxHealth += OnPDMaxHealth;
             On.HeroController.TakeDamage += OnHeroController_TakeDamage;
             On.HeroController.AddHealth += OnHeroController_AddHealth;
+            On.HealthManager.TakeDamage += OnHealthManager_TakeDamage;
         }
 
         internal static void Unload() {
@@ -23,6 +24,7 @@ namespace TuyenTuyenTuyen.Charms {
             On.PlayerData.MaxHealth -= OnPDMaxHealth;
             On.HeroController.TakeDamage -= OnHeroController_TakeDamage;
             On.HeroController.AddHealth -= OnHeroController_AddHealth;
+            On.HealthManager.TakeDamage -= OnHealthManager_TakeDamage;
         }
 
         private static void OnAfterAttack(AttackDirection attackDir) {
@@ -168,6 +170,13 @@ namespace TuyenTuyenTuyen.Charms {
                 playerData.SetInt("beamDamage", BaseBeamDamage());
             else
                 playerData.SetInt("beamDamage", NewBeamDamage());
+        }
+
+        // for some reason, the beams deal triple the damage to Pure Vessel
+        private static void OnHealthManager_TakeDamage(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
+            if (hitInstance.AttackType == AttackTypes.NailBeam && self.gameObject.name == "HK Prime")
+                hitInstance.Multiplier *= 0.33f;
+            orig(self, hitInstance);
         }
 
         private static void OnHeroController_AddHealth(On.HeroController.orig_AddHealth orig, HeroController self, int amount) {
