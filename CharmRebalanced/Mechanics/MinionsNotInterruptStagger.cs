@@ -12,18 +12,16 @@ namespace TuyenTuyenTuyen.Mechanics {
         }
 
         private static void OnFsmProcessEvent(On.HutongGames.PlayMaker.Fsm.orig_ProcessEvent orig, HutongGames.PlayMaker.Fsm self, HutongGames.PlayMaker.FsmEvent fsmEvent, HutongGames.PlayMaker.FsmEventData eventData) {
-            if (self.ActiveStateName.Contains("Stun") && fsmEvent.Name == "TOOK DAMAGE") {
+            if (self.Name.Contains("Stun") && self.ActiveStateName.Contains("Stun") && fsmEvent.Name == "TOOK DAMAGE") {
                 GameObject source = eventData?.SentByFsm?.GameObject;
                 string parentName = source?.transform?.parent?.name;
 
                 if (parentName != null && (parentName.StartsWith("Weaverling") || parentName.StartsWith("Grimmball"))) {
                     PlayMakerFSM attackFSM = source.GetComponent<PlayMakerFSM>();
-
                     if (parentName.StartsWith("Weaverling"))
                         attackFSM.Fsm.SetState("Init");
                     else
                         attackFSM.Fsm.Event("FINISHED");
-
                     return;
                 }
             }
