@@ -137,6 +137,7 @@
     <Compile Include="Mechanics\Focus.cs" />
     <Compile Include="Mechanics\CustomEffect.cs" />
     <Compile Include="Mechanics\MinionsNotInterruptStagger.cs" />
+    <Compile Include="Mechanics\NewCharmDescription.cs" />
     <Compile Include="Mechanics\Utilities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -16,11 +16,7 @@ namespace TuyenTuyenTuyen.CustomCharms {
 
         protected override int GetCharmCost() => 2;
 
-        protected override string GetDescription() => """
-            Holy charm symbolising a union between higher beings. The bearer will slowly absorb the limitless Soul contained within.
-
-            Opens the way to a birthplace.
-            """;
+        protected override string GetDescription() => "Holy charm symbolising a union between higher beings. The bearer will slowly absorb the limitless Soul contained within.<br><br>Opens the way to a birthplace";
 
         protected override string GetName() => "Kingsoul";
 
