@@ -65,7 +65,7 @@
 - In Pantheon with Shell Binding, the damage is multiplied by 1.5x.
 - Doesn't fire beam when the damage is lower than 1.
 - Beams no longer stagger bosses
-- The bearer gains 3 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
+- The bearer gains 4 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
 - 4 maximum masks (with Pure Nail and Shell Binding)
 
 | Health  | 4    |  3  |
