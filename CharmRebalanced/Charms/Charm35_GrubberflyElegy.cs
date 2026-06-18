@@ -9,6 +9,10 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm35_GrubberflyElegy {
+        private static int baseSoulGain = 4;
+        private static int catcherSoulGain = 1;
+        private static int eaterSoulGain = 2;
+
         internal static void Load() {
             ModHooks.AfterAttackHook += OnAfterAttack;
             IL.HealthManager.TakeDamage += RemoveBeamStagger;
@@ -176,6 +180,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static void OnHealthManager_TakeDamage(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
             if (hitInstance.AttackType == AttackTypes.NailBeam && self.gameObject.name == "HK Prime")
                 hitInstance.Multiplier *= 0.33f;
+            SoulGainedOnBeam();
             orig(self, hitInstance);
         }
 
@@ -187,6 +192,14 @@ namespace TuyenTuyenTuyen.Charms {
         private static IEnumerator SetBaseBeamDamageDelayed() {
             yield return null;
             PlayerData.instance.SetInt("beamDamage", BaseBeamDamage());
+        }
+
+        private static void SoulGainedOnBeam() {
+            PlayerData playerData = PlayerData.instance;
+            int total = baseSoulGain;
+            total += (playerData.GetBool("equippedCharm_20") ? catcherSoulGain : 0);  // Soul Catcher
+            total += (playerData.GetBool("equippedCharm_21") ? eaterSoulGain : 0);    // Soul Eater
+            HeroController.instance.AddMPCharge(total);
         }
     }
 }

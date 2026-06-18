@@ -11,17 +11,31 @@ namespace TuyenTuyenTuyen.Charms {
             {"colosseumGoldCompleted",   3000},
         };
 
+        private static readonly Dictionary<int, float> geoDropIncrease = new Dictionary<int, float>() {
+            {1, 0.6f},  // small Geo drop
+            {2, 0.35f},  // medium Geo drop
+            {3, 0.25f},  // large Geo drop
+        };
+
         private static readonly float trialRewardIncrease = 4f / 3f;
-        private static readonly float geoGainIncrease = 0.4f;
+        private static readonly int unbreakableGreedGeoPrice = 4000;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Fsm.DoTransition += Charm24_Greed.OnFsmDoTransition;
             IL.HealthManager.Die += ChangeGreedGeoDropIncrease;
+            On.HutongGames.PlayMaker.Actions.ConvertStringToInt.OnEnter += OnConvertStringToInt_OnEnter;
         }
 
         internal static void Unload() {
             On.HutongGames.PlayMaker.Fsm.DoTransition -= Charm24_Greed.OnFsmDoTransition;
             IL.HealthManager.Die -= ChangeGreedGeoDropIncrease;
+            On.HutongGames.PlayMaker.Actions.ConvertStringToInt.OnEnter -= OnConvertStringToInt_OnEnter;
+        }
+
+        private static void OnConvertStringToInt_OnEnter(On.HutongGames.PlayMaker.Actions.ConvertStringToInt.orig_OnEnter orig, HutongGames.PlayMaker.Actions.ConvertStringToInt self) {
+            orig(self);
+            if (self.Fsm.Name == "Conversation Control" && self.State.Name == "Swallowed Greed")
+                self.intVariable.Value = unbreakableGreedGeoPrice;
         }
 
         private static bool OnFsmDoTransition(On.HutongGames.PlayMaker.Fsm.orig_DoTransition orig, HutongGames.PlayMaker.Fsm self, HutongGames.PlayMaker.FsmTransition transition, bool isGlobal) {
@@ -59,7 +73,7 @@ namespace TuyenTuyenTuyen.Charms {
                         MoveType.Before,
                         i => i.MatchLdcR4(0.2f)
                     )) {
-                        cursor.Next.Operand = geoGainIncrease;
+                        cursor.Next.Operand = geoDropIncrease[counter];
                         cursor.Index++;
                     }
                 }

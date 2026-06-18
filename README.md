@@ -59,12 +59,12 @@
 ***Grubsong is a little too good in the early game, so a slight nerf is necessary. However, by introducing damage scaling, it remains viable in later stages, especially against bosses that deal 2 or more damage***
 ## Grubberfly's Elegy
 - Now works properly in Pantheons with Shell Binding
-- No longer loses its effect when not at full masks.
-- Instead, the higher your current health is, the higher the beam damage is.
+- No longer loses its effect when not at full masks. Instead, the higher your current health is, the higher the beam damage is.
 - The damage formula:    $Beam Damage = (\frac{currentMasks - 1}{maximumMasks + 1})^2 * nailDamage$
 - In Pantheon with Shell Binding, the damage is multiplied by 1.5x.
-- Beams no longer stagger bosses
 - Doesn't fire beam when the damage is lower than 1.
+- Beams no longer stagger bosses
+- The bearer gains 3 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
 - 4 maximum masks (with Pure Nail and Shell Binding)
 
 | Health  | 4    |  3  |
@@ -90,9 +90,10 @@
 
 ***I do think this charm needs a buff to keep up with other charms in the late game.***
 ## Greed
-- Geo drop bonus: (20% - 100%) => (40% => 100%)
+- Geo drop bonus: (20% - 100%) => (40% - 100%)
 - Because Geo drop calculation is a little weird, the result is a roughly 50% average increase
 - Equipping Greed in the Colosseum Of Fools now increases Trials' Geo reward by 33%
+- Geo price for upgrading to Unbreakable Greed: 9000 => 4000
 
 ***The original increase felt so insignificant that many players didn't bother using it. The use in Colosseum Of Fools is really a fun addition - it encourages a "high risk, high return" playstyle where you sacrifice 2 notch slots for a better reward.***
 ## Strength
