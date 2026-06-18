@@ -3,7 +3,8 @@
 
 # How to install
 * Change the game version to `1.5.78.11833`
-![How to change the game version](https://media.discordapp.net/attachments/1207486627124093019/1469343521260703867/steambetas2.jpg?ex=69fd4e8a&is=69fbfd0a&hm=753c394259c15c2b3de099d0fec43cc28aebf208aa3326eb36aacb98cdd1bdb0&format=webp&width=2682&height=1546&)
+<img width="2184" height="1259" alt="steambetas2" src="https://github.com/user-attachments/assets/a65bee64-24ca-4576-9aae-1a113f4c4915" />
+
 * Download and install Lumafly, you can get it from here: https://themulhima.github.io/Lumafly/
 * Launch `Lumafly`, choose `Mods`, search `Charm Rebalanced`, and install the mod
 <img width="1919" height="259" alt="image" src="https://github.com/user-attachments/assets/3d3d6d78-71af-4336-9981-87b2854eb6aa" />
