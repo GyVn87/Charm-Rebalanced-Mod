@@ -1,91 +1,15 @@
-﻿using SFCore;
-using System.Collections.Generic;
-using System.Reflection;
-using TuyenTuyenTuyen.Charms;
-using TuyenTuyenTuyen.CustomCharms;
-using TuyenTuyenTuyen.Mechanics;
-using UnityEngine;
+﻿using TuyenTuyenTuyen.Charms;
 
 namespace TuyenTuyenTuyen {
-	public class CharmSettings {
-		public Dictionary<string, EasyCharmState> Settings;
-	}
-
-	public class CharmRebalanced : Mod, ITogglableMod, ILocalSettings<CharmSettings> {
-		public static CharmRebalanced LoadedInstance { get; set; }
-		/// <summary>
-		/// Using expression bodied property ensures that everytime we use pd,
-		/// it will recalculate the value which helps us get the most up-to-date data.
-		/// </summary>
-		public PlayerData PD => PlayerData.instance;
-        public GameObject Knight => HeroController.instance.gameObject;
-		public override string GetVersion() => Assembly.GetExecutingAssembly().GetName().Version.ToString();
-		public CharmSettings LocalCharmSettings = new CharmSettings();
-		public Dictionary<string, EasyCharm> CustomCharms = new Dictionary<string, EasyCharm> {
-			{"Kingsoul", new KingsoulClone()}
-		};
-
-        public void OnLoadLocal(CharmSettings s) {
-			LocalCharmSettings = s;
-			if (LocalCharmSettings.Settings != null) {
-				foreach (var kvp in LocalCharmSettings.Settings) {
-					if (CustomCharms.TryGetValue(kvp.Key, out EasyCharm m))
-						m.RestoreCharmState(kvp.Value);
-				}
-			}
-        }
-
-        public CharmSettings OnSaveLocal() {
-			LocalCharmSettings.Settings = new Dictionary<string, EasyCharmState>();
-			foreach (var kvp in CustomCharms) 
-				LocalCharmSettings.Settings[kvp.Key] = kvp.Value.GetCharmState();
-			return LocalCharmSettings;
-        }
+	public class CharmRebalanced : Mod, ITogglableMod {
+		public static CharmRebalanced? LoadedInstance { get; set; }
+		public override string GetVersion() => "2.0.2.0";
 
         public override void Initialize() {
 			if (CharmRebalanced.LoadedInstance != null) return;
 			CharmRebalanced.LoadedInstance = this;
 
-			KingsoulClone.Load();
-
-			Charm31_Dashmaster.Load();  // has to be called before Sharp Shadow'
 			Charm03_GrubSong.Load();
-			Charm04_StalwartShell.Load();
-			Charm05_BaldurShell.Load();
-			Charm06_FuryOfTheFallen.Load();
-			Charm09_LifebloodCore.Load();
-			Charm10_DefenderCrest.Load();
-			Charm11_Flukenest.Load();
-			Charm12_ThornsOfAgony.Load();
-			Charm13_18_MarkOfPride_Longnail.Load();
-			Charm15_HeavyBlow.Load();
-			Charm16_SharpShadow.Load();
-			Charm17_SporeShroom.Load();
-			Charm19_ShamanStone.Load();
-			Charm20_SoulCatcher.Load();
-			Charm21_SoulEater.Load();
-			Charm22_GlowingWomb.Load();
-			Charm23_Heart.Load();  // has to be called before Joni's Blessing
-			Charm24_Greed.Load();
-			Charm25_Strength.Load();
-			Charm26_NailmasterGlory.Load();
-			Charm27_JoniBlessing.Load();
-			Charm29_Hiveblood.Load();  
-			Charm30_DreamWielder.Load();
-			Charm32_QuickSlash.Load();
-			Charm34_DeepFocus.Load();
-			Charm35_GrubberflyElegy.Load();
-			Charm36_Kingsoul.Load();
-			Charm37_Sprintmaster.Load();
-			Charm38_Dreamshield.Load();
-			Charm39_Weaversong.Load(); 
-			Charm40_Grimmchild.Load();
-			Charm40_CarefreeMelody.Load();
-			NewCharmCosts.Load();
-			Focus.Load();
-			ExtraDamage.Load();
-			MinionsNotInterruptStagger.Load();
-			NewCharmDescription.Load();
 		}
 
 		public void Unload() {
@@ -93,46 +17,7 @@ namespace TuyenTuyenTuyen {
 			if (HeroController.instance != null)
 				RevertChanges();
 
-            KingsoulClone.Unload();
-
-            Charm31_Dashmaster.Unload();
 			Charm03_GrubSong.Unload();
-			Charm04_StalwartShell.Unload();
-			Charm05_BaldurShell.Unload();
-			Charm06_FuryOfTheFallen.Unload();
-			Charm09_LifebloodCore.Unload();
-			Charm10_DefenderCrest.Unload();
-			Charm11_Flukenest.Unload();
-			Charm12_ThornsOfAgony.Unload();
-			Charm13_18_MarkOfPride_Longnail.Unload();
-			Charm15_HeavyBlow.Unload();
-			Charm16_SharpShadow.Unload();
-			Charm17_SporeShroom.Unload();
-			Charm19_ShamanStone.Unload();
-			Charm20_SoulCatcher.Unload();
-			Charm21_SoulEater.Unload();
-			Charm22_GlowingWomb.Unload();
-			Charm23_Heart.Unload();
-			Charm24_Greed.Unload();
-			Charm25_Strength.Unload();
-			Charm26_NailmasterGlory.Unload();
-			Charm27_JoniBlessing.Unload();
-			Charm29_Hiveblood.Unload();
-			Charm30_DreamWielder.Unload();
-			Charm32_QuickSlash.Unload();
-			Charm34_DeepFocus.Unload();
-			Charm35_GrubberflyElegy.Unload();
-			Charm36_Kingsoul.Unload();
-			Charm37_Sprintmaster.Unload();
-			Charm38_Dreamshield.Unload();
-			Charm39_Weaversong.Unload();
-			Charm40_Grimmchild.Unload();
-			Charm40_CarefreeMelody.Unload();
-			NewCharmCosts.Unload();
-			Focus.Unload();
-			ExtraDamage.Unload();
-			MinionsNotInterruptStagger.Unload();
-			NewCharmDescription.Unload();
 		}
 
 		private void RevertChanges() {

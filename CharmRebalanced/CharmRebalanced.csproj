@@ -1,42 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5BAE6B1E-DF7E-2FCA-1040-1E077AE792FA}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>10.0</LangVersion>
+    <Nullable>enable</Nullable>
     <RootNamespace>TuyenTuyenTuyen</RootNamespace>
-    <AssemblyName>CharmRebalanced</AssemblyName>
     <!--Replace this with your Managed folder path in Game Files folder-->
     <ManagedFolder>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</ManagedFolder>
-    <LangVersion>11.0</LangVersion>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+    
   <Target Name="Copy DLLs" AfterTargets="Build">
     <Copy SourceFiles="$(TargetDir)\$(TargetName).dll;$(TargetDir)\$(TargetName).pdb" DestinationFolder="$(ManagedFolder)\Mods\Charm Rebalanced" />
     <Message Text="Successfully copied build files" Importance="High" />
   </Target>
+    
   <ItemGroup>
     <Reference Include="Assembly-CSharp">
       <HintPath>$(ManagedFolder)\Assembly-CSharp.dll</HintPath>
@@ -46,104 +23,14 @@
       <HintPath>$(ManagedFolder)\MMHOOK_Assembly-CSharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="MMHOOK_PlayMaker">
-      <HintPath>$(ManagedFolder)\MMHOOK_PlayMaker.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Mono.Cecil">
-      <HintPath>$(ManagedFolder)\Mono.Cecil.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="MonoMod.Utils">
-      <HintPath>$(ManagedFolder)\MonoMod.Utils.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="PlayMaker">
-      <HintPath>$(ManagedFolder)\PlayMaker.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="SFCore">
-      <HintPath>$(ManagedFolder)\Mods\SFCore\SFCore.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine">
-      <HintPath>$(ManagedFolder)\UnityEngine.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(ManagedFolder)\UnityEngine.CoreModule.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>$(ManagedFolder)\UnityEngine.ImageConversionModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ParticleSystemModule">
-      <HintPath>$(ManagedFolder)\UnityEngine.ParticleSystemModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.Physics2DModule">
-      <HintPath>$(ManagedFolder)\UnityEngine.Physics2DModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
+
   <ItemGroup>
-    <Compile Include="CharmRebalanced.cs" />
-    <Compile Include="Charms\Charm04_StalwartShell.cs" />
-    <Compile Include="Charms\Charm05_BaldurShell.cs" />
-    <Compile Include="Charms\Charm06_FuryOfTheFallen.cs" />
-    <Compile Include="Charms\Charm09_LifebloodCore.cs" />
-    <Compile Include="Charms\Charm10_DefenderCrest.cs" />
-    <Compile Include="Charms\Charm11_Flukenest.cs" />
-    <Compile Include="Charms\Charm12_ThornsOfAgony.cs" />
-    <Compile Include="Charms\Charm13_18_MarkOfPride_Longnail.cs" />
-    <Compile Include="Charms\Charm15_HeavyBlow.cs" />
-    <Compile Include="Charms\Charm16_SharpShadow.cs" />
-    <Compile Include="Charms\Charm17_SporeShroom.cs" />
-    <Compile Include="Charms\Charm19_ShamanStone.cs" />
-    <Compile Include="Charms\Charm20_SoulCatcher.cs" />
-    <Compile Include="Charms\Charm21_SoulEater.cs" />
-    <Compile Include="Charms\Charm03_GrubSong.cs" />
-    <Compile Include="Charms\Charm22_GlowingWomb.cs" />
-    <Compile Include="Charms\Charm23_Heart.cs" />
-    <Compile Include="Charms\Charm24_Greed.cs" />
-    <Compile Include="Charms\Charm25_Strength.cs" />
-    <Compile Include="Charms\Charm26_NailmasterGlory.cs" />
-    <Compile Include="Charms\Charm27_JoniBlessing.cs" />
-    <Compile Include="Charms\Charm29_Hiveblood.cs" />
-    <Compile Include="Charms\Charm30_DreamWielder.cs" />
-    <Compile Include="Charms\Charm31_Dashmaster.cs" />
-    <Compile Include="Charms\Charm32_QuickSlash.cs" />
-    <Compile Include="Charms\Charm34_DeepFocus.cs" />
-    <Compile Include="Charms\Charm35_GrubberflyElegy.cs" />
-    <Compile Include="Charms\Charm36_Kingsoul.cs" />
-    <Compile Include="Charms\Charm37_Sprintmaster.cs" />
-    <Compile Include="Charms\Charm38_Dreamshield.cs" />
-    <Compile Include="Charms\Charm39_Weaversong.cs" />
-    <Compile Include="Charms\Charm40_CarefreeMelody.cs" />
-    <Compile Include="Charms\Charm40_Grimmchild.cs" />
-    <Compile Include="Charms\NewCharmCosts.cs" />
-    <Compile Include="CustomCharms\KingsoulClone.cs" />
-    <Compile Include="GlobalUsings.cs" />
-    <Compile Include="Mechanics\ExtraDamage.cs" />
-    <Compile Include="Mechanics\Focus.cs" />
-    <Compile Include="Mechanics\CustomEffect.cs" />
-    <Compile Include="Mechanics\MinionsNotInterruptStagger.cs" />
-    <Compile Include="Mechanics\NewCharmDescription.cs" />
-    <Compile Include="Mechanics\Utilities.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Folder Include="Charms\" />
   </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <EmbeddedResource Include="Assets\Charms\Kingsoul.png" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
