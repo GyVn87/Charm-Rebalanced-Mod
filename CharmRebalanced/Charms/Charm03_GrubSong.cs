@@ -21,12 +21,12 @@
 
         private static int OnTakeHealth(int orig) {
             // Checking if the damage amount is within a reasonable range.
-            // This ensures player don't suddenly gain massive pool of soul when get killed by Radiant bossess.
+            // This ensures players don't suddenly gain massive pool of soul when get killed by Radiant bossess.
             if (orig < 2 || orig > 100)
                 return orig;
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
-            if (PD.GetBool("equippedCharm_3")) {
-                if (PD.GetBool("equippedCharm_35")) 
+            PlayerData playerData = PlayerData.instance;
+            if (playerData.GetBool("equippedCharm_3")) {
+                if (playerData.GetBool("equippedCharm_35")) 
                     HeroController.instance.AddMPCharge(soulGainCombo * (orig - 1));
                 else 
                     HeroController.instance.AddMPCharge(soulGain * (orig - 1));

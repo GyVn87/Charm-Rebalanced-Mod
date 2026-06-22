@@ -1,3 +1,5 @@
 <Solution>
-  <Project Path="CharmRebalanced/CharmRebalanced.csproj" Id="5bae6b1e-df7e-2fca-1040-1e077ae792fa" />
+  <Project Path="CharmRebalanced/CharmRebalanced.csproj">
+    <BuildType Project="Release" />
+  </Project>
 </Solution>
