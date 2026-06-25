@@ -19,9 +19,9 @@ namespace TuyenTuyenTuyen {
             //Charm06_FuryOfTheFallen.Load();
             Charm09_LifebloodCore.Load();
             //Charm10_DefenderCrest.Load();
-            //Charm11_Flukenest.Load();
+            Charm11_Flukenest.Load();
             Charm12_ThornsOfAgony.Load();
-            //Charm13_18_MarkOfPride_Longnail.Load();
+            Charm13_18_MarkOfPride_Longnail.Load();
             //Charm15_HeavyBlow.Load();
             //Charm16_SharpShadow.Load();
             //Charm17_SporeShroom.Load();
@@ -31,7 +31,7 @@ namespace TuyenTuyenTuyen {
             Charm22_GlowingWomb.Load();
             Charm23_Heart.Load();  // has to be called before Joni's Blessing
             Charm24_Greed.Load();
-            //Charm25_Strength.Load();
+            Charm25_Strength.Load();
             Charm26_NailmasterGlory.Load();
             Charm27_JoniBlessing.Load();
             //Charm29_Hiveblood.Load();
@@ -67,9 +67,9 @@ namespace TuyenTuyenTuyen {
             //Charm06_FuryOfTheFallen.Unload();
             Charm09_LifebloodCore.Unload();
             //Charm10_DefenderCrest.Unload();
-            //Charm11_Flukenest.Unload();
+            Charm11_Flukenest.Unload();
             Charm12_ThornsOfAgony.Unload();
-            //Charm13_18_MarkOfPride_Longnail.Unload();
+            Charm13_18_MarkOfPride_Longnail.Unload();
             //Charm15_HeavyBlow.Unload();
             //Charm16_SharpShadow.Unload();
             //Charm17_SporeShroom.Unload();
@@ -79,7 +79,7 @@ namespace TuyenTuyenTuyen {
             Charm22_GlowingWomb.Unload();
             Charm23_Heart.Unload();
             Charm24_Greed.Unload();
-            //Charm25_Strength.Unload();
+            Charm25_Strength.Unload();
             Charm26_NailmasterGlory.Unload();
             Charm27_JoniBlessing.Unload();
             //Charm29_Hiveblood.Unload();
