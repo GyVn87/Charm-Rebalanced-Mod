@@ -22,7 +22,7 @@ namespace TuyenTuyenTuyen {
             Charm11_Flukenest.Load();
             Charm12_ThornsOfAgony.Load();
             Charm13_18_MarkOfPride_Longnail.Load();
-            //Charm15_HeavyBlow.Load();
+            Charm15_HeavyBlow.Load();
             //Charm16_SharpShadow.Load();
             //Charm17_SporeShroom.Load();
             //Charm19_ShamanStone.Load();
@@ -34,7 +34,7 @@ namespace TuyenTuyenTuyen {
             Charm25_Strength.Load();
             Charm26_NailmasterGlory.Load();
             Charm27_JoniBlessing.Load();
-            //Charm29_Hiveblood.Load();
+            Charm29_Hiveblood.Load();
             //Charm30_DreamWielder.Load();
             Charm32_QuickSlash.Load();
             //Charm34_DeepFocus.Load();
@@ -70,7 +70,7 @@ namespace TuyenTuyenTuyen {
             Charm11_Flukenest.Unload();
             Charm12_ThornsOfAgony.Unload();
             Charm13_18_MarkOfPride_Longnail.Unload();
-            //Charm15_HeavyBlow.Unload();
+            Charm15_HeavyBlow.Unload();
             //Charm16_SharpShadow.Unload();
             //Charm17_SporeShroom.Unload();
             //Charm19_ShamanStone.Unload();
@@ -82,7 +82,7 @@ namespace TuyenTuyenTuyen {
             Charm25_Strength.Unload();
             Charm26_NailmasterGlory.Unload();
             Charm27_JoniBlessing.Unload();
-            //Charm29_Hiveblood.Unload();
+            Charm29_Hiveblood.Unload();
             //Charm30_DreamWielder.Unload();
             Charm32_QuickSlash.Unload();
             //Charm34_DeepFocus.Unload();

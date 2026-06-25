@@ -48,7 +48,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
     }
 
-    public class EaterCurse : TuyenTuyenTuyen.Mechanics.CustomEffect {
+    public class EaterCurse : CustomEffect {
         protected override float Duration => Charm21_SoulEater.eaterEffectDuration;
         protected override Color StartColor => new(0.85f, 0.90f, 0.92f, 0.65f);
         protected override Vector3 LocalScale => new(2f, 2f, 2f);

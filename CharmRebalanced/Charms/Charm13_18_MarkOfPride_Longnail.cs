@@ -55,7 +55,6 @@ namespace TuyenTuyenTuyen.Charms {
                     self.z.Value = origNailArtScale.z * rangeMultiplier;
                 }
             }
-
             orig(self);
         }
 
