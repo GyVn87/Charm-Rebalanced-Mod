@@ -1,30 +1,29 @@
 ﻿using HutongGames.PlayMaker;
 using UnityEngine;
-using static HutongGames.PlayMaker.FsmEventTarget;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm38_Dreamshield {
         private static readonly float shieldDamageRatio = 0.5f; // to Nail damage
 
-        private static GameObject newOrbitShield;
-        private static GameObject newShield;
-        private static PlayMakerFSM shieldHitFSM;
+        private static GameObject? newOrbitShield = null;
+        private static GameObject? newShield = null;
+        private static PlayMakerFSM? shieldHitFSM = null;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter += Charm38_Dreamshield.OnSpawnObjectFromGlobalPool_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter += Charm38_Dreamshield.OnSendEventByName_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter += OnSpawnObjectFromGlobalPool_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter += OnSendEventByName_OnEnter;
             On.HutongGames.PlayMaker.Actions.GetPlayerDataInt.OnEnter += OnGetPlayerDataInt_OnEnter;
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter -= Charm38_Dreamshield.OnSpawnObjectFromGlobalPool_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter -= Charm38_Dreamshield.OnSendEventByName_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.OnEnter -= OnSpawnObjectFromGlobalPool_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter -= OnSendEventByName_OnEnter;
             On.HutongGames.PlayMaker.Actions.GetPlayerDataInt.OnEnter -= OnGetPlayerDataInt_OnEnter;
         }
 
         private static void OnSpawnObjectFromGlobalPool_OnEnter(On.HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SpawnObjectFromGlobalPool self) {
             orig(self);
-            string gameObjectName = self.gameObject.Value?.name;
+            string? gameObjectName = self.gameObject.Value?.name;
             if (self.Fsm.Name == "Spawn Orbit Shield" && gameObjectName == "Orbit Shield") {
                 GameObject vanillaShield = self.storeObject.Value;
                 newOrbitShield = Object.Instantiate<GameObject>(vanillaShield);
@@ -65,7 +64,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         void ApplyOffset() {
-            Vector3 rotation = new Vector3(0, 0, 180.0f);
+            Vector3 rotation = new(0, 0, 180.0f);
             transform.Rotate(rotation);
         }
     }

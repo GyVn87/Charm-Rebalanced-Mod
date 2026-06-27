@@ -1,6 +1,4 @@
-﻿using System.Collections;
-
-namespace TuyenTuyenTuyen.Charms {
+﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm04_StalwartShell {
         private static readonly float recoilStalDuration = 0.08f;
         private static readonly float invulStalTime = 2f;

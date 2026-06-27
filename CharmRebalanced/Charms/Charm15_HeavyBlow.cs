@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using TuyenTuyenTuyen.Mechanics;
+﻿using TuyenTuyenTuyen.Mechanics;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm15_HeavyBlow {

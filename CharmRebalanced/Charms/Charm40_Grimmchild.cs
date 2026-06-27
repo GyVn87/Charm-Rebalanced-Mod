@@ -1,5 +1,4 @@
-﻿using System.Security.Cryptography.X509Certificates;
-using TuyenTuyenTuyen.Mechanics;
+﻿using TuyenTuyenTuyen.Mechanics;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -12,26 +11,26 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int lv4Damage = 9;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.FireAtTarget.OnEnter += Charm40_Grimmchild.OnFireAtTarget_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SetIntValue.OnEnter += Charm40_Grimmchild.OnSetIntValue_OnEnter;
+            On.HutongGames.PlayMaker.Actions.FireAtTarget.OnEnter += OnFireAtTarget_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetIntValue.OnEnter += OnSetIntValue_OnEnter;
 
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.FireAtTarget.OnEnter -= Charm40_Grimmchild.OnFireAtTarget_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SetIntValue.OnEnter -= Charm40_Grimmchild.OnSetIntValue_OnEnter;
+            On.HutongGames.PlayMaker.Actions.FireAtTarget.OnEnter -= OnFireAtTarget_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetIntValue.OnEnter -= OnSetIntValue_OnEnter;
         }
 
         private static void OnFireAtTarget_OnEnter(On.HutongGames.PlayMaker.Actions.FireAtTarget.orig_OnEnter orig, HutongGames.PlayMaker.Actions.FireAtTarget self) {
-            string ownerName = self.Owner?.name;
-            if (!ownerName.StartsWith("Grimmchild") || self.Fsm.Name != "Control" || self.State.Name != "Shoot") {
+            string? ownerName = self.Owner?.name;
+            if (ownerName == null || !ownerName.StartsWith("Grimmchild") || self.Fsm.Name != "Control" || self.State.Name != "Shoot") {
                 orig(self);
                 return;
             }
             self.spread.Value = newSpread;
             orig(self);
 
-            float angle = Utilities.GetAngleBetween2Object(self.Owner, self.target.Value);
+            float angle =  Utilities.GetAngleBetween2Object(self.Owner!, self.target.Value);
             angle -= multipleShotsSpread;
             GameObject fireball = GameObject.Instantiate<GameObject>(self.gameObject.GameObject.Value);
             Utilities.SetVelocityAsAngle(fireball, angle, self.speed.Value);
@@ -44,9 +43,9 @@ namespace TuyenTuyenTuyen.Charms {
         private static void OnSetIntValue_OnEnter(On.HutongGames.PlayMaker.Actions.SetIntValue.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SetIntValue self) {
             orig(self);
 
-            string ownerName = self.Owner?.name;
+            string? ownerName = self.Owner?.name;
             string stateName = self.State.Name;
-            if (!ownerName.StartsWith("Grimmchild") || self.Fsm.Name != "Control" || !stateName.StartsWith("Level "))
+            if (ownerName == null || !ownerName.StartsWith("Grimmchild") || self.Fsm.Name != "Control" || !stateName.StartsWith("Level "))
                 return;
 
             if (stateName == "Level 2")

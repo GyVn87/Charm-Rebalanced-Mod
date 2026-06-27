@@ -7,8 +7,8 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float mantisRange = 1.25f;
         private static readonly float longnailRange = 1.15f;
 
-        private static readonly Vector3 origCycloneScale = new Vector3(1.4403f, 1.9107f, 1.3863f); // don't change
-        private static readonly Vector3 origNailArtScale = new Vector3(1.3162f, 1.3162f, 1.3162f); // don't change
+        private static readonly Vector3 origCycloneScale = new(1.4403f, 1.9107f, 1.3863f); // don't change
+        private static readonly Vector3 origNailArtScale = new(1.3162f, 1.3162f, 1.3162f); // don't change
 
         internal static void Load() {
             IL.NailSlash.StartSlash += NewRangeBuff;
@@ -55,7 +55,6 @@ namespace TuyenTuyenTuyen.Charms {
                     self.z.Value = origNailArtScale.z * rangeMultiplier;
                 }
             }
-
             orig(self);
         }
 

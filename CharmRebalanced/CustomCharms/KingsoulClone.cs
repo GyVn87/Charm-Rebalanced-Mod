@@ -1,26 +1,21 @@
 ﻿using HutongGames.PlayMaker;
-using HutongGames.PlayMaker.Actions;
 using SFCore;
 using SFCore.Utils;
-using TuyenTuyenTuyen.Charms;
 using TuyenTuyenTuyen.Mechanics;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.CustomCharms {
     internal class KingsoulClone : EasyCharm {
-        internal static KingsoulClone Instance { get; set; }
+        internal static KingsoulClone? Instance { get; set; }
 
         public KingsoulClone() {
             Instance = this;
         }
 
         protected override int GetCharmCost() => 2;
-
         protected override string GetDescription() => "Holy charm symbolising a union between higher beings. The bearer will slowly absorb the limitless Soul contained within.<br><br>Opens the way to a birthplace";
-
         protected override string GetName() => "Kingsoul";
-
-        protected override Sprite GetSpriteInternal() => Utilities.LoadSprite("Kingsoul");
+        protected override Sprite? GetSpriteInternal() => Utilities.LoadSprite("Kingsoul");
 
         internal static void Load() {
             ModHooks.CharmUpdateHook += OnCharmUpdate;
@@ -47,7 +42,7 @@ namespace TuyenTuyenTuyen.CustomCharms {
         }
 
         private static void AddCheckKingsoulClone() {
-            CheckEquippedCustomCharm newAction = new(Instance.GetName(), "ACTIVE", "");
+            CheckEquippedCustomCharm newAction = new(Instance!.GetName(), "ACTIVE", "");
             GameObject charmEffects = HeroController.instance.transform.Find("Charm Effects").gameObject;
             var FSM = charmEffects.LocateMyFSM("White Charm");
             FSM.GetState("Check").InsertAction(newAction, 0);
@@ -58,8 +53,8 @@ namespace TuyenTuyenTuyen.CustomCharms {
         public string customCharmName;
         public string isTrueEventName;
         public string isFalseEventName;
-        public FsmEvent isTrue;
-        public FsmEvent isFalse;
+        public FsmEvent? isTrue = null;
+        public FsmEvent? isFalse = null;
 
         public CheckEquippedCustomCharm(string charmName, string isTrueEvent, string isFalseEvent) {
             customCharmName = charmName;
@@ -69,7 +64,7 @@ namespace TuyenTuyenTuyen.CustomCharms {
 
         public override void OnEnter() {
             GetEvent();
-            var customCharms = CharmRebalanced.LoadedInstance.CustomCharms;
+            var customCharms = CharmRebalanced.LoadedInstance!.CustomCharms;
             bool boolTest = false;
             if (customCharms.TryGetValue(customCharmName, out var charm))
                 boolTest = charm.IsEquipped;

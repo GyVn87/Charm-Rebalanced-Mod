@@ -30,7 +30,7 @@ namespace TuyenTuyenTuyen.Mechanics {
             if (self.Name != "Spell Control" || fsmEvent.Name != "FOCUS COMPLETED")
                 return;
 
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+            PlayerData PD = PlayerData.instance;
             if (!PD.GetBool("gotCharm_36") || PD.GetInt("royalCharmState") != 4)
                 return;
 
@@ -98,9 +98,9 @@ namespace TuyenTuyenTuyen.Mechanics {
         private float mTimer = 0f;
         private static readonly float mFadeOutDuration = 0.5f;
         private float mFadeOutTimer = 0f;
-        private static GameObject mPrefab = null;
-        private GameObject mEffect = null;
-        private tk2dSprite tk2dComponent = null;
+        private static GameObject? mPrefab = null;
+        private GameObject? mEffect = null;
+        private tk2dSprite? tk2dComponent = null;
 
         public void SetUpDamageMultiplier(bool fullHealth, bool deepFocus) {
             float multiplier;
@@ -140,9 +140,9 @@ namespace TuyenTuyenTuyen.Mechanics {
 
             Transform KnightTransform = HeroController.instance.transform;
             mEffect = Object.Instantiate(mPrefab, KnightTransform);
-            mEffect.SetActive(true);
-            mEffect.name = "Dark Overflow Effect";
-            mEffect.transform.localPosition = new Vector3(0.0933f, 1.4524f, -0.001f);
+            mEffect?.SetActive(true);
+            mEffect!.name = "Dark Overflow Effect";
+            mEffect!.transform.localPosition = new Vector3(0.0933f, 1.4524f, -0.001f);
 
             tk2dComponent = mEffect.GetComponent<tk2dSprite>();
             tk2dComponent.color = new Color(0.4385f, 0.2906f, 1f, 0.5f);
@@ -152,7 +152,7 @@ namespace TuyenTuyenTuyen.Mechanics {
             mTimer -= Time.deltaTime;
             if (mTimer < mFadeOutDuration) {
                 mFadeOutTimer -= Time.deltaTime;
-                Color color = tk2dComponent.color;
+                Color color = tk2dComponent!.color;
                 tk2dComponent.color = new Color(color.r, color.g, color.b, mFadeOutTimer / mFadeOutDuration * 0.5f);
             }
             if (mTimer < 0f)

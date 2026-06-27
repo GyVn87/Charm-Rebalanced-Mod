@@ -1,6 +1,4 @@
 ﻿using GlobalEnums;
-using IL.InControl.NativeDeviceProfiles;
-using System;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -34,6 +32,7 @@ namespace TuyenTuyenTuyen.Charms {
 
             if (furyExtraMultiplier > 0.05f)
                 hitInstance.Multiplier *= (1f + furyExtraMultiplier);
+
             orig(self, hitInstance);
         }
 

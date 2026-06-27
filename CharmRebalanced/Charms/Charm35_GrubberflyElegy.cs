@@ -1,17 +1,15 @@
 ﻿using GlobalEnums;
-using IL;
 using Mono.Cecil.Cil;
 using MonoMod.Cil;
-using On;
 using System;
 using System.Collections;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm35_GrubberflyElegy {
-        private static int baseSoulGain = 4;
-        private static int catcherSoulGain = 1;
-        private static int eaterSoulGain = 2;
+        private static readonly int baseSoulGain = 3;
+        private static readonly int catcherSoulGain = 1;
+        private static readonly int eaterSoulGain = 2;
 
         internal static void Load() {
             ModHooks.AfterAttackHook += OnAfterAttack;
@@ -32,7 +30,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         private static void OnAfterAttack(AttackDirection attackDir) {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+            PlayerData PD = PlayerData.instance;
             HeroController Controller = HeroController.instance;
             GameObject Knight = Controller.gameObject;
 
@@ -84,7 +82,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         private static int NewBeamDamage() {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+            PlayerData PD = PlayerData.instance;
             float strengthIncrease = (PD.GetBool("equippedCharm_25") ? Charm25_Strength.strengthMutiplier : 1f);
             int nailDamge = PD.GetInt("nailDamage");
             int currentHP = PD.GetInt("health");
@@ -101,7 +99,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         private static int BaseBeamDamage() {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+            PlayerData PD = PlayerData.instance;
             float strengthIncrease = (PD.GetBool("equippedCharm_25") ? Charm25_Strength.strengthMutiplier : 1f);
             int nailDamge = PD.GetInt("nailDamage");
             int currentMaxHP = PD.CurrentMaxHealth;
@@ -145,7 +143,7 @@ namespace TuyenTuyenTuyen.Charms {
                     IL_0385: brfalse.s IL_03bc
                 */
 
-                ILLabel label = null;
+                ILLabel? label = null;
                 ILCursor cursorClone = cursor.Clone();
                 if (cursorClone.TryGotoNext(
                     i => i.MatchBrfalse(out label)

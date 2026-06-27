@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -9,18 +8,20 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int brokenStage1 = 3; // Equal to when vanilla Baldur Shell takes 1 hit
         private static readonly int brokenStage2 = 2; // Equal to when vanilla Baldur Shell takes 2 hits
 
-        private static PlayMakerFSM blockerShieldFSM = null;
+        private static PlayMakerFSM? blockerShieldFSM = null;
         private static int focusCounter = 0;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.IntSwitch.OnEnter += Charm05_BaldurShell.OnIntSwitch_OnEnter;
-            On.PlayerData.MaxHealth += Charm05_BaldurShell.OnPDMaxHealth;
+            ModHooks.TakeHealthHook += OnTakeHealth;
+            On.HutongGames.PlayMaker.Actions.IntSwitch.OnEnter += OnIntSwitch_OnEnter;
+            On.PlayerData.MaxHealth += OnPDMaxHealth;
             On.HutongGames.PlayMaker.Fsm.ProcessEvent += OnFsmProcessEvent;
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.IntSwitch.OnEnter -= Charm05_BaldurShell.OnIntSwitch_OnEnter;
-            On.PlayerData.MaxHealth -= Charm05_BaldurShell.OnPDMaxHealth;
+            ModHooks.TakeHealthHook -= OnTakeHealth;
+            On.HutongGames.PlayMaker.Actions.IntSwitch.OnEnter -= OnIntSwitch_OnEnter;
+            On.PlayerData.MaxHealth -= OnPDMaxHealth;
             On.HutongGames.PlayMaker.Fsm.ProcessEvent -= OnFsmProcessEvent;
         }
 
@@ -29,13 +30,13 @@ namespace TuyenTuyenTuyen.Charms {
             if (self.Name != "Spell Control" || fsmEvent.Name != "FOCUS COMPLETED")
                 return;
 
-            PlayerData playerData = CharmRebalanced.LoadedInstance.PD;
+            PlayerData playerData = PlayerData.instance;
             if (!playerData.GetBool("equippedCharm_5") || playerData.blockerHits >= maximumBlockerHits)
                 return;
 
             if (blockerShieldFSM == null) {
-                GameObject Knight = CharmRebalanced.LoadedInstance.Knight;
-                blockerShieldFSM = Knight.transform.Find("Charm Effects").Find("Blocker Shield").GetComponent<PlayMakerFSM>();
+                GameObject Knight = HeroController.instance.gameObject;
+                blockerShieldFSM = Knight.transform.Find("Charm Effects/Blocker Shield").GetComponent<PlayMakerFSM>();
             }
 
             focusCounter += (playerData.GetBool("equippedCharm_34") ? 2 : 1);
@@ -77,6 +78,11 @@ namespace TuyenTuyenTuyen.Charms {
             orig(self);
             self.SetInt("blockerHits", maximumBlockerHits);
             focusCounter = 0;
+        }
+
+        private static int OnTakeHealth(int orig) {
+            focusCounter = 0;
+            return orig;
         }
     }
 }

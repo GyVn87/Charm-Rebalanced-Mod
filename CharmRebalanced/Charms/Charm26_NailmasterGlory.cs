@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace TuyenTuyenTuyen.Charms {
+﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm26_NailmasterGlory {
         private static readonly float nailArtChargeTimeMaster = 0.75f;
 

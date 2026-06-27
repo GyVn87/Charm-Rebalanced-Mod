@@ -2,7 +2,7 @@
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class NewCharmCosts {
-        private static readonly Dictionary<string, int> charmCosts = new Dictionary<string, int>() {
+        private static readonly Dictionary<string, int> charmCosts = new() {
             {"charmCost_4", 1},
             {"charmCost_6", 3},
             {"charmCost_8", 1},

@@ -52,7 +52,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static void OnGetHP_OnEnter(On.GetHP.orig_OnEnter orig, GetHP self) {
             orig(self);
             if (self.Owner.name == "Enemy Damager") {
-                WeaknessDebuff debuff = self.target?.GameObject?.Value?.GetComponent<WeaknessDebuff>();
+                WeaknessDebuff? debuff = self.target?.GameObject?.Value?.GetComponent<WeaknessDebuff>();
                 if (debuff)
                     self.storeValue.Value -= 1;
             }
@@ -97,9 +97,9 @@ namespace TuyenTuyenTuyen.Charms {
     }
 
     public class WeaknessDebuff : TuyenTuyenTuyen.Mechanics.CustomEffect {
-        public override float Duration => Charm10_DefenderCrest.weaknessDuration;
-        public override Color StartColor => new(0.08f, 0.02f, 0.1f, 0.8f);
-        public override Vector3 LocalScale => new(1.5f, 1.5f, 1.5f);
-        public override string Name => "Weakness Debuff Particle";
+        protected override float Duration => Charm10_DefenderCrest.weaknessDuration;
+        protected override Color StartColor => new(0.08f, 0.02f, 0.1f, 0.8f);
+        protected override Vector3 LocalScale => new(1.5f, 1.5f, 1.5f);
+        protected override string Name => "Weakness Debuff Particle";
     }
 }

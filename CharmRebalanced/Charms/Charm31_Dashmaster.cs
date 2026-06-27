@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm31_Dashmaster {
@@ -14,7 +13,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float dashCooldown = 0.3f;
         private static readonly float cooldownDecreaseOnDash = 0f;
 
-        private static InputHandler inputHandler = null;
+        private static InputHandler? inputHandler = null;
 
         private static readonly FieldInfo inputHandlerField = typeof(HeroController).GetField("inputHandler", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo airDashed = typeof(HeroController).GetField("airDashed", BindingFlags.Instance | BindingFlags.NonPublic);
@@ -22,13 +21,13 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly FieldInfo shadowDashTimer = typeof(HeroController).GetField("shadowDashTimer", BindingFlags.Instance | BindingFlags.NonPublic);
 
         internal static void Load() {
-            ModHooks.CharmUpdateHook += Charm31_Dashmaster.OnCharmUpdate;
+            ModHooks.CharmUpdateHook += OnCharmUpdate;
             On.HeroController.HeroDash += OnHeroController_HeroDash;
             On.HeroController.CanDash += OnHeroController_CanDash;
         }
 
         internal static void Unload() {
-            ModHooks.CharmUpdateHook -= Charm31_Dashmaster.OnCharmUpdate;
+            ModHooks.CharmUpdateHook -= OnCharmUpdate;
             On.HeroController.HeroDash -= OnHeroController_HeroDash;
             On.HeroController.CanDash -= OnHeroController_CanDash;
         }

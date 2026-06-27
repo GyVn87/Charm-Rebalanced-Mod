@@ -7,17 +7,17 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int totalDamageTakenToGainLifeblood = 5;
 
         private static int damageTakenCounter = 0;
-        private static PlayMakerFSM blueHealthControlFSM = null;
+        private static PlayMakerFSM? blueHealthControlFSM = null;
 
 
         internal static void Load() {
-            On.PlayerData.UpdateBlueHealth += Charm09_LifebloodCore.OnUpdateBlueHealth;
+            On.PlayerData.UpdateBlueHealth += OnUpdateBlueHealth;
             On.PlayerData.MaxHealth += OnPDMaxHealth;
             ModHooks.TakeHealthHook += OnTakeHealth;
         }
 
         internal static void Unload() {
-            On.PlayerData.UpdateBlueHealth -= Charm09_LifebloodCore.OnUpdateBlueHealth;
+            On.PlayerData.UpdateBlueHealth -= OnUpdateBlueHealth;
             On.PlayerData.MaxHealth -= OnPDMaxHealth;
             ModHooks.TakeHealthHook -= OnTakeHealth;
         }
@@ -35,16 +35,16 @@ namespace TuyenTuyenTuyen.Charms {
             PlayerData PD = PlayerData.instance;
             if (PD.GetBool("equippedCharm_9")) {
                 damageTakenCounter += orig;
-                GameManager.instance.StartCoroutine(GrantLifeblood(PD));
+                GameManager.instance.StartCoroutine(GrantLifeblood());
             }
             return orig;
         }
 
-        private static IEnumerator GrantLifeblood(PlayerData data) {
+        private static IEnumerator GrantLifeblood() {
             yield return null;
 
             if (blueHealthControlFSM == null) {
-                GameObject healthGameObject = GameCameras.instance.transform.Find("HudCamera/Hud Canvas/Health").gameObject;
+                GameObject healthGameObject = GameCameras.instance.hudCanvas.transform.Find("Health").gameObject;
                 blueHealthControlFSM = healthGameObject.LocateMyFSM("Blue Health Control");
             }
 

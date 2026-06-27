@@ -5,7 +5,7 @@ namespace TuyenTuyenTuyen.Charms {
     internal static class Charm29_Hiveblood {
         private static readonly float newRecoverTime = 5f;
 
-        private static GameObject recoveryBlob = null;
+        private static GameObject? recoveryBlob = null;
 
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.FindChild.OnEnter += OnFindChild_OnEnter;
@@ -36,7 +36,7 @@ namespace TuyenTuyenTuyen.Charms {
                     orig(self, fsmEvent, eventData);
                     return;
                 }
-
+                    
                 float newX = (float)health * 0.94f - 10.32f;
                 Vector3 newLocalPosition = recoveryBlob.transform.localPosition;
                 newLocalPosition.x = newX;

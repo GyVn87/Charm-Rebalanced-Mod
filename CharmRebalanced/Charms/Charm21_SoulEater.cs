@@ -18,9 +18,9 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         private static int OnSoulGain(int orig) {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
-            if (PD.GetBool("equippedCharm_21")) {
-                if (PD.GetInt("MPCharge") < PD.GetInt("maxMP"))
+            PlayerData playerData = PlayerData.instance;
+            if (playerData.GetBool("equippedCharm_21")) {
+                if (playerData.GetInt("MPCharge") < playerData.GetInt("maxMP"))
                     orig = orig - 8 + soulCharge;
                 else
                     orig = orig - 6 + soulReserve;
@@ -48,18 +48,18 @@ namespace TuyenTuyenTuyen.Charms {
         }
     }
 
-    public class EaterCurse : TuyenTuyenTuyen.Mechanics.CustomEffect {
-        public override float Duration => Charm21_SoulEater.eaterEffectDuration;
-        public override Color StartColor => new(0.85f, 0.90f, 0.92f, 0.65f);
-        public override Vector3 LocalScale => new(2f, 2f, 2f);
-        public override string Name => "Eater Effect Particle";
+    public class EaterCurse : CustomEffect {
+        protected override float Duration => Charm21_SoulEater.eaterEffectDuration;
+        protected override Color StartColor => new(0.85f, 0.90f, 0.92f, 0.65f);
+        protected override Vector3 LocalScale => new(2f, 2f, 2f);
+        protected override string Name => "Eater Effect Particle";
     }
 
     public class EaterCurseCooldown : CustomEffect {
-        public override float Duration => 3f;
-        public override Color StartColor => new(1f, 1f, 1f, 0f);
-        public override Vector3 LocalScale => new(1f, 1f, 1f);
-        public override string Name => "Flukenest Eater Curse Cooldown";
+        protected override float Duration => 3f;
+        protected override Color StartColor => new(1f, 1f, 1f, 0f);
+        protected override Vector3 LocalScale => new(1f, 1f, 1f);
+        protected override string Name => "Eater Curse Cooldown";
 
         EaterCurseCooldown() {
             base.SetEmissionRate(0f);

@@ -5,11 +5,11 @@
         private static readonly float attackCooldownDecrease = 0.75f; // 33% attack speed increase
 
         internal static void Load() {
-            ModHooks.CharmUpdateHook += Charm32_QuickSlash.OnCharmUpdate;
+            ModHooks.CharmUpdateHook += OnCharmUpdate;
         }
 
         internal static void Unload() {
-            ModHooks.CharmUpdateHook -= Charm32_QuickSlash.OnCharmUpdate;
+            ModHooks.CharmUpdateHook -= OnCharmUpdate;
         }
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {

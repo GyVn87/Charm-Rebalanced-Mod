@@ -6,17 +6,17 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float thornDamageMutiplier = 1f;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += Charm12_ThornsOfAgony.OnSetFsmInt_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter += Charm12_ThornsOfAgony.OnSendMessage_OnEnter;
-            On.HutongGames.PlayMaker.Actions.Wait.OnEnter += Charm12_ThornsOfAgony.OnWait_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SetPosition.OnEnter += Charm12_ThornsOfAgony.OnSetPosition_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter += OnSendMessage_OnEnter;
+            On.HutongGames.PlayMaker.Actions.Wait.OnEnter += OnWait_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetPosition.OnEnter += OnSetPosition_OnEnter;
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter -= Charm12_ThornsOfAgony.OnSetFsmInt_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter -= Charm12_ThornsOfAgony.OnSendMessage_OnEnter;
-            On.HutongGames.PlayMaker.Actions.Wait.OnEnter -= Charm12_ThornsOfAgony.OnWait_OnEnter;
-            On.HutongGames.PlayMaker.Actions.SetPosition.OnEnter -= Charm12_ThornsOfAgony.OnSetPosition_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter -= OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter -= OnSendMessage_OnEnter;
+            On.HutongGames.PlayMaker.Actions.Wait.OnEnter -= OnWait_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetPosition.OnEnter -= OnSetPosition_OnEnter;
         }
 
         private static void OnSetFsmInt_OnEnter(On.HutongGames.PlayMaker.Actions.SetFsmInt.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SetFsmInt self) {

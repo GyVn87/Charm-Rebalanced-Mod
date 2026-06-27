@@ -1,7 +1,4 @@
-﻿using TuyenTuyenTuyen.Mechanics;
-using UnityEngine;
-
-namespace TuyenTuyenTuyen.Charms {
+﻿namespace TuyenTuyenTuyen.Charms {
     internal static class Charm16_SharpShadow {
         private static readonly float shadowDashSpeedIncrease = 1.4f;
         private static readonly float shadowDashDamageSharp = 2f;
@@ -9,16 +6,16 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float nailBindingPenalty = 0.75f;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.FloatMultiplyV2.OnEnter += Charm16_SharpShadow.OnFloatMultiplyV2_OnEnter;
-            On.HutongGames.PlayMaker.Actions.ConvertFloatToInt.OnEnter += Charm16_SharpShadow.OnConvertFloatToInt_OnEnter;
-            ModHooks.CharmUpdateHook += Charm16_SharpShadow.OnCharmUpdate;
+            On.HutongGames.PlayMaker.Actions.FloatMultiplyV2.OnEnter += OnFloatMultiplyV2_OnEnter;
+            On.HutongGames.PlayMaker.Actions.ConvertFloatToInt.OnEnter += OnConvertFloatToInt_OnEnter;
+            ModHooks.CharmUpdateHook += OnCharmUpdate;
             On.HealthManager.TakeDamage += OnHealthManager_TakeDamage;
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.FloatMultiplyV2.OnEnter -= Charm16_SharpShadow.OnFloatMultiplyV2_OnEnter;
-            On.HutongGames.PlayMaker.Actions.ConvertFloatToInt.OnEnter -= Charm16_SharpShadow.OnConvertFloatToInt_OnEnter;
-            ModHooks.CharmUpdateHook -= Charm16_SharpShadow.OnCharmUpdate;
+            On.HutongGames.PlayMaker.Actions.FloatMultiplyV2.OnEnter -= OnFloatMultiplyV2_OnEnter;
+            On.HutongGames.PlayMaker.Actions.ConvertFloatToInt.OnEnter -= OnConvertFloatToInt_OnEnter;
+            ModHooks.CharmUpdateHook -= OnCharmUpdate;
             On.HealthManager.TakeDamage -= OnHealthManager_TakeDamage;
         }
 
@@ -37,7 +34,7 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnConvertFloatToInt_OnEnter(On.HutongGames.PlayMaker.Actions.ConvertFloatToInt.orig_OnEnter orig, HutongGames.PlayMaker.Actions.ConvertFloatToInt self) {
             if (self.Fsm.Name == "Set Sharp Shadow Damage" && self.State.Name == "Set") {
-                if (!CharmRebalanced.LoadedInstance.PD.GetBool("equippedCharm_31"))
+                if (!PlayerData.instance.GetBool("equippedCharm_31"))
                     self.floatVariable.Value *= shadowDashDamageSharp;
             }
             orig(self);

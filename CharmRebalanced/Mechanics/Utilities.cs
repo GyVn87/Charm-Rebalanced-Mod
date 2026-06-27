@@ -24,10 +24,10 @@ namespace TuyenTuyenTuyen.Mechanics {
             Vector2 newVelocity = default;
             newVelocity.x = x;
             newVelocity.y = y;
-            rb2d.velocity = newVelocity;
+            rb2d.linearVelocity = newVelocity;
         }
 
-        internal static Sprite LoadSprite(string spriteName) {
+        internal static Sprite? LoadSprite(string spriteName) {
             Assembly asm = Assembly.GetExecutingAssembly();
             Sprite charmSprite;
             using (Stream stream = asm.GetManifestResourceStream($"TuyenTuyenTuyen.Assets.Charms.{spriteName}.png")) {
@@ -35,7 +35,7 @@ namespace TuyenTuyenTuyen.Mechanics {
                 byte[] buffer = new byte[stream.Length];
                 stream.Read(buffer, 0, buffer.Length);
 
-                Texture2D texture = new Texture2D(1, 1);
+                Texture2D texture = new(1, 1);
                 ImageConversion.LoadImage(texture, buffer);
                 charmSprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f));
             }

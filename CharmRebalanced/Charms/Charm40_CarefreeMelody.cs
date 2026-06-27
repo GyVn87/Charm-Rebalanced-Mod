@@ -1,7 +1,6 @@
 ﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -34,7 +33,7 @@ namespace TuyenTuyenTuyen.Charms {
 	            IL_0185: stfld int32 HeroController::hitsSinceShielded
             */
 
-            ILLabel blockEffectLabel = null;
+            ILLabel? blockEffectLabel = null;
             if (cursor.TryGotoNext(
                 MoveType.Before,
                 i => i.MatchLdarg(0),
@@ -68,7 +67,7 @@ namespace TuyenTuyenTuyen.Charms {
                 cursor.EmitDelegate<Func<int, bool>>(NewCarefreeMelodyMechanic);
                 cursor.Emit(OpCodes.Brtrue, blockEffectLabel);
 
-                ILLabel label = null;
+                ILLabel? label = null;
                 if (cursor.TryGotoNext(
                     MoveType.After,
                     i => i.MatchBrfalse(out label)

@@ -1,6 +1,4 @@
 ﻿using HutongGames.PlayMaker;
-using System;
-using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm37_Sprintmaster {
@@ -15,12 +13,12 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float swimSpeedMaster = 10f;
 
         internal static void Load() {
-            ModHooks.CharmUpdateHook += Charm37_Sprintmaster.OnCharmUpdate;
+            ModHooks.CharmUpdateHook += OnCharmUpdate;
             On.HutongGames.PlayMaker.Fsm.ProcessEvent += OnFsmProcessEvent;
         }
 
         internal static void Unload() {
-            ModHooks.CharmUpdateHook -= Charm37_Sprintmaster.OnCharmUpdate;
+            ModHooks.CharmUpdateHook -= OnCharmUpdate;
             On.HutongGames.PlayMaker.Fsm.ProcessEvent -= OnFsmProcessEvent;
         }
 

@@ -5,11 +5,11 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float masksIncreases = 1.5f;
 
         internal static void Load() {
-            ModHooks.CharmUpdateHook += Charm27_JoniBlessing.OnCharmUpdate;
+            ModHooks.CharmUpdateHook += OnCharmUpdate;
         }
 
         internal static void Unload() {
-            ModHooks.CharmUpdateHook -= Charm27_JoniBlessing.OnCharmUpdate;
+            ModHooks.CharmUpdateHook -= OnCharmUpdate;
         }
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {

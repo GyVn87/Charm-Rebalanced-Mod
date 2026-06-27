@@ -1,9 +1,7 @@
-﻿using Mono.Cecil;
-using Mono.Cecil.Cil;
+﻿using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
 using System.Reflection;
-using TuyenTuyenTuyen.Mechanics;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -18,64 +16,18 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int flukeDamageLevel2 = 4;
         private static readonly int flukeDamageLevel2Shaman = 5;
 
-        private static readonly FieldInfo hasBursted = typeof(SpellFluke).GetField("hasBursted", BindingFlags.Instance | BindingFlags.NonPublic);
         private static readonly FieldInfo flukeDamage = typeof(SpellFluke).GetField("damage", BindingFlags.Instance | BindingFlags.NonPublic);
-        private static readonly MethodInfo burstMethod = typeof(SpellFluke).GetMethod("Burst", BindingFlags.Instance | BindingFlags.NonPublic);
 
         internal static void Load() {
-            On.SpellFluke.DoDamage += Charm11_Flukenest.ONSFDoDamage;
-            On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter += Charm11_Flukenest.OnFlingObjectsFromGlobalPool_OnEnter;
-            On.SpellFluke.OnEnable += Charm11_Flukenest.ONSFOnEnable;
-            IL.SpellFluke.DoDamage += ForceBurstIfImmune;
+            On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter += OnFlingObjectsFromGlobalPool_OnEnter;
+            On.SpellFluke.OnEnable += ONSFOnEnable;
             IL.SpellFluke.DoDamage += HookAfterApplyingDamage;
         }
 
         internal static void Unload() {
-            On.SpellFluke.DoDamage -= Charm11_Flukenest.ONSFDoDamage;
-            On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter -= Charm11_Flukenest.OnFlingObjectsFromGlobalPool_OnEnter;
-            On.SpellFluke.OnEnable -= Charm11_Flukenest.ONSFOnEnable;
-            IL.SpellFluke.DoDamage -= ForceBurstIfImmune;
+            On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.OnEnter -= OnFlingObjectsFromGlobalPool_OnEnter;
+            On.SpellFluke.OnEnable -= ONSFOnEnable;
             IL.SpellFluke.DoDamage -= HookAfterApplyingDamage;
-        }
-
-        private static void ForceBurstIfImmune(ILContext il) {
-            ILCursor cursor = new ILCursor(il).Goto(0);
-
-            /*
-                // if (component.IsInvincible && obj.tag != "Spell Vulnerable")
-	            IL_000f: ldloc.0
-	            IL_0010: callvirt instance bool HealthManager::get_IsInvincible()
-	            IL_0015: brfalse.s IL_002a
-
-	            IL_0017: ldarg.1
-	            IL_0018: callvirt instance string [UnityEngine.CoreModule]UnityEngine.GameObject::get_tag()
-	            IL_001d: ldstr "Spell Vulnerable"
-	            IL_0022: call bool [netstandard]System.String::op_Inequality(string, string)
-	            IL_0027: brfalse.s IL_002a
-
-	            // return;
-	            IL_0029: ret
-             */
-
-            if (cursor.TryGotoNext(
-                MoveType.After,
-                i => i.MatchCall(out _),
-                i => i.MatchBrfalse(out _),
-                i => i.MatchRet()
-            )) {
-                cursor.Index--;
-                cursor.Emit(OpCodes.Ldarg_0);
-                cursor.Emit(OpCodes.Call, burstMethod);
-            }
-        }
-
-        private static void ONSFDoDamage(On.SpellFluke.orig_DoDamage orig, SpellFluke self, GameObject obj, int upwardRecursionAmount, bool burst) {
-            bool alreadyBursted = (bool)hasBursted.GetValue(self);
-            if (alreadyBursted)
-                return;
-            orig(self, obj, upwardRecursionAmount, burst);
-            if (burst)
-                hasBursted.SetValue(self, true); 
         }
 
         private static void OnFlingObjectsFromGlobalPool_OnEnter(On.HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool.orig_OnEnter orig, HutongGames.PlayMaker.Actions.FlingObjectsFromGlobalPool self) {
@@ -85,7 +37,7 @@ namespace TuyenTuyenTuyen.Charms {
             }
 
             int defaultSpawn = self.spawnMin.Value;
-            bool hasShamanStone = CharmRebalanced.LoadedInstance.PD.GetBool("equippedCharm_19");
+            bool hasShamanStone = PlayerData.instance.GetBool("equippedCharm_19");
             int currentSpawn = defaultSpawn;
             string ownerName = self.Owner.name;
             if (ownerName.StartsWith("Fireball Top")) {
@@ -110,7 +62,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         private static void ONSFOnEnable(On.SpellFluke.orig_OnEnable orig, SpellFluke self) {
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+            PlayerData PD = PlayerData.instance;
             bool hasShamanStone = PD.GetBool("equippedCharm_19");
             int fireballLevel = PD.GetInt("fireballLevel");
             int newDamage = (int)flukeDamage.GetValue(self);
@@ -138,24 +90,21 @@ namespace TuyenTuyenTuyen.Charms {
             ILCursor cursor = new ILCursor(il).Goto(0);
 
             /*
-                // component.hp -= damage;
-	            IL_0032: ldloc.0
-	            IL_0033: dup
-	            IL_0034: ldfld int32 HealthManager::hp
-	            IL_0039: ldarg.0
-	            IL_003a: ldfld int32 SpellFluke::damage
-	            IL_003f: sub
-	            IL_0040: stfld int32 HealthManager::hp
-	            // if (component.hp <= 0)
-	            IL_0045: ldloc.0
-	            IL_0046: ldfld int32 HealthManager::hp
-	            IL_004b: ldc.i4.0
-	            IL_004c: bgt.s IL_0060
+                // component.SubtractHealth(damage);
+		        IL_0031: ldloc.1
+		        IL_0032: ldarg.0
+		        IL_0033: ldfld int32 SpellFluke::damage
+		        IL_0038: callvirt instance void HealthManager::SubtractHealth(int32)
+		        // if (component.hp <= 0)
+		        IL_003d: ldloc.1
+		        IL_003e: ldfld int32 HealthManager::hp
+		        IL_0043: ldc.i4.0
+		        IL_0044: bgt.s IL_0058
             */
 
             if (cursor.TryGotoNext(
                 MoveType.Before,
-                i => i.MatchLdloc(0),
+                i => i.MatchLdloc(1),
                 i => i.MatchLdfld(out _),
                 i => i.MatchLdcI4(0),
                 i => i.MatchBgt(out _)  

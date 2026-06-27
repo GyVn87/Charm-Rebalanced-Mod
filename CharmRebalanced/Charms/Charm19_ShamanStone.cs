@@ -16,12 +16,12 @@ namespace TuyenTuyenTuyen.Charms {
         internal static readonly float spellDamageIncrease = 1.3f;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += Charm19_ShamanStone.OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += OnSetFsmInt_OnEnter;
             On.HutongGames.PlayMaker.Actions.IntCompare.OnEnter += OnIntCompare_OnEnter;
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter -= Charm19_ShamanStone.OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter -= OnSetFsmInt_OnEnter;
             On.HutongGames.PlayMaker.Actions.IntCompare.OnEnter -= OnIntCompare_OnEnter;
         }
 
@@ -34,8 +34,8 @@ namespace TuyenTuyenTuyen.Charms {
             if (self.Fsm.Name == "Fireball Control")
                 newDamage = NewFireballDamage(self);
             else if (self.Fsm.Name == "Set Damage") {
-                string ownerName = self.Owner?.name;
-                string parentName = self.Owner?.transform?.parent?.name;
+                string? ownerName = self.Owner?.name;
+                string? parentName = self.Owner?.transform?.parent?.name;
 
                 if (parentName == "Scr Heads")
                     newDamage = NewHowlingWraithsDamage(self);
@@ -161,7 +161,7 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnIntCompare_OnEnter(On.HutongGames.PlayMaker.Actions.IntCompare.orig_OnEnter orig, HutongGames.PlayMaker.Actions.IntCompare self) {
             orig(self);
-            string parentName = self.Owner?.transform?.parent?.name;
+            string? parentName = self.Owner?.transform?.parent?.name;
             if (parentName == "Q Mega" && self.State.Name == "Send Event") {
                 if (PlayerData.instance.GetBool("equippedCharm_19"))
                     self.integer1.Value = Mathf.CeilToInt((float)megaDarkDamage * spellDamageIncrease);

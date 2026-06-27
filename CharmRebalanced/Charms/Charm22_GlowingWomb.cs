@@ -10,7 +10,7 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly float hatchlingDamageRatio = 2f / 3f; // to Nail damage
 
         private static int MaximumHatchlings => (PlayerData.instance.GetBool("equippedCharm_34") ? deepMaximumHatchling : normalMaximumHatchlings);
-        private static GameObject knightHatchlingPrefab = null;
+        private static GameObject? knightHatchlingPrefab = null;
 
         internal static void Load() {
             On.KnightHatchling.Awake += OnKnightHatchling_OnAwake;
@@ -28,7 +28,7 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnKnightHatchling_OnAwake(On.KnightHatchling.orig_Awake orig, KnightHatchling self) {
             orig(self);
-            int nailDamage = CharmRebalanced.LoadedInstance.PD.GetInt("nailDamage");
+            int nailDamage = PlayerData.instance.GetInt("nailDamage");
             self.normalDetails.damage = Mathf.CeilToInt((float)nailDamage * hatchlingDamageRatio);
             self.dungDetails.damage = Mathf.CeilToInt((float)nailDamage * hatchlingDamageRatio);
         }
@@ -41,8 +41,8 @@ namespace TuyenTuyenTuyen.Charms {
                 GameObject[] hatchlingSpawn = GameObject.FindGameObjectsWithTag("Knight Hatchling");
                 int hatchlingNum = ((hatchlingSpawn != null) ? hatchlingSpawn.Length : 0);
                 if (hatchlingNum < MaximumHatchlings) {
-                    PlayerData PD = CharmRebalanced.LoadedInstance.PD;
-                    GameObject Knight = CharmRebalanced.LoadedInstance.Knight;
+                    PlayerData PD = PlayerData.instance;
+                    GameObject Knight = HeroController.instance.gameObject;
                     if (PD.GetBool("equippedCharm_34")) // Deep Focus
                         SpawnHatchling(Knight, Math.Min(MaximumHatchlings - hatchlingNum, hatchlingSpawnFocusDeep));
                     else
@@ -75,7 +75,7 @@ namespace TuyenTuyenTuyen.Charms {
                 knightHatchlingPrefab.Spawn(spawnPoint.transform.position, spawnPoint.transform.rotation);
         }
 
-        // no longer be used
+        // no longer be used... maybe
         private static void OnSetVelocity2d_OnEnter(On.HutongGames.PlayMaker.Actions.SetVelocity2d.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SetVelocity2d self) {
             orig(self);
             if (self.Fsm.Name == "Spell Control" && self.State.Name == "Spell End") {
@@ -83,7 +83,7 @@ namespace TuyenTuyenTuyen.Charms {
                     GameObject[] hatchlingSpawn = GameObject.FindGameObjectsWithTag("Knight Hatchling");
                     int hatchlingNum = ((hatchlingSpawn != null) ? hatchlingSpawn.Length : 0);
                     if (hatchlingNum < MaximumHatchlings) {
-                        GameObject Knight = CharmRebalanced.LoadedInstance.Knight;
+                        GameObject Knight = HeroController.instance.gameObject;
                         SpawnHatchling(Knight, 1);
                     }
                 }

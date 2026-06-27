@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Xml.Linq;
-using TuyenTuyenTuyen.Charms;
 
 namespace TuyenTuyenTuyen.Mechanics {
     internal static class NewCharmDescription {
-        private static readonly Dictionary<string, string> charmDescriptions = new Dictionary<string, string>() {
+        private static readonly Dictionary<string, string> charmDescriptions = new() {
             {"CHARM_DESC_5", "Protects its bearer with a hard shell while focusing SOUL.<br><br>The shell is not indestructible and will shatter if it absorbs too much damage. The bearer can recover the shell by successfully focusing SOUL."},
             {"CHARM_DESC_9", "Contains a living core that bleeds precious lifeblood.<br><br>After taking some damage, the bearer will gain a coating of lifeblood that protects from a humble amount of damage."},
             {"CHARM_DESC_10", "Unique charm bestowed by the King of Hallownest to his most loyal knight. Scratched and dirty, but still cared for.<br><br>Causes the bearer to emit a heroic odour, making enemies suffer more damage from all sources."},

@@ -1,19 +1,18 @@
-﻿using TuyenTuyenTuyen.Charms;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TuyenTuyenTuyen.Mechanics {
     public abstract class CustomEffect : MonoBehaviour {
         private float mTimer = 0f;
-        private GameObject mEffectParticle = null;
-        private GameObject mParticlePrefab = null;
-        private ParticleSystem mParticleSystem = null;
+        private GameObject? mEffectParticle = null;
+        private GameObject? mParticlePrefab = null;
+        private ParticleSystem? mParticleSystem = null;
 
-        public abstract float Duration { get; }
-        public abstract Color StartColor { get; }
-        public abstract Vector3 LocalScale { get; }
-        public abstract string Name { get; }
-        public float EmissionRate = 80f;
-        public float StartSize = 1f;
+        protected abstract float Duration { get; }
+        protected abstract Color StartColor { get; }
+        protected abstract Vector3 LocalScale { get; }
+        protected abstract string Name { get; }
+        private float EmissionRate = 80f;
+        private float StartSize = 1f;
 
         private void Awake() {
             mTimer = Duration;
@@ -21,26 +20,31 @@ namespace TuyenTuyenTuyen.Mechanics {
             if (mParticlePrefab == null)
                 SetPrefab();
 
-            mEffectParticle = Object.Instantiate<GameObject>(mParticlePrefab, transform);
-            mEffectParticle.SetActive(true);
-            mEffectParticle.name = Name;
-            mEffectParticle.transform.localScale = LocalScale;
+            if (mParticlePrefab) {
+                mEffectParticle = Object.Instantiate<GameObject>(mParticlePrefab!, transform);
+                mEffectParticle.SetActive(true);
+                mEffectParticle.name = Name;
+                mEffectParticle.transform.localScale = LocalScale;
 
-            mParticleSystem = mEffectParticle.GetComponent<ParticleSystem>();
-            var emission = mParticleSystem.emission;
-            emission.rateOverTimeMultiplier = EmissionRate;
-            emission.enabled = true;
+                mParticleSystem = mEffectParticle.GetComponent<ParticleSystem>();
+                var emission = mParticleSystem.emission;
+                emission.rateOverTimeMultiplier = EmissionRate;
+                emission.enabled = true;
 
-            var main = mParticleSystem.main;
-            main.startColor = StartColor;
-            main.startSize = StartSize;
-            main.stopAction = ParticleSystemStopAction.Destroy;
+                var main = mParticleSystem.main;
+                main.startColor = StartColor;
+                main.startSize = StartSize;
+                main.stopAction = ParticleSystemStopAction.Destroy;
 
-            mParticleSystem.Clear();
-            mParticleSystem.Play();
+                mParticleSystem.Clear();
+                mParticleSystem.Play();
+            }
+            else {
+                CharmRebalanced.LoadedInstance?.LogWarn("CustomEffect.mParticlePrefab is NULL");
+            }
         }
 
-        protected GameObject GetPrefab() => mParticlePrefab;
+        protected GameObject? GetPrefab() => mParticlePrefab;
 
 
         protected void SetEmissionRate(float rate) {
@@ -70,8 +74,8 @@ namespace TuyenTuyenTuyen.Mechanics {
 
         public void ClearEffect() {
             OnClearEffect();
-            mEffectParticle.transform.SetParent(null);
-            mParticleSystem.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            mEffectParticle?.transform?.SetParent(null);
+            mParticleSystem?.Stop(true, ParticleSystemStopBehavior.StopEmitting);
             Object.Destroy(this);
         }
 

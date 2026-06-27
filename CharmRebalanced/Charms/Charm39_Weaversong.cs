@@ -13,15 +13,15 @@ namespace TuyenTuyenTuyen.Charms {
         internal static readonly int soulGainGrubsong = 3;
 
         internal static void Load() {
-            On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.OnEnter += Charm39_Weaversong.OnPlayerDataBoolTest_OnEnter;
-            On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter += Charm39_Weaversong.OnCallMethodProper_OnEnter;
+            On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.OnEnter += OnPlayerDataBoolTest_OnEnter;
+            On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter += OnCallMethodProper_OnEnter;
             On.HutongGames.PlayMaker.Actions.SetFloatValue.OnEnter += OnSetFloatValue_OnEnter;
             On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter += OnSendEventByName_OnEnter;
         }
 
         internal static void Unload() {
-            On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.OnEnter -= Charm39_Weaversong.OnPlayerDataBoolTest_OnEnter;
-            On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter -= Charm39_Weaversong.OnCallMethodProper_OnEnter;
+            On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.OnEnter -= OnPlayerDataBoolTest_OnEnter;
+            On.HutongGames.PlayMaker.Actions.CallMethodProper.OnEnter -= OnCallMethodProper_OnEnter;
             On.HutongGames.PlayMaker.Actions.SetFloatValue.OnEnter -= OnSetFloatValue_OnEnter;
             On.HutongGames.PlayMaker.Actions.SendEventByName.OnEnter -= OnSendEventByName_OnEnter;
         }
@@ -44,7 +44,7 @@ namespace TuyenTuyenTuyen.Charms {
                 orig(self);
                 return;
             }
-            PlayerData PD = CharmRebalanced.LoadedInstance.PD;
+
             int soulGainDefault = (int)self.parameters[0].GetValue();
             self.parameters[0].SetValue(0);
             orig(self);
@@ -52,7 +52,7 @@ namespace TuyenTuyenTuyen.Charms {
         }
 
         private static void SetWeaverlingDamage(HutongGames.PlayMaker.Actions.PlayerDataBoolTest self) {
-            int nailDamage = CharmRebalanced.LoadedInstance.PD.GetInt("nailDamage");
+            int nailDamage = PlayerData.instance.GetInt("nailDamage");
             self.Fsm.Variables.GetFsmInt("Damage").Value = Mathf.FloorToInt((float)nailDamage * weaverlingDamageRatio);
         }
 
