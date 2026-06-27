@@ -1,16 +1,44 @@
-﻿using TuyenTuyenTuyen.Charms;
+﻿using System.Collections.Generic;
+using SFCore;
+using TuyenTuyenTuyen.Charms;
+using TuyenTuyenTuyen.CustomCharms;
 using TuyenTuyenTuyen.Mechanics;
 
 namespace TuyenTuyenTuyen {
-	public class CharmRebalanced : Mod, ITogglableMod {
+    public class CharmSettings {
+        public Dictionary<string, EasyCharmState>? Settings = null;
+    }
+
+    public class CharmRebalanced : Mod, ITogglableMod {
 		public static CharmRebalanced? LoadedInstance { get; set; }
 		public override string GetVersion() => "3.0.0.0";
+        public CharmSettings LocalCharmSettings = new();
+        public Dictionary<string, EasyCharm> CustomCharms = new() {
+            {"Kingsoul", new KingsoulClone()}
+        };
+
+        public void OnLoadLocal(CharmSettings s) {
+            LocalCharmSettings = s;
+            if (LocalCharmSettings.Settings != null) {
+                foreach (var kvp in LocalCharmSettings.Settings) {
+                    if (CustomCharms.TryGetValue(kvp.Key, out EasyCharm m))
+                        m.RestoreCharmState(kvp.Value);
+                }
+            }
+        }
+
+        public CharmSettings OnSaveLocal() {
+            LocalCharmSettings.Settings = new Dictionary<string, EasyCharmState>();
+            foreach (var kvp in CustomCharms)
+                LocalCharmSettings.Settings[kvp.Key] = kvp.Value.GetCharmState();
+            return LocalCharmSettings;
+        }
 
         public override void Initialize() {
             if (CharmRebalanced.LoadedInstance != null) return;
             CharmRebalanced.LoadedInstance = this;
 
-            //KingsoulClone.Load();
+            KingsoulClone.Load();
 
             Charm31_Dashmaster.Load();  // has to be called before Sharp Shadow'
             Charm03_GrubSong.Load();
@@ -58,7 +86,7 @@ namespace TuyenTuyenTuyen {
             if (HeroController.instance != null)
                 RevertChanges();
 
-            //KingsoulClone.Unload();
+            KingsoulClone.Unload();
 
             Charm31_Dashmaster.Unload();
             Charm03_GrubSong.Unload();

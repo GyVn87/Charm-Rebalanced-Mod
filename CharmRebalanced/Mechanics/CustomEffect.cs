@@ -1,5 +1,4 @@
-﻿using TuyenTuyenTuyen.Charms;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TuyenTuyenTuyen.Mechanics {
     public abstract class CustomEffect : MonoBehaviour {
@@ -22,7 +21,7 @@ namespace TuyenTuyenTuyen.Mechanics {
                 SetPrefab();
 
             if (mParticlePrefab) {
-                mEffectParticle = Object.Instantiate<GameObject>(mParticlePrefab, transform);
+                mEffectParticle = Object.Instantiate<GameObject>(mParticlePrefab!, transform);
                 mEffectParticle.SetActive(true);
                 mEffectParticle.name = Name;
                 mEffectParticle.transform.localScale = LocalScale;
