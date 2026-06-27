@@ -14,18 +14,18 @@ namespace TuyenTuyenTuyen {
 
             Charm31_Dashmaster.Load();  // has to be called before Sharp Shadow'
             Charm03_GrubSong.Load();
-            //Charm04_StalwartShell.Load();
+            Charm04_StalwartShell.Load();
             Charm05_BaldurShell.Load();
-            //Charm06_FuryOfTheFallen.Load();
+            Charm06_FuryOfTheFallen.Load();
             Charm09_LifebloodCore.Load();
-            //Charm10_DefenderCrest.Load();
+            Charm10_DefenderCrest.Load();
             Charm11_Flukenest.Load();
             Charm12_ThornsOfAgony.Load();
             Charm13_18_MarkOfPride_Longnail.Load();
             Charm15_HeavyBlow.Load();
-            //Charm16_SharpShadow.Load();
-            //Charm17_SporeShroom.Load();
-            //Charm19_ShamanStone.Load();
+            Charm16_SharpShadow.Load();
+            Charm17_SporeShroom.Load();
+            Charm19_ShamanStone.Load();
             Charm20_SoulCatcher.Load();
             Charm21_SoulEater.Load();
             Charm22_GlowingWomb.Load();
@@ -35,21 +35,21 @@ namespace TuyenTuyenTuyen {
             Charm26_NailmasterGlory.Load();
             Charm27_JoniBlessing.Load();
             Charm29_Hiveblood.Load();
-            //Charm30_DreamWielder.Load();
+            Charm30_DreamWielder.Load();
             Charm32_QuickSlash.Load();
-            //Charm34_DeepFocus.Load();
-            //Charm35_GrubberflyElegy.Load();
+            Charm34_DeepFocus.Load();
+            Charm35_GrubberflyElegy.Load();
             Charm36_Kingsoul.Load();
             Charm37_Sprintmaster.Load();
             Charm38_Dreamshield.Load();
-            //Charm39_Weaversong.Load();
+            Charm39_Weaversong.Load();
             Charm40_Grimmchild.Load();
             Charm40_CarefreeMelody.Load();
 
             NewCharmCosts.Load();
-            //Focus.Load();
-            //ExtraDamage.Load();
-            //MinionsNotInterruptStagger.Load();
+            Focus.Load();
+            ExtraDamage.Load();
+            MinionsNotInterruptStagger.Load();
             NewCharmDescription.Load();
         }
 
@@ -62,18 +62,18 @@ namespace TuyenTuyenTuyen {
 
             Charm31_Dashmaster.Unload();
             Charm03_GrubSong.Unload();
-            //Charm04_StalwartShell.Unload();
+            Charm04_StalwartShell.Unload();
             Charm05_BaldurShell.Unload();
-            //Charm06_FuryOfTheFallen.Unload();
+            Charm06_FuryOfTheFallen.Unload();
             Charm09_LifebloodCore.Unload();
-            //Charm10_DefenderCrest.Unload();
+            Charm10_DefenderCrest.Unload();
             Charm11_Flukenest.Unload();
             Charm12_ThornsOfAgony.Unload();
             Charm13_18_MarkOfPride_Longnail.Unload();
             Charm15_HeavyBlow.Unload();
-            //Charm16_SharpShadow.Unload();
-            //Charm17_SporeShroom.Unload();
-            //Charm19_ShamanStone.Unload();
+            Charm16_SharpShadow.Unload();
+            Charm17_SporeShroom.Unload();
+            Charm19_ShamanStone.Unload();
             Charm20_SoulCatcher.Unload();
             Charm21_SoulEater.Unload();
             Charm22_GlowingWomb.Unload();
@@ -83,21 +83,21 @@ namespace TuyenTuyenTuyen {
             Charm26_NailmasterGlory.Unload();
             Charm27_JoniBlessing.Unload();
             Charm29_Hiveblood.Unload();
-            //Charm30_DreamWielder.Unload();
+            Charm30_DreamWielder.Unload();
             Charm32_QuickSlash.Unload();
-            //Charm34_DeepFocus.Unload();
-            //Charm35_GrubberflyElegy.Unload();
+            Charm34_DeepFocus.Unload();
+            Charm35_GrubberflyElegy.Unload();
             Charm36_Kingsoul.Unload();
             Charm37_Sprintmaster.Unload();
             Charm38_Dreamshield.Unload();
-            //Charm39_Weaversong.Unload();
+            Charm39_Weaversong.Unload();
             Charm40_Grimmchild.Unload();
             Charm40_CarefreeMelody.Unload();
 
             NewCharmCosts.Unload();
-            //Focus.Unload();
-            //ExtraDamage.Unload();
-            //MinionsNotInterruptStagger.Unload();
+            Focus.Unload();
+            ExtraDamage.Unload();
+            MinionsNotInterruptStagger.Unload();
             NewCharmDescription.Unload();
         }
 
