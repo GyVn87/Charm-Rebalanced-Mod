@@ -9,7 +9,7 @@ namespace TuyenTuyenTuyen {
         public Dictionary<string, EasyCharmState>? Settings = null;
     }
 
-    public class CharmRebalanced : Mod, ITogglableMod {
+    public class CharmRebalanced : Mod, ITogglableMod, ILocalSettings<CharmSettings> {
 		public static CharmRebalanced? LoadedInstance { get; set; }
 		public override string GetVersion() => "3.0.0.0";
         public CharmSettings LocalCharmSettings = new();
