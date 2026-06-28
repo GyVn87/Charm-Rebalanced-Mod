@@ -24,8 +24,7 @@ namespace TuyenTuyenTuyen.Mechanics {
             Vector2 newVelocity = default;
             newVelocity.x = x;
             newVelocity.y = y;
-            //rb2d.linearVelocity = newVelocity; // for 1.5.12620
-            rb2d.velocity = newVelocity;
+            rb2d.linearVelocity = newVelocity;
         }
 
         internal static Sprite? LoadSprite(string spriteName) {
