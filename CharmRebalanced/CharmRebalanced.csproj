@@ -7,6 +7,8 @@
     <RootNamespace>TuyenTuyenTuyen</RootNamespace>
     <!--Replace this with your Managed folder path in Game Files folder-->
     <ManagedFolder>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</ManagedFolder>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
   </PropertyGroup>
     
   <Target Name="Copy DLLs" AfterTargets="Build">
@@ -49,6 +51,7 @@
     </Reference>
     <Reference Include="SFCore">
       <HintPath>$(ManagedFolder)\Mods\SFCore\SFCore.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="TeamCherry.TK2D">
       <HintPath>$(ManagedFolder)\TeamCherry.TK2D.dll</HintPath>

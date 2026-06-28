@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
-using SFCore;
+﻿using SFCore;
+using System.Collections.Generic;
+using System.Reflection;
 using TuyenTuyenTuyen.Charms;
 using TuyenTuyenTuyen.CustomCharms;
 using TuyenTuyenTuyen.Mechanics;
@@ -11,7 +12,7 @@ namespace TuyenTuyenTuyen {
 
     public class CharmRebalanced : Mod, ITogglableMod, ILocalSettings<CharmSettings> {
 		public static CharmRebalanced? LoadedInstance { get; set; }
-		public override string GetVersion() => "3.0.0.0";
+		public override string GetVersion() => Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public CharmSettings LocalCharmSettings = new();
         public Dictionary<string, EasyCharm> CustomCharms = new() {
             {"Kingsoul", new KingsoulClone()}
