@@ -197,7 +197,6 @@
 ***At this point, I really wonder why all Lifeblood-related charms are so weird***
 ## Hiveblood
 - Notch cost: 4 => 2.
-- Regeneration time: 10 seconds 
 - Focus no longer interrupts regeneration
 
 ***Despite being one of my favorite charms, I would say its original cost makes many people hesitant to use it. In addition, the quality-of-life change makes it far less annoying to use this charm.***
