@@ -65,7 +65,7 @@
 - In Pantheon with Shell Binding, the damage is multiplied by 1.5x.
 - Doesn't fire beam when the damage is lower than 1.
 - Beams no longer stagger bosses
-- The bearer gains 4 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
+- The bearer gains 3 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
 - 4 maximum masks (with Pure Nail and Shell Binding)
 
 | Health  | 4    |  3  |
@@ -197,7 +197,7 @@
 ***At this point, I really wonder why all Lifeblood-related charms are so weird***
 ## Hiveblood
 - Notch cost: 4 => 2.
-- Regeneration time: 10 seconds => 12 seconds
+- Regeneration time: 10 seconds 
 - Focus no longer interrupts regeneration
 
 ***Despite being one of my favorite charms, I would say its original cost makes many people hesitant to use it. In addition, the quality-of-life change makes it far less annoying to use this charm.***
