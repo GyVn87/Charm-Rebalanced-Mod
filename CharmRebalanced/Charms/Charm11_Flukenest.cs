@@ -139,21 +139,24 @@ namespace TuyenTuyenTuyen.Charms {
             ILCursor cursor = new ILCursor(il).Goto(0);
 
             /*
-                // component.SubtractHealth(damage);
-		        IL_0031: ldloc.1
-		        IL_0032: ldarg.0
-		        IL_0033: ldfld int32 SpellFluke::damage
-		        IL_0038: callvirt instance void HealthManager::SubtractHealth(int32)
-		        // if (component.hp <= 0)
-		        IL_003d: ldloc.1
-		        IL_003e: ldfld int32 HealthManager::hp
-		        IL_0043: ldc.i4.0
-		        IL_0044: bgt.s IL_0058
+                // component.hp -= damage;
+	            IL_0032: ldloc.0
+	            IL_0033: dup
+	            IL_0034: ldfld int32 HealthManager::hp
+	            IL_0039: ldarg.0
+	            IL_003a: ldfld int32 SpellFluke::damage
+	            IL_003f: sub
+	            IL_0040: stfld int32 HealthManager::hp
+	            // if (component.hp <= 0)
+	            IL_0045: ldloc.0
+	            IL_0046: ldfld int32 HealthManager::hp
+	            IL_004b: ldc.i4.0
+	            IL_004c: bgt.s IL_0060
             */
 
             if (cursor.TryGotoNext(
                 MoveType.Before,
-                i => i.MatchLdloc(1),
+                i => i.MatchLdloc(0),
                 i => i.MatchLdfld(out _),
                 i => i.MatchLdcI4(0),
                 i => i.MatchBgt(out _)  
