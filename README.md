@@ -1,6 +1,10 @@
 - If you enjoy the mod, please consider giving the repository a star. This will help spread the mod to more people! 
 - If you have any ideas or encounter any issues, please let me know by opening an issue.
 
+# Acknowledgements
+- To everyone in the community who tested and shared their thoughts to make this mod better
+- To [Holland](https://www.youtube.com/@the_holland) for inspiring this project through his "Charm Reworks" series, and for providing many honest feedback and critiques
+
 # How to install
 * Change the game version to `1.5.78.11833`
 <img width="2184" height="1259" alt="steambetas2" src="https://github.com/user-attachments/assets/a65bee64-24ca-4576-9aae-1a113f4c4915" />
@@ -196,7 +200,7 @@
 
 ***At this point, I really wonder why all Lifeblood-related charms are so weird***
 ## Hiveblood
-- Notch cost: 4 => 2.
+- Notch cost: 4 => 3
 - Focus no longer interrupts regeneration
 
 ***Despite being one of my favorite charms, I would say its original cost makes many people hesitant to use it. In addition, the quality-of-life change makes it far less annoying to use this charm.***
@@ -250,12 +254,3 @@
 - Can now be equipped even after player obtains Voidheart
 
 ***5 notch slots is crazy, not gonna lie***
-
-## Voidheart
-- New mechanic: Dark Overflow (Unlocked upon obtaining Voidheart)
-- Successful Focus now grants the "Dark Overflow" for 4 seconds, increasing damage dealt (including Nail, Nail Art, Spell, Shadow Dash) by 50%
-- If player overheals, the damage bonus increases to 70%  
-- With Deep Focus equipped, the total damage bonus is multiplied by x1.25
-- Taking any damage instantly clears the effect
-
-***I made this change to somewhat compensate for the Soul and time spent in Focus. I hope it will encourage more aggressive Focus usage in the late-game***

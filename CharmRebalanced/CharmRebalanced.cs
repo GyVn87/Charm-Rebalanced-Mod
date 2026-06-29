@@ -76,7 +76,6 @@ namespace TuyenTuyenTuyen {
             Charm40_CarefreeMelody.Load();
 
             NewCharmCosts.Load();
-            Focus.Load();
             ExtraDamage.Load();
             MinionsNotInterruptStagger.Load();
             NewCharmDescription.Load();
@@ -124,7 +123,6 @@ namespace TuyenTuyenTuyen {
             Charm40_CarefreeMelody.Unload();
 
             NewCharmCosts.Unload();
-            Focus.Unload();
             ExtraDamage.Unload();
             MinionsNotInterruptStagger.Unload();
             NewCharmDescription.Unload();

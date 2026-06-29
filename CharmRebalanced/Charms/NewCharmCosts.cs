@@ -11,7 +11,7 @@ namespace TuyenTuyenTuyen.Charms {
             {"charmCost_20", 1},
             {"charmCost_21", 3},
             {"charmCost_27", 2},
-            {"charmCost_29", 2},
+            {"charmCost_29", 3},
             {"charmCost_34", 3},
             {"charmCost_38", 2}
         };

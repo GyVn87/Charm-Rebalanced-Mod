@@ -7,8 +7,8 @@
     <RootNamespace>TuyenTuyenTuyen</RootNamespace>
     <!--Replace this with your Managed folder path in Game Files folder-->
     <ManagedFolder>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</ManagedFolder>
-    <AssemblyVersion>3.0.1.0</AssemblyVersion>
-    <FileVersion>3.0.1.0</FileVersion>
+    <AssemblyVersion>3.0.2.0</AssemblyVersion>
+    <FileVersion>3.0.2.0</FileVersion>
   </PropertyGroup>
     
   <Target Name="Copy DLLs" AfterTargets="Build">
