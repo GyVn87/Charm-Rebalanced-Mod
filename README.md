@@ -71,25 +71,25 @@
 - Doesn't fire beam when the damage is lower than 1.
 - Beams no longer stagger bosses
 - The bearer gains 4 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
-- 4 maximum masks (with Pure Nail and Shell Binding)
+- 4 maximum masks (with Shell Binding)
 
-| Health  | 4    |  3  |
-| ------- | ---- |---- |
-| Damage  | 12   |  6  |
+| Health  | 4     |  3    |
+| ------- | ----  |----   |
+| Damage  | 54%  |  24%  |
 
-- 9 maximum masks (with Pure Nail)
+- 9 maximum masks
 
 | Health  | 9   |  8  |  7  | 6   |  5 |  4 |
 | ------- |---- |---- |---- |---- |----|----|
-| Damage  | 14  | 11  |  8  |  6  |  4 |  2  |
+| Damage  | 64%  | 49%  |  36%  |  25%  |  16% |  9%  |
 
-- 12 maximum masks (with Pure Nail)
+- 11 maximum masks
 
-| Health  | 12   |  11  |  10  | 9   |  8 |  7 |
-| ------- |----- | ---- |----- |---- |----|----|
-| Damage  | 16   | 13   |  11  |  8  |  7 |  5 |
+| Health  | 11   |  10  | 9     |  8   |  7 |
+| ------- |----- | ---- |-----  |----  |----   |
+| Damage  | 70%  |  56% |  44%  |  34% |  25% |
 
-***I really love the idea of firing beam with your nail. But I just hate when it becomes completely useless the moment I take a single hit. This rework incentivizes players to maintain their health as high as possible while not punishing casual players too much.***
+***I really love the idea of firing beam with your nail. But I just hate when it becomes completely useless the moment I take a single hit. This rework still incentivizes players to maintain their health as high as possible while not punishing casual players too much.***
 ## Greed
 - Geo drop bonus: (20% - 100%) => (40% - 100%)
 - Because Geo drop calculation is a little weird, the result is a roughly 50% average increase
@@ -134,11 +134,12 @@
 | -------   |----  |---- |----    |----   |----  |-----|
 | Increase  | 64%  | 49%  |  36%  |  25%  |  16% |  9% |
 
-- 12 maximum masks
+- 11 maximum masks
 
-| Health    | 1     |  2    |  3    | 4     |  5   |  6   |
-| -------   |-----  | ----  |-----  |----   |  ----|----  |
-| Increase  | 71%   | 59%   |  48%  |  38%  |  29% |  21% |
+| Health    | 1     |  2    |  3    | 4    |  5   | 6    | 
+| -------   |-----  | ----  |-----  |----  |  ----|----  |
+| Increase  | 70%   |  56%  |  44%  |  34% |  25% | 17%  |
+
 
 ***This charm suffers from the exact same issue as Grubberfly's Elegy, it only activates in such an extreme condition. Very few people actually use this charm because it punishes casual players too much. Because of that, I want to still retain its original concept while making it more accessible.***
 ## Thorns Of Agony
@@ -215,11 +216,10 @@
 ***Many people only equipped this charm due to its Shadow Dash speed increase, instead of the dash's damage. And I think this is such a shame because it is a really cool effect.***
 ## Weaversong
 - Each Weaverling now deals: 25% of Nail damage (rounded down).
+- Each successful hit generates 2 Soul by default.
+- Weaverling base speed: 25% faster
 - Unable to deal damage to staggered bosses
 - No longer wake up staggered bosses
-- Each successful hit generates 2 Soul by default.
-- Synergy with Sprintmaster:
-  - Weaverling's speed increase: 50% => 25%
 
 ***Weaversong is a charm that is not good on its own, but for its synergy with Grubsong. I believe making it generate Soul by default will solve this problem, and make it unique compared to other summoning charm***
 ## Dreamshield
