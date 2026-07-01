@@ -43,16 +43,17 @@
 
 ***The original 4-notch cost is extremely high and I don't really find the benefits worth it. This rework also makes the charm unique, rather than a more expensive version of Soul Catcher***
 ## Dashmaster
-- Dash cooldown: 0.4s => 0.3s
-- Shadow Dash cooldown: reduced by 20%
+- Notch cost: 2 => 1
 - Players can now Down Dash at any time
 - Executing a Down Dash now fully recharges Dash cooldown immediately, even in mid-air
 
-***This charm has been overshadowed too much by Sharp Shadow. It certainly needs a buff to be relevant in the late-game, making it a highly competitive 2-notch charm.***
+***This charm has been overshadowed too much by Sharp Shadow. It certainly needs a buff to be relevant in the game.***
 ## Sprintmaster
-- Run speed increase: 20% => 25%
+- Run speed increase: 20% => 30%
 - Speed increase also APPLIES WHILE IN MID-AIR.
 - Increases swim speed by 100%
+- Synergy with Dashmaster:
+  - Run speed increase: 37% => 40%
 
 ***I have always felt so slow when jumping with this charm equipped. The aerial speed buff will completely fix that issue.***
 ## Grubsong
@@ -69,7 +70,7 @@
 - In Pantheon with Shell Binding, the damage is multiplied by 1.5x.
 - Doesn't fire beam when the damage is lower than 1.
 - Beams no longer stagger bosses
-- The bearer gains 3 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
+- The bearer gains 4 Soul on each beam hit, +1 Soul with Soul Catcher equipped, +2 Soul with Soul Eater equipped
 - 4 maximum masks (with Pure Nail and Shell Binding)
 
 | Health  | 4    |  3  |
@@ -89,11 +90,6 @@
 | Damage  | 16   | 13   |  11  |  8  |  7 |  5 |
 
 ***I really love the idea of firing beam with your nail. But I just hate when it becomes completely useless the moment I take a single hit. This rework incentivizes players to maintain their health as high as possible while not punishing casual players too much.***
-## Heart
-- Masks bonus: 34% of player's maximum masks (rounded down)
-- This means that you will gain 3 extra masks when only having 9 maximum masks
-
-***I do think this charm needs a buff to keep up with other charms in the late game.***
 ## Greed
 - Geo drop bonus: (20% - 100%) => (40% - 100%)
 - Because Geo drop calculation is a little weird, the result is a roughly 50% average increase
@@ -191,7 +187,7 @@
 ## Lifeblood Core
 - Notch cost: 3 => 2
 - After player rest at the bench, grants him 4 => 1 additional Lifeblood Mask
-- In addition, Knight gains 1 Lifeblood Mask for every 5 damage taken
+- In addition, Knight gains 1 Lifeblood Mask for every 4 damage taken
 
 ***The high cost makes it hard to fit well into various builds. With the new mechanic, it can fairly compete with other healing charms like Heart, Joni's Blessing, rather than a simple upgrade to Lifeblood Heart.***
 ## Joni's Blessing
@@ -243,9 +239,10 @@
 
 ***Despite this charm's unlimited power, I still buffed it to make it even more powerful.***
 ## Carefree Melody
-- No longer relies on RNG-mechanic to block hits.
-- Cooldown: 15 seconds
-- While the charm is on cooldown, Knight takes double damage from all sources
+- No longer relies on RNG mechanics to block hits.
+- Delays the first incoming hit temporarily, and enters a 15 seconds cooldown.
+- If the bearer successfully makes it through the cooldown without taking any damage, the charm completely negates the delayed damage.
+- Otherwise, the bearer takes the combined damage of both the first and second attacks, and the cooldown is instantly reset.
 - ***Doesn't work in Radiant fights***
 
 ***To put it simple, I hate RNG-based mechanics***
