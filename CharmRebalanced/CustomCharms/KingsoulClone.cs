@@ -1,6 +1,6 @@
-﻿using HutongGames.PlayMaker;
-using SFCore;
+﻿using SFCore;
 using SFCore.Utils;
+using TuyenTuyenTuyen.FSM;
 using TuyenTuyenTuyen.Mechanics;
 using UnityEngine;
 
@@ -28,12 +28,10 @@ namespace TuyenTuyenTuyen.CustomCharms {
         }
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {
-            if (Instance == null)
-                return;
             if (data.GetBool("gotCharm_36") && data.GetInt("royalCharmState") == 4)
-                Instance.GotCharm = true;
+                Instance!.GotCharm = true;
             else
-                Instance.GotCharm = false;
+                Instance!.GotCharm = false;
         }
 
         private static void OnHCAwake(On.HeroController.orig_Awake orig, HeroController self) {
@@ -46,40 +44,6 @@ namespace TuyenTuyenTuyen.CustomCharms {
             GameObject charmEffects = HeroController.instance.transform.Find("Charm Effects").gameObject;
             var FSM = charmEffects.LocateMyFSM("White Charm");
             FSM.GetState("Check").InsertAction(newAction, 0);
-        }
-    }
-
-    public class CheckEquippedCustomCharm : FsmStateAction {
-        public string customCharmName;
-        public string isTrueEventName;
-        public string isFalseEventName;
-        public FsmEvent? isTrue = null;
-        public FsmEvent? isFalse = null;
-
-        public CheckEquippedCustomCharm(string charmName, string isTrueEvent, string isFalseEvent) {
-            customCharmName = charmName;
-            isTrueEventName = isTrueEvent;
-            isFalseEventName = isFalseEvent;
-        }
-
-        public override void OnEnter() {
-            GetEvent();
-            var customCharms = CharmRebalanced.LoadedInstance!.CustomCharms;
-            bool boolTest = false;
-            if (customCharms.TryGetValue(customCharmName, out var charm))
-                boolTest = charm.IsEquipped;
-            if (boolTest)
-                base.Fsm.Event(isTrue);
-            else
-                base.Fsm.Event(isFalse);
-            Finish();
-        }
-
-        private void GetEvent() {
-            if (!string.IsNullOrEmpty(isTrueEventName))
-                isTrue = FsmEvent.GetFsmEvent(isTrueEventName);
-            if (!string.IsNullOrEmpty(isFalseEventName))
-                isFalse = FsmEvent.GetFsmEvent(isFalseEventName);
         }
     }
 }

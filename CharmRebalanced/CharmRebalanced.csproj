@@ -7,8 +7,8 @@
     <RootNamespace>TuyenTuyenTuyen</RootNamespace>
     <!--Replace this with your Managed folder path in Game Files folder-->
     <ManagedFolder>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</ManagedFolder>
-    <AssemblyVersion>3.0.3.0</AssemblyVersion>
-    <FileVersion>3.0.3.0</FileVersion>
+    <AssemblyVersion>3.0.4.0</AssemblyVersion>
+    <FileVersion>3.0.4.0</FileVersion>
   </PropertyGroup>
     
   <Target Name="Copy DLLs" AfterTargets="Build">
@@ -74,11 +74,6 @@
       <HintPath>$(ManagedFolder)\UnityEngine.Physics2DModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Charms\" />
-    <Folder Include="Mechanics\" />
   </ItemGroup>
 
 </Project>

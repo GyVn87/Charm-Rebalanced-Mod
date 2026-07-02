@@ -199,6 +199,8 @@
 ## Hiveblood
 - Notch cost: 4 => 3
 - Focus no longer interrupts regeneration
+- Synergy with Joni's Blessing:
+  - Recovery time: 20s => 10s
 
 ***Despite being one of my favorite charms, I would say its original cost makes many people hesitant to use it. In addition, the quality-of-life change makes it far less annoying to use this charm.***
 ## Spore Shroom
@@ -229,6 +231,7 @@
 
 ***I have to lower the shield's damage, otherwise it would be extremely overpowered!***
 ## Grimmchild
+- Can now be equipped at the same time with Carefree Melody
 - Now fires 3 fireballs simultaneously like Primal Aspid's pattern.
 - Unable to deal damage to staggered bosses
 - Its projectiles no longer wake up staggered bosses
@@ -239,6 +242,7 @@
 
 ***Despite this charm's unlimited power, I still buffed it to make it even more powerful.***
 ## Carefree Melody
+- Can now be equipped at the same time with Grimmchild
 - No longer relies on RNG mechanics to block hits.
 - Delays the first incoming hit temporarily, and enters a 15 seconds cooldown.
 - If the bearer successfully makes it through the cooldown without taking any damage, the charm completely negates the delayed damage.

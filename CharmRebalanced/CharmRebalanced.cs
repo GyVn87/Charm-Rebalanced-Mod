@@ -15,7 +15,8 @@ namespace TuyenTuyenTuyen {
 		public override string GetVersion() => Assembly.GetExecutingAssembly().GetName().Version.ToString();
         public CharmSettings LocalCharmSettings = new();
         public Dictionary<string, EasyCharm> CustomCharms = new() {
-            {"Kingsoul", new KingsoulClone()}
+            {"Kingsoul", new KingsoulClone()},
+            {"GrimmTroupe", new GrimmTroupe()}
         };
 
         public void OnLoadLocal(CharmSettings s) {
@@ -40,6 +41,7 @@ namespace TuyenTuyenTuyen {
             CharmRebalanced.LoadedInstance = this;
 
             KingsoulClone.Load();
+            GrimmTroupe.Load();
 
             Charm31_Dashmaster.Load();  // has to be called before Sharp Shadow'
             Charm03_GrubSong.Load();
@@ -86,6 +88,7 @@ namespace TuyenTuyenTuyen {
                 RevertChanges();
 
             KingsoulClone.Unload();
+            GrimmTroupe.Unload();
 
             Charm31_Dashmaster.Unload();
             Charm03_GrubSong.Unload();

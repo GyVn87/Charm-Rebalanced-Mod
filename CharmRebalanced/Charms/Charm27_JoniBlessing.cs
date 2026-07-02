@@ -1,4 +1,4 @@
-﻿using System;
+﻿using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm27_JoniBlessing {
@@ -14,9 +14,10 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnCharmUpdate(PlayerData data, HeroController controller) {
             if (data.GetBool("equippedCharm_27")) {
-                data.SetInt("joniHealthBlue", (int)(Math.Ceiling((float)data.GetInt("maxHealth") * masksIncreases)) - 1);
-                data.SetInt("maxHealth", 1);
-                controller.MaxHealth();
+                int maxHealth = data.GetInt("maxHealthBase");
+                if (data.GetBool("equippedCharm_23") && !data.GetBool("brokenCharm_23"))
+                    maxHealth += 2;
+                data.SetInt("joniHealthBlue", Mathf.FloorToInt((float)maxHealth * masksIncreases));
             }
         }
     }
