@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm39_Weaversong {
-        private static readonly float baseSpeedMultiplier = 1f;
-        private static readonly float masterSpeedMultiplier = 1.25f;
+        private static readonly float baseSpeedMultiplier = 1.25f;
+        private static readonly float masterSpeedMultiplier = 1.5f;
 
         private static readonly float weaverlingDamageRatio = 0.25f; // to nail damage
 

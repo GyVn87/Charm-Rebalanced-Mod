@@ -7,20 +7,17 @@
     <RootNamespace>TuyenTuyenTuyen</RootNamespace>
     <!--Replace this with your Managed folder path in Game Files folder-->
     <ManagedFolder>C:\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed</ManagedFolder>
-    <AssemblyVersion>3.0.2.0</AssemblyVersion>
-    <FileVersion>3.0.2.0</FileVersion>
+    <AssemblyVersion>3.0.3.0</AssemblyVersion>
+    <FileVersion>3.0.3.0</FileVersion>
   </PropertyGroup>
     
   <Target Name="Copy DLLs" AfterTargets="Build">
     <Copy SourceFiles="$(TargetDir)\$(TargetName).dll;$(TargetDir)\$(TargetName).pdb" DestinationFolder="$(ManagedFolder)\Mods\Charm Rebalanced" />
     <Message Text="Successfully copied build files to $(ManagedFolder)\Mods\Charm Rebalanced" Importance="High" />
   </Target>
-    
+
   <ItemGroup>
-    <None Remove="Assets\Charms\Kingsoul.png" />
-  </ItemGroup>
-    
-  <ItemGroup>
+    <EmbeddedResource Include="Assets\Charms\Carefree_Melody_On_Trigger.png" />
     <EmbeddedResource Include="Assets\Charms\Kingsoul.png" />
   </ItemGroup>
     

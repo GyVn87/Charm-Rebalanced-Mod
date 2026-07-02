@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm35_GrubberflyElegy {
-        private static readonly int baseSoulGain = 3;
+        private static readonly int baseSoulGain = 4;
         private static readonly int catcherSoulGain = 1;
         private static readonly int eaterSoulGain = 2;
 

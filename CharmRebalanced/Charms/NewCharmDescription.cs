@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TuyenTuyenTuyen.Mechanics {
+namespace TuyenTuyenTuyen.Charms {
     internal static class NewCharmDescription {
         private static readonly Dictionary<string, string> charmDescriptions = new() {
             {"CHARM_DESC_5", "Protects its bearer with a hard shell while focusing SOUL.<br><br>The shell is not indestructible and will shatter if it absorbs too much damage. The bearer can recover the shell by successfully focusing SOUL."},
@@ -13,7 +13,8 @@ namespace TuyenTuyenTuyen.Mechanics {
             {"CHARM_DESC_24_G", "Causes the bearer to find more Geo when defeating enemies or completing Trials.<br><br>This charm is unbreakable."},
             {"CHARM_DESC_24_BROKEN", "Causes the bearer to find more Geo when defeating enemies or completing Trials.<br><br>This charm has broken, and the power inside has been silenced. It can not be equipped."},
             {"CHARM_DESC_35", "Contains the gratitude of grubs who will move to the next stage of their lives. Imbues weapons with a holy strength.<br><br>When the bearer is at high health, they will fire beams of white-hot energy from their nail."},
-            {"CHARM_DESC_38", "Defensive charm once wielded by a tribe that could shape dreams.<br><br>Conjures two shields that follow the bearer and attempt to protect them."}
+            {"CHARM_DESC_38", "Defensive charm once wielded by a tribe that could shape dreams.<br><br>Conjures two shields that follow the bearer and attempt to protect them."},
+            {"CHARM_DESC_40_N", "Token commemorating the start of a friendship.<br><br>Contains a song of protection that absorbs the first incoming blow, delaying the damage until the song fades."}
         };
 
         internal static void Load() {

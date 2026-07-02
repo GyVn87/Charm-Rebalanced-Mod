@@ -3,7 +3,7 @@
 namespace TuyenTuyenTuyen.Charms {
     internal static class Charm37_Sprintmaster {
         private static readonly float runSpeed = 8.3f;
-        private static readonly float speedIncrease = 1.25f;
+        private static readonly float speedIncrease = 1.3f;
         private static readonly float runSpeedMaster = runSpeed * speedIncrease;
 
         private static readonly float speedComboIncrease = 1.4f;

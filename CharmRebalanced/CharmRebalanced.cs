@@ -58,7 +58,6 @@ namespace TuyenTuyenTuyen {
             Charm20_SoulCatcher.Load();
             Charm21_SoulEater.Load();
             Charm22_GlowingWomb.Load();
-            Charm23_Heart.Load();  // has to be called before Joni's Blessing
             Charm24_Greed.Load();
             Charm25_Strength.Load();
             Charm26_NailmasterGlory.Load();
@@ -105,7 +104,6 @@ namespace TuyenTuyenTuyen {
             Charm20_SoulCatcher.Unload();
             Charm21_SoulEater.Unload();
             Charm22_GlowingWomb.Unload();
-            Charm23_Heart.Unload();
             Charm24_Greed.Unload();
             Charm25_Strength.Unload();
             Charm26_NailmasterGlory.Unload();
