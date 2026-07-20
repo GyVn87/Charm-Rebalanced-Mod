@@ -49,13 +49,12 @@ namespace TuyenTuyenTuyen.Charms {
 
         private static void OnDamageEffectTicker_OnTriggerEnter2D(On.DamageEffectTicker.orig_OnTriggerEnter2D orig, DamageEffectTicker self, Collider2D otherCollider) {
             orig(self, otherCollider);
-            if (self.extraDamageType != ExtraDamageTypes.Spore && self.extraDamageType != ExtraDamageTypes.Dung2)
-                return;
-
-            EaterCurseCooldown cooldown = otherCollider.gameObject.GetComponent<EaterCurseCooldown>();
-            if (cooldown == null) {
-                otherCollider.gameObject.AddComponent<EaterCurseCooldown>();
-                otherCollider.gameObject.AddComponent<EaterCurse>();
+            if ((self.extraDamageType == ExtraDamageTypes.Spore || self.extraDamageType == ExtraDamageTypes.Dung2) && PlayerData.instance.GetBool("equippedCharm_21")) {
+                EaterCurseCooldown cooldown = otherCollider.gameObject.GetComponent<EaterCurseCooldown>();
+                if (cooldown == null) {
+                    otherCollider.gameObject.AddComponent<EaterCurseCooldown>();
+                    otherCollider.gameObject.AddComponent<EaterCurse>();
+                }
             }
         }
     }
