@@ -176,9 +176,11 @@ namespace TuyenTuyenTuyen.Charms {
 
         // for some reason, the beams deal triple the damage to Pure Vessel
         private static void OnHealthManager_TakeDamage(On.HealthManager.orig_TakeDamage orig, HealthManager self, HitInstance hitInstance) {
-            if (hitInstance.AttackType == AttackTypes.NailBeam && self.gameObject.name == "HK Prime")
-                hitInstance.Multiplier *= 0.33f;
-            SoulGainedOnBeam();
+            if (IsBeam(hitInstance)) {
+                if (self.gameObject.name == "HK Prime")
+                    hitInstance.Multiplier *= 0.33f;
+                SoulGainedOnBeam();
+            }
             orig(self, hitInstance);
         }
 
