@@ -3,6 +3,7 @@ using Mono.Cecil.Cil;
 using MonoMod.Cil;
 using System;
 using System.Collections;
+using System.Reflection;
 using UnityEngine;
 
 namespace TuyenTuyenTuyen.Charms {
@@ -10,6 +11,8 @@ namespace TuyenTuyenTuyen.Charms {
         private static readonly int baseSoulGain = 4;
         private static readonly int catcherSoulGain = 1;
         private static readonly int eaterSoulGain = 2;
+
+        private static readonly FieldInfo enemyType = typeof(HealthManager).GetField("enemyType", BindingFlags.Instance | BindingFlags.NonPublic);
 
         internal static void Load() {
             ModHooks.AfterAttackHook += OnAfterAttack;
@@ -179,7 +182,8 @@ namespace TuyenTuyenTuyen.Charms {
             if (IsBeam(hitInstance)) {
                 if (self.gameObject.name == "HK Prime")
                     hitInstance.Multiplier *= 0.33f;
-                SoulGainedOnBeam();
+                if ((int)enemyType.GetValue(self) != 3 && (int)enemyType.GetValue(self) != 6)
+                    SoulGainedOnBeam();
             }
             orig(self, hitInstance);
         }
