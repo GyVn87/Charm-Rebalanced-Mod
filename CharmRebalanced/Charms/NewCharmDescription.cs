@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using Language;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace TuyenTuyenTuyen.Charms {
     internal static class NewCharmDescription {
@@ -14,7 +16,8 @@ namespace TuyenTuyenTuyen.Charms {
             {"CHARM_DESC_24_BROKEN", "Causes the bearer to find more Geo when defeating enemies or completing Trials.<br><br>This charm has broken, and the power inside has been silenced. It can not be equipped."},
             {"CHARM_DESC_35", "Contains the gratitude of grubs who will move to the next stage of their lives. Imbues weapons with a holy strength.<br><br>When the bearer is at high health, they will fire beams of white-hot energy from their nail."},
             {"CHARM_DESC_38", "Defensive charm once wielded by a tribe that could shape dreams.<br><br>Conjures two shields that follow the bearer and attempt to protect them."},
-            {"CHARM_DESC_40_N", "Token commemorating the start of a friendship.<br><br>Contains a song of protection that absorbs the first incoming blow, delaying the damage until the song fades."}
+            {"CHARM_DESC_40_N", "Token commemorating the start of a friendship.<br><br>Contains a song of protection that absorbs the first incoming blow, delaying the damage until the song fades."},
+            {"SHOP_DESC_ENEMYRECOILUP", "You enjoy smacking about foes with that nail of yours, right? With this charm equipped, your nail arts will strike with tremendous, overwhelming force!"}
         };
 
         internal static void Load() {

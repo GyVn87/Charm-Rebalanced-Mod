@@ -5,18 +5,22 @@ namespace TuyenTuyenTuyen.Charms {
     internal static class Charm12_ThornsOfAgony {
         private static readonly float thornDamageMutiplier = 1f;
 
+        private static GameObject? thornHit = null;
+             
         internal static void Load() {
             On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter += OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.FindChild.OnEnter += OnFindChild_OnEnter;
             On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter += OnSendMessage_OnEnter;
-            On.HutongGames.PlayMaker.Actions.Wait.OnEnter += OnWait_OnEnter;
             On.HutongGames.PlayMaker.Actions.SetPosition.OnEnter += OnSetPosition_OnEnter;
+            On.HeroController.CanCast += OnHCCanCast;
         }
 
         internal static void Unload() {
             On.HutongGames.PlayMaker.Actions.SetFsmInt.OnEnter -= OnSetFsmInt_OnEnter;
+            On.HutongGames.PlayMaker.Actions.FindChild.OnEnter -= OnFindChild_OnEnter;
             On.HutongGames.PlayMaker.Actions.SendMessage.OnEnter -= OnSendMessage_OnEnter;
-            On.HutongGames.PlayMaker.Actions.Wait.OnEnter -= OnWait_OnEnter;
             On.HutongGames.PlayMaker.Actions.SetPosition.OnEnter -= OnSetPosition_OnEnter;
+            On.HeroController.CanCast -= OnHCCanCast;
         }
 
         private static void OnSetFsmInt_OnEnter(On.HutongGames.PlayMaker.Actions.SetFsmInt.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SetFsmInt self) {
@@ -32,22 +36,21 @@ namespace TuyenTuyenTuyen.Charms {
             }
         }
 
-        private static void OnSendMessage_OnEnter(On.HutongGames.PlayMaker.Actions.SendMessage.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SendMessage self) {
-            if (self.Fsm.Name == "Thorn Counter" && self.State.Name == "Counter Start") {
-                string funcName = self.functionCall.FunctionName;
-                if (funcName == "RelinquishControl" || funcName == "AffectedByGravity") {
-                    self.Finish();
-                    return;
-                }
-            }
+        private static void OnFindChild_OnEnter(On.HutongGames.PlayMaker.Actions.FindChild.orig_OnEnter orig, HutongGames.PlayMaker.Actions.FindChild self) {
             orig(self);
+            if (self.Fsm.Name == "Thorn Counter" && self.State.Name == "Init")
+                thornHit = self.storeResult.Value;
         }
 
-        private static void OnWait_OnEnter(On.HutongGames.PlayMaker.Actions.Wait.orig_OnEnter orig, HutongGames.PlayMaker.Actions.Wait self) {
-            if (self.Fsm.Name == "Thorn Counter" && self.State.Name == "Counter") {
-                HeroController Knight = HeroController.instance;
-                Knight.AffectedByGravity(true);
-                Knight.RegainControl();
+        private static void OnSendMessage_OnEnter(On.HutongGames.PlayMaker.Actions.SendMessage.orig_OnEnter orig, HutongGames.PlayMaker.Actions.SendMessage self) {
+            if (self.Fsm.Name == "Thorn Counter") {
+                string funcName = self.functionCall.FunctionName;
+                if (self.State.Name == "Counter Start" || self.State.Name == "Counter End") {
+                    if (funcName == "RelinquishControl" || funcName == "AffectedByGravity" || funcName == "RegainControl" || funcName == "AffectedByGravity") {
+                        self.Finish();
+                        return;
+                    }
+                }
             }
             orig(self);
         }
@@ -60,6 +63,12 @@ namespace TuyenTuyenTuyen.Charms {
                 }
             }
             orig(self);
+        }
+
+        private static bool OnHCCanCast(On.HeroController.orig_CanCast orig, HeroController self) {
+            if (thornHit != null && thornHit!.activeInHierarchy)
+                return false;
+            return orig(self);
         }
     }
 }

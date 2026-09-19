@@ -59,7 +59,7 @@ namespace TuyenTuyenTuyen.Charms {
             if (inputHandler == null)
                 inputHandler = (InputHandler)inputHandlerField.GetValue(self);
             HeroActions inputActions = inputHandler.inputActions;
-            if (inputActions.down.IsPressed && !self.cState.onGround && PlayerData.instance.GetBool("equippedCharm_31") && !inputActions.left.IsPressed && !inputActions.right.IsPressed)
+            if (inputActions.down.IsPressed && !self.cState.onGround && PlayerData.instance.GetBool("equippedCharm_31") && !inputActions.left.IsPressed && !inputActions.right.IsPressed && !self.cState.recoilFrozen && !self.cState.recoiling)
                 return true;
             return orig(self);
         }
