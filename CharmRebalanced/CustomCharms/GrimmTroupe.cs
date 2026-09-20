@@ -56,16 +56,10 @@ namespace TuyenTuyenTuyen.CustomCharms {
         }
 
         private static void OnPlayerDataBoolTest_OnEnter(On.HutongGames.PlayMaker.Actions.PlayerDataBoolTest.orig_OnEnter orig, HutongGames.PlayMaker.Actions.PlayerDataBoolTest self) {
-            if (self.Fsm.Name == "Spawn Grimmchild" && self.State.Name == "Check") {
+            if ((self.Fsm.Name == "Spawn Grimmchild" && self.State.Name == "Check") || (self.Owner != null && self.Owner.name.StartsWith("Grimmchild") && self.Fsm.Name == "Charm Unequip" && self.State.Name == "Check")) {
                 PlayerData playerData = PlayerData.instance;
-                if (self.boolName.Value == "destroyedNightmareLantern") {
-                    if (Instance!.IsEquipped && playerData.GetInt("grimmChildLevel") == 5)
-                        self.Fsm.Event("EQUIPPED");
-                    else
-                        self.Finish();
-                }
-                else if (self.boolName.Value == "equippedCharm_40") {
-                    if (playerData.GetBool("equippedCharm_40") && playerData.GetInt("grimmChildLevel") != 5)
+                if ((self.boolName.Value == "destroyedNightmareLantern") || (self.boolName.Value == "equippedCharm_40")) {
+                    if ((!playerData.GetBool("destroyedNightmareLantern") && playerData.GetBool("equippedCharm_40")) || (Instance!.IsEquipped && playerData.GetBool("destroyedNightmareLantern")))
                         self.Fsm.Event("EQUIPPED");
                     else
                         self.Fsm.Event("UNEQUIPPED");
