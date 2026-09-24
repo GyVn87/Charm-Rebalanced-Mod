@@ -116,10 +116,19 @@ namespace TuyenTuyenTuyen.Charms {
                 carefreeMelodyIcon?.SetActive(false);
         }
 
-        private static void OnHudCameraOnEnable(On.HUDCamera.orig_OnEnable orig, HUDCamera self) {
-            orig(self);
-            Transform extrasTransform = GameCameras.instance.hudCanvas.transform.Find("Extras");
-            carefreeMelodyIcon = new GameObject("Carefree Melody Icon");           
+		private static void OnHudCameraOnEnable(On.HUDCamera.orig_OnEnable orig, HUDCamera self) {
+		    orig(self);
+		
+		    Transform extrasTransform = GameCameras.instance?.hudCanvas?.transform.Find("Extras");
+		    if (extrasTransform == null) {
+		        CharmRebalanced.LoadedInstance?.LogWarn("Could not create Carefree Melody icon: HUD Extras was not found.");
+		        return;
+		    }
+		
+		    if (carefreeMelodyIcon != null)
+		        UnityEngine.Object.Destroy(carefreeMelodyIcon);
+		
+		    carefreeMelodyIcon = new GameObject("Carefree Melody Icon");           
             carefreeMelodyIcon.transform.SetParent(extrasTransform, false);
             carefreeMelodyIcon.SetActive(false);
             carefreeMelodyIcon.layer = extrasTransform.gameObject.layer;
@@ -131,6 +140,6 @@ namespace TuyenTuyenTuyen.Charms {
             spriteRenderer.sprite = Utilities.LoadSprite("Carefree_Melody_On_Trigger");
             spriteRenderer.sortingLayerName = "Default";
             spriteRenderer.renderingLayerMask = 1;
-        }
-    }
+		}
+	}
 }
