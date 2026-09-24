@@ -141,3 +141,5 @@ namespace TuyenTuyenTuyen.Charms {
             spriteRenderer.sortingLayerName = "Default";
             spriteRenderer.renderingLayerMask = 1;
 		}
+	}
+}
