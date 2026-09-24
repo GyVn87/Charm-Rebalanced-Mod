@@ -119,7 +119,7 @@ namespace TuyenTuyenTuyen.Charms {
 		private static void OnHudCameraOnEnable(On.HUDCamera.orig_OnEnable orig, HUDCamera self) {
 		    orig(self);
 		
-		    Transform extrasTransform = GameCameras.instance?.hudCanvas?.transform.Find("Extras");
+		    Transform? extrasTransform = GameCameras.instance?.hudCanvas?.transform.Find("Extras");
 		    if (extrasTransform == null) {
 		        CharmRebalanced.LoadedInstance?.LogWarn("Could not create Carefree Melody icon: HUD Extras was not found.");
 		        return;
